@@ -1,0 +1,44 @@
+name: Deploy to Cloud Functions
+
+on:
+    workflow_dispatch:  # Manually trigger the workflow
+    # push:
+    #     branches: [main]  # Triggers the workflow on pushes to the 'main' branch
+    # paths:          # Optional: Only trigger on changes in these paths (for monorepos)
+    #   - 'cloud-function/**'  # Example: Only trigger if changes are in the 'cloud-function' directory
+
+jobs: # Sequence of jobs for this workflow
+    build:
+        runs-on: ubuntu-latest # Specify virtual machine for running the job
+        steps: # Sequence of steps for this job
+        - name: 'Checkout'
+          uses: 'actions/checkout@v3'
+
+        - name: 'Google auth'
+          id: 'auth'
+          uses: 'google-github-actions/auth@v1'
+          with:
+            workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+            service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+     
+    # deploy:
+    # runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    # steps:
+    #     - uses: actions/checkout@v3  # Checkout the repository
+    #       with:
+    #         path: cloud-function  # Optional: Checkout only the cloud function's directory
+
+    #     - uses: google-github-actions/auth@v1  # Authenticate with GCP
+    #       with:
+    #         credentials_json: ${{ secrets.GCP_CREDENTIALS }}  # Use a GitHub secret for credentials
+
+    #     - name: Deploy Cloud Function
+    #       run:
+    #         cd cloud-function # Change directory to cloud function source
+    #         gcloud functions deploy YOUR_FUNCTION_NAME \
+    #         --region YOUR_REGION \
+    #         --source . \
+    #         --trigger-http \ # Or --trigger-event, etc. - specify your trigger type
+    #         --runtime YOUR_RUNTIME \ # e.g., python39, nodejs16, etc.
+    #         # Add other flags as needed (e.g., --entry-point, --memory, --timeout)

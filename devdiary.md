@@ -4,3 +4,5 @@
 - Setup Workspace
 - Init Git
 - Create repo
+- Add readme
+- Add changelog
