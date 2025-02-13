@@ -89,3 +89,13 @@
     - DB_CONNECTION_NAME (found under "Connections" in SQL-overview)
 
   - Added GCP_PROJECT_ID as secret to GitHub to access secrets in GCP
+
+  - Secretmanager in ``official_stats`` currently not yet working.
+    Error message excerpt:
+    ```
+    File "/workspace/main.py", line 6, in main
+    from official_stats import get_official_stats, write_to_sql
+    File "/workspace/official_stats.py", line 9, in <module>
+    from google.cloud import secretmanager
+    ImportError: cannot import name 'secretmanager' from 'google.cloud' (unknown location)
+    ```
