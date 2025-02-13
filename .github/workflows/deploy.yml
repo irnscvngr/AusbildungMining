@@ -7,8 +7,8 @@ on:
     workflow_dispatch:  # Manually trigger the workflow
     push:
         branches: [official_stats]
-    paths:          # Optional: Only trigger on changes in these paths (for monorepos)
-      - 'cloud-function/**'  # Example: Only trigger if changes are in the 'cloud-function' directory
+        paths:          # Optional: Only trigger on changes in these paths (for monorepos)
+          - 'cloud-function/**'  # Example: Only trigger if changes are in the 'cloud-function' directory
 
 jobs: # Sequence of jobs for this workflow
     deploy:
