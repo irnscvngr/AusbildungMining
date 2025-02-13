@@ -24,10 +24,12 @@ jobs: # Sequence of jobs for this workflow
             workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
             service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
      
-        - name: Deploy hello_world_function
+        - name: Deploy "official_stats"
           run: |
-            gcloud functions deploy hello_world_function \
+            gcloud functions deploy official_stats \
             --region europe-west1 \
-            --source cloud_functions/hello_world \
+            --source cloud_functions/official_stats \
             --trigger-http \
-            --runtime python39
+            --runtime python39 \
+            --entry-point main \
+            --allow-unauthenticated \
