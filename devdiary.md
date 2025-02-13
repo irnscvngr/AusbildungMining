@@ -45,3 +45,5 @@
 
     In this case - and only in this case - it's also possible to leave out the ``--entry-point`` specification.
     
+## 13.02.2025
+- Finished "Deploy Google Cloud Function using GitHub Actions" Tutorial [on Medium](https://medium.com/@theironscavenger/deploy-google-cloud-functions-using-github-actions-pt-1-0f51c714fd59)
