@@ -5,8 +5,8 @@ permissions:
 
 on:
     workflow_dispatch:  # Manually trigger the workflow
-    # push:
-    #     branches: [main]  # Triggers the workflow on pushes to the 'main' branch
+    push:
+        branches: [official_stats]
     # paths:          # Optional: Only trigger on changes in these paths (for monorepos)
     #   - 'cloud-function/**'  # Example: Only trigger if changes are in the 'cloud-function' directory
 
@@ -25,6 +25,7 @@ jobs: # Sequence of jobs for this workflow
             service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
      
         - name: Deploy "official_stats"
+          # No quote marks for secret in env-variable
           run: |
             gcloud functions deploy official_stats \
             --region europe-west1 \
@@ -33,3 +34,4 @@ jobs: # Sequence of jobs for this workflow
             --runtime python39 \
             --entry-point main \
             --allow-unauthenticated \
+            --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \

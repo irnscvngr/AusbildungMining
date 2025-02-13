@@ -1,7 +1,13 @@
 import warnings
 import re
+import os
+
 import requests
 from bs4 import BeautifulSoup
+import psycopg2
+
+from google.cloud import secretmanager
+client = secretmanager.SecretManagerServiceClient()
 
 def get_official_stats():
     """
@@ -99,3 +105,34 @@ def get_official_stats():
     # Progress and return:
     print("\n--Official stats received!--\n")
     return res_dict
+
+def get_secret(secret_name):
+    """
+    Retrieves a secret from Secret Manager
+    to setup database connection later.
+    """
+    # Get project ID from environment variables
+    project_id = os.environ.get('GCP_PROJECT_ID')
+    # Setup connection to GCP secret manager
+    name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
+    response = client.access_secret_version(request={"name": name})
+    # Return secret value
+    return response.payload.data.decode("UTF-8")
+
+def write_to_sql(res_dict):
+    """
+    Takes the results-dictionary from a previous scrape
+    and writes it to the PostgreSQL database on GCP.
+    """
+    try:
+        conn = psycopg2.connect(
+            user=get_secret("SERVICE_ACCOUNT_USER_NAME"),
+            database=get_secret("DATABASE_NAME"),
+            host=get_secret("DB_CONNECTION_NAME"),
+        )
+        print("Connection succesful!")
+        return conn
+    except psycopg2.Error as e:
+        print(f"Database connection error: {e}")
+        return None
+    
