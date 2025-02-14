@@ -127,11 +127,14 @@ def write_to_sql(res_dict):
     try:
         conn = psycopg2.connect(
             user=get_secret("SERVICE_ACCOUNT_USER_NAME"),
+            password=get_secret("DATABASE_PASSWORD"),
             database=get_secret("DATABASE_NAME"),
             host=get_secret("DB_CONNECTION_NAME"),
+            sslmode='require', # To authenticate with database
         )
         print("Connection succesful!")
-        return conn
+        conn.close()
+        return None
     except psycopg2.Error as e:
         print(f"Database connection error: {e}")
         return None

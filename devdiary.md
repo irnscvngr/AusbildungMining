@@ -99,3 +99,51 @@
     from google.cloud import secretmanager
     ImportError: cannot import name 'secretmanager' from 'google.cloud' (unknown location)
     ```
+
+## 14.02.2025
+- Secretmanager needs ``google-cloud-secret-manager`` in ``requirements.txt`` to work!
+- The ``compute@developer.gserviceaccount.com`` needs to have the role of **Secret Manager Secret Accessor**
+  - Can be granted on IAM overview page (easiest).
+
+  - Can also be granted on Secret Manager page *per secret* by selecting the secrets and then pasting the service account's principal on the **permissions** tab.
+
+  - Disabling or destroying secrets will lead to errors.
+    The secret remains as a version and the following code will prompt an error, that the secret is in ``disabled`` or ``destroyed`` state. So by default it will NOT resort to the latest working version.
+    ```Python
+    name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
+    ```
+  
+  - Setup connection between Cloud Run Function and PostgreSQL:
+
+    - In PostgreSQL **Connections->NETWORKING**:
+      - Activate *Private IP*. You'll create a new *default* network (might take up to 5/6 min. to complete)
+      - Enable Google Cloud services authorization/Enable private path
+    
+    - In PostgreSQL **Connections->SUMMARY**:
+      - Private IP connectivity should now be *Enabled*
+      - There should be an Internal IP address visible
+
+    - In your **Cloud Run Function->EDIT**:
+      - Go to *Runtime, build, connections and security settings*
+      - Then go to *CONNECTIONS*
+      - Under *Egress settings*, **ADD NEW VPC CONNECTOR**
+      - Give it an arbitrary name (e.g. ``vpc-connector``), select the newly created *default* network
+      - As subnet choose *Custom IP Range* and for *IP range* enter the suggested ``10.8.0.0/28``
+      - Finally choose *Route only requests to private IPs through the VPC connector*
+      - Deploy a new revision of your function
+
+    - In PostgreSQL **CONNECTIVITY TESTS**:
+      - Create a new test
+      - Give it an arbitrary name (e.g. ``test-cloud-run``)
+      - Set *Source* to *Other*, *Source endpoint* to *Cloud Run* and as *Cloud Run service* select your Cloud Run Function
+      - Set *Destination* to *Current Cloud SQL Instance* and as port choose ``5432`` (apparently default PostgreSQL port)
+      - Run the test
+      - If succesful, test should end with *trace0 - Packet could be delivered*
+      - Make sure to use the latest revision of your Cloud Run Function. The test might still be set to an older variant that wasn't setup correctly and fail!
+
+    - **Secrets**:
+      - ``DATABASE_NAME`` - The actual name of the database
+      - ``DATABASE_PASSWORD`` - The general password to access the DB (not a user's PW)
+      - ``DATABASE_CONNECTION_NAME`` - The internal IP address (listed under *Private IP connectivity*)
+      - ``SERVICE_ACCOUNT_USER_NAME`` - The custom service account's principal
+  
