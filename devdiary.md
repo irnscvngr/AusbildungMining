@@ -148,3 +148,16 @@
       - ``SERVICE_ACCOUNT_USER_NAME`` - The custom service account's principal
   
     SERVICE_ACCOUNT_USER_NAME is wrong!!! You need to use the database account's id that is related to the database password!
+
+- **Connection errors:**
+*Temporary failure in name resolution*
+```
+"Database connection error: could not translate host name "ausbildungmining:europe-west1:ausbildung-mining-postgresql-id" to address: Temporary failure in name resolution"
+```
+Most likely you're connecting using the connection name. However if VPC is active, you need to use the private IP *(internal IP address)*
+
+*Name or service not known*
+```
+"Database connection error: could not translate host name "ausbildungmining:europe-west1:ausbildung-mining-postgresql-id" to address: Name or service not known"
+```
+Cloud Run Service is not connected via VPC.
