@@ -149,7 +149,9 @@
   
     SERVICE_ACCOUNT_USER_NAME is wrong!!! You need to use the database account's id that is related to the database password!
 
-- **Connection errors:**
+- **Connection/Deployment errors:**
+``google.cloud.sql.connector`` needs to be put as ``cloud.sql.connector`` in the requirements! Otherwise deployment will fail!
+
 *Temporary failure in name resolution*
 ```
 "Database connection error: could not translate host name "ausbildungmining:europe-west1:ausbildung-mining-postgresql-id" to address: Temporary failure in name resolution"
