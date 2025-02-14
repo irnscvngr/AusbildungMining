@@ -9,6 +9,8 @@ import psycopg2
 from google.cloud import secretmanager
 client = secretmanager.SecretManagerServiceClient()
 
+from google.cloud.sql.connector import Connector
+
 def get_official_stats():
     """
     This function connects to Ausbildung.de and retrieves their "official" counts
@@ -119,29 +121,6 @@ def get_secret(secret_name):
     # Return secret value
     return response.payload.data.decode("UTF-8")
 
-# def write_to_sql(res_dict={}):
-#     """
-#     Takes the results-dictionary from a previous scrape
-#     and writes it to the PostgreSQL database on GCP.
-#     """
-#     try:
-#         conn = psycopg2.connect(
-#             user=get_secret("SERVICE_ACCOUNT_USER_NAME"),
-#             # password=get_secret("DATABASE_PASSWORD"), # no PW for service account
-#             database=get_secret("DATABASE_NAME"),
-#             host=get_secret("DB_CONNECTION_NAME"),
-#             port=get_secret("DATABASE_PORT"),
-#             sslmode='require', # To authenticate with database
-#         )
-#         print("Connection succesful!")
-#         conn.close()
-#         return None
-#     except psycopg2.Error as e:
-#         print(f"Database connection error: {e}")
-#         return None
-
-from google.cloud.sql.connector import Connector
-
 def write_to_sql(res_dict={}):
     # Initialize Connector object
     def getconn():
@@ -152,9 +131,10 @@ def write_to_sql(res_dict={}):
 
             conn = connector.connect(
                 instance_connection_name,
-                "psycopg2",
+                "pg8000",
                 user=db_user,
                 db=db_name,
+                enable_iam_auth=True, # important! enables IAM authentication
             )
             return conn
     
