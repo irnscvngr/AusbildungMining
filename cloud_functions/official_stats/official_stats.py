@@ -119,55 +119,23 @@ def get_secret(secret_name):
     # Return secret value
     return response.payload.data.decode("UTF-8")
 
-# def write_to_sql(res_dict={}):
-#     """
-#     Takes the results-dictionary from a previous scrape
-#     and writes it to the PostgreSQL database on GCP.
-#     """
-#     try:
-#         conn = psycopg2.connect(
-#             user=get_secret("SERVICE_ACCOUNT_USER_NAME"),
-#             password=get_secret("DATABASE_PASSWORD"),
-#             database=get_secret("DATABASE_NAME"),
-#             host=get_secret("DB_CONNECTION_NAME"),
-#             port=get_secret("DATABASE_PORT"),
-#             sslmode='require', # To authenticate with database
-#         )
-#         print("Connection succesful!")
-#         conn.close()
-#         return None
-#     except psycopg2.Error as e:
-#         print(f"Database connection error: {e}")
-#         return None
-    
-from google.cloud.sql.connector import Connector, IPTypes
-import pg8000
-
 def write_to_sql(res_dict={}):
-    instance_connection_name = get_secret("DB_CONNECTION_NAME")
-    db_user = get_secret("SERVICE_ACCOUNT_USER_NAME")
-    db_pass = get_secret("DATABASE_PASSWORD")
-    db_name = get_secret("DATABASE_NAME")
-
-    ip_type = IPTypes.PRIVATE
-
-    # initialize Cloud SQL Python Connector object
-    connector = Connector(refresh_strategy="LAZY")
-
-    def getconn() -> pg8000.dbapi.Connection:
-        conn: pg8000.dbapi.Connection = connector.connect(
-            instance_connection_name,
-            "pg8000",
-            user=db_user,
-            password=db_pass,
-            db=db_name,
-            ip_type=ip_type,
-        )
-        return conn
-    
+    """
+    Takes the results-dictionary from a previous scrape
+    and writes it to the PostgreSQL database on GCP.
+    """
     try:
-        conn = getconn()
-        print('Connection established!')
+        conn = psycopg2.connect(
+            user=get_secret("SERVICE_ACCOUNT_USER_NAME"),
+            # password=get_secret("DATABASE_PASSWORD"), # no PW for service account
+            database=get_secret("DATABASE_NAME"),
+            host=get_secret("DB_CONNECTION_NAME"),
+            port=get_secret("DATABASE_PORT"),
+            sslmode='require', # To authenticate with database
+        )
+        print("Connection succesful!")
         conn.close()
-    except Exception as e:
-        print(f"Database connection failed. {e}")
+        return None
+    except psycopg2.Error as e:
+        print(f"Database connection error: {e}")
+        return None
