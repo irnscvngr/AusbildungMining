@@ -2,3 +2,5 @@ requests
 beautifulsoup4
 psycopg2-binary
 google-cloud-secret-manager
+google.cloud.sql.connector
+pg8000
