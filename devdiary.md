@@ -88,7 +88,7 @@
     - DATABASE_NAME
     - DB_CONNECTION_NAME (found under "Connections" in SQL-overview)
 
-  - Added GCP_PROJECT_ID as secret to GitHub to access secrets in GCP
+  - Added GCP_PROJECT_ID as secret to GitHub to access secrets in GCP (adding it as environment-var to deploy.yml works perfectly!)
 
   - Secretmanager in ``official_stats`` currently not yet working.
     Error message excerpt:
