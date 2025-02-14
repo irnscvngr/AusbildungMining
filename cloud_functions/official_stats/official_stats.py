@@ -119,7 +119,7 @@ def get_secret(secret_name):
     # Return secret value
     return response.payload.data.decode("UTF-8")
 
-def write_to_sql(res_dict):
+def write_to_sql(res_dict={}):
     """
     Takes the results-dictionary from a previous scrape
     and writes it to the PostgreSQL database on GCP.
@@ -130,6 +130,7 @@ def write_to_sql(res_dict):
             password=get_secret("DATABASE_PASSWORD"),
             database=get_secret("DATABASE_NAME"),
             host=get_secret("DB_CONNECTION_NAME"),
+            port=get_secret("DATABASE_PORT"),
             sslmode='require', # To authenticate with database
         )
         print("Connection succesful!")

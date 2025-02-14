@@ -147,3 +147,4 @@
       - ``DATABASE_CONNECTION_NAME`` - The internal IP address (listed under *Private IP connectivity*)
       - ``SERVICE_ACCOUNT_USER_NAME`` - The custom service account's principal
   
+    SERVICE_ACCOUNT_USER_NAME is wrong!!! You need to use the database account's id that is related to the database password!
