@@ -139,3 +139,5 @@ def write_to_sql(res_dict={}):
     except psycopg2.Error as e:
         print(f"Database connection error: {e}")
         return None
+
+from google.cloud.sql.connector import Connector
