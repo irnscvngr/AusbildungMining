@@ -143,7 +143,7 @@ def write_to_sql(res_dict={}):
         # create connection pool
         pool = sqlalchemy.create_engine(
             "postgresql+pg8000://",
-            creator=getconn(),
+            creator=getconn, # only pass the function, don't call it!
         )
         return pool
     
@@ -161,18 +161,17 @@ def write_to_sql(res_dict={}):
                 
                 # 1. Insert the date (parameterized)
                 print("Adding current date...")
-                db_conn.execute("INSERT INTO official_stats (date) VALUES (%s)", (current_date,))
+                insert_stmt = sqlalchemy.text("""INSERT INTO "AusbildungMining".official_stats (date) VALUES (:date)""")
+                db_conn.execute(insert_stmt, parameters={"date":current_date})
 
                 # 2. Update other columns (parameterized)
                 for key, value in res_dict.items():  # Iterate through official stats
                     print(f"Updating value for {key}...")
 
-                    # Construct the UPDATE query dynamically but safely
-                    update_query = f"UPDATE official_stats SET {key} = %s WHERE date = %s"
-
-                    db_conn.execute(update_query, (value, current_date))
+                    insert_stmt = sqlalchemy.text("""UPDATE "Ausbildung.Mining".official_stats SET (:key) = (:VALUE) WHERE date = (:date)""")
+                    db_conn.execute(insert_stmt, parameters={'key':key,'value':value, 'date':current_date})
                     # Commit statements
-                    db_conn.commit()
+                    # db_conn.commit()
             
     except Exception as e:
         print(f"Connection to database failed. {e}")
