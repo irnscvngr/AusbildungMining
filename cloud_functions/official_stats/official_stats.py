@@ -144,10 +144,12 @@ def write_to_sql(res_dict={}):
         
         # Use context to write to DB
         with conn.cursor() as cursor:
+            # Add current date to table
+            cursor.execute("INSERT INTO official_stats (date) VALUES (CURRENT_DATE)")
             # Go through all values
             for key in res_dict.keys():
                 print(f"Inserting value for {key}...")
-                cursor.execute(f"INSERT INTO official_stats ({key}) VALUES {res_dict[key]}")
+                cursor.execute(f"UPDATE official_stats SET {key}={res_dict[key]}")
                 conn.commit()
             
         # Close connection
