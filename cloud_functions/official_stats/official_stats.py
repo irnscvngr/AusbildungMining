@@ -141,6 +141,16 @@ def write_to_sql(res_dict={}):
     try:
         conn = getconn()
         print("Connection to database successful!")
+        
+        # Use context to write to DB
+        with conn.cursor() as cursor:
+            # Go through all values
+            for key in res_dict.keys():
+                print(f"Inserting value for {key}...")
+                cursor.execute(f"INSERT INTO official_stats ({key}) VALUES {res_dict[key]}")
+                conn.commit()
+            
+        # Close connection
         conn.close()
     except Exception as e:
         print(f"Connection to database failed. {e}")
