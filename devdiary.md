@@ -66,7 +66,8 @@
     SET search_path TO "AusbildungMining";
     -- Create new table allowing NULL values
     CREATE TABLE official_stats (
-    date DATE PRIMARY KEY,
+    date DATE PRIMARY KEY, -- this only stores the date (choose one!)
+    date TIMESTAMP WITHOUT TIME ZONE PRIMARY KEY, -- this also stores time
     feature1 INTEGER NULL,
     feature2 INTEGER NULL,
     feature3 INTEGER NULL
@@ -320,3 +321,6 @@ Okay, I'm quickly adding CRON scheduler!
 
 - For testing the scheduler uses the public address of the Cloud Run Function
 
+- Apparently **"workflows"** can enable GCP-internal communication between scheduler an Cloud Run Function
+
+- Function now runs daily at 3am CET
