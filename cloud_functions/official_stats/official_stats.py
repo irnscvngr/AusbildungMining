@@ -1,6 +1,7 @@
 import warnings
 import re
 import os
+import datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -144,13 +145,21 @@ def write_to_sql(res_dict={}):
         
         # Use context to write to DB
         with conn.cursor() as cursor:
-            # Add current date to table
-            cursor.execute("INSERT INTO official_stats (date) VALUES (CURRENT_DATE)")
+            current_date = datetime.date.today() 
+            
+            # 1. Insert the date (parameterized)
+            print("Adding current date...")
+            cursor.execute("INSERT INTO official_stats (date) VALUES (%s)", (current_date,))
             conn.commit()
-            # Go through all values
-            for key in res_dict.keys():
-                print(f"Inserting value for {key}...")
-                cursor.execute(f"UPDATE official_stats SET {key}={res_dict[key]}")
+
+            # 2. Update other columns (parameterized)
+            for key, value in res_dict.items():  # Iterate through official stats
+                print(f"Updating value for {key}...")
+
+                # Construct the UPDATE query dynamically but safely
+                update_query = f"UPDATE official_stats SET {key} = %s WHERE date = %s"
+
+                cursor.execute(update_query, (value, current_date))
                 conn.commit()
             
         # Close connection

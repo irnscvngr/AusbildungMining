@@ -207,7 +207,12 @@ Best practice for now: Just add a new version in case the secret changes.
   INSERT INTO table_name (column_name) VALUES (value_to_add);
   ```
 
-- 
+- Say a row with primary key is already created. Then you can't ``INSERT`` a new value for another column of that row. Instead it needs to be *updated*:
+  ```SQL
+  UPDATE table_name
+  SET column_name=column_value
+  WHERE index_column=index_value
+  ```
 
 ---
 
