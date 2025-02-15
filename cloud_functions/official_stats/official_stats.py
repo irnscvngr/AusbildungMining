@@ -123,13 +123,14 @@ def get_secret(secret_name):
     return response.payload.data.decode("UTF-8")
 
 def write_to_sql(res_dict={}):
-    # Initialize Connector object
-    def getconn():
-        with Connector() as connector:
+    # helper function to return SQLAlchemy connection pool
+    def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
+        # function used to generate database connection
+        def getconn():
             instance_connection_name = get_secret("DB_CONNECTION_NAME")
             db_user = get_secret("SERVICE_ACCOUNT_USER_NAME")
             db_name = get_secret("DATABASE_NAME")
-
+            
             conn = connector.connect(
                 instance_connection_name,
                 "pg8000",
@@ -138,34 +139,40 @@ def write_to_sql(res_dict={}):
                 enable_iam_auth=True, # important! enables IAM authentication
             )
             return conn
-    
-    try:
+
         # create connection pool
         pool = sqlalchemy.create_engine(
             "postgresql+pg8000://",
             creator=getconn(),
         )
-        print("Connection to database successful!")
+        return pool
+    
+    try:
+        # initialize Cloud SQL Python Connector as context manager
+        # (removes need to close the connection)
+        with Connector() as connector:
+            # Initialize connection pool
+            pool = init_connection_pool(connector)
+            print("Connection to database successful!")
         
-        # Use context to write to DB
-        with pool.connect() as db_conn:
-            current_date = datetime.date.today() 
+            # interact with Cloud SQL database using connection pool
+            with pool.connect() as db_conn:
+                current_date = datetime.date.today() 
+                
+                # 1. Insert the date (parameterized)
+                print("Adding current date...")
+                db_conn.execute("INSERT INTO official_stats (date) VALUES (%s)", (current_date,))
+
+                # 2. Update other columns (parameterized)
+                for key, value in res_dict.items():  # Iterate through official stats
+                    print(f"Updating value for {key}...")
+
+                    # Construct the UPDATE query dynamically but safely
+                    update_query = f"UPDATE official_stats SET {key} = %s WHERE date = %s"
+
+                    db_conn.execute(update_query, (value, current_date))
+                    # Commit statements
+                    db_conn.commit()
             
-            # 1. Insert the date (parameterized)
-            print("Adding current date...")
-            db_conn.execute("INSERT INTO official_stats (date) VALUES (%s)", (current_date,))
-
-            # 2. Update other columns (parameterized)
-            for key, value in res_dict.items():  # Iterate through official stats
-                print(f"Updating value for {key}...")
-
-                # Construct the UPDATE query dynamically but safely
-                update_query = f"UPDATE official_stats SET {key} = %s WHERE date = %s"
-
-                db_conn.execute(update_query, (value, current_date))
-            
-        # Commit and close connection
-        db_conn.commit()
-        conn.close()
     except Exception as e:
         print(f"Connection to database failed. {e}")
