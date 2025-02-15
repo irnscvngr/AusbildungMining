@@ -1,20 +1,20 @@
 # Dev Diary
 
-## 08.02.25
+## 08.02.2025
 - Setup Workspace
 - Init Git
 - Create repo
 - Add readme
 - Add changelog
 
-## 10.02.25
+## 10.02.2025
 - Finally got deployment to GCP running!
 - Main take aways:
   - IAM is difficult!
   - Gemini is only helpful max. 50% of the time
   - Write everything down! (Check CloudFunctionDeployTutorial)
  
-## 11.02.25
+## 11.02.2025
 - Recreating minimal deployment examples for CloudFunctionDeployTutorial
 - IAM is DIFFICULT!
 - Devil's in the detail!
@@ -101,6 +101,8 @@
     ```
 
 ## 14.02.2025
+>***The following notes are a bit random. Go to 15.02.25 for a more cleaned up version***
+
 - Secretmanager needs ``google-cloud-secret-manager`` in ``requirements.txt`` to work!
 - The ``compute@developer.gserviceaccount.com`` needs to have the role of **Secret Manager Secret Accessor**
   - Can be granted on IAM overview page (easiest).
@@ -112,45 +114,13 @@
     ```Python
     name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
     ```
-  
-  - Setup connection between Cloud Run Function and PostgreSQL:
-
-    - In PostgreSQL **Connections->NETWORKING**:
-      - Activate *Private IP*. You'll create a new *default* network (might take up to 5/6 min. to complete)
-      - Enable Google Cloud services authorization/Enable private path
-    
-    - In PostgreSQL **Connections->SUMMARY**:
-      - Private IP connectivity should now be *Enabled*
-      - There should be an Internal IP address visible
-
-    - In your **Cloud Run Function->EDIT**:
-      - Go to *Runtime, build, connections and security settings*
-      - Then go to *CONNECTIONS*
-      - Under *Egress settings*, **ADD NEW VPC CONNECTOR**
-      - Give it an arbitrary name (e.g. ``vpc-connector``), select the newly created *default* network
-      - As subnet choose *Custom IP Range* and for *IP range* enter the suggested ``10.8.0.0/28``
-      - Finally choose *Route only requests to private IPs through the VPC connector*
-      - Deploy a new revision of your function
-
-    - In PostgreSQL **CONNECTIVITY TESTS**:
-      - Create a new test
-      - Give it an arbitrary name (e.g. ``test-cloud-run``)
-      - Set *Source* to *Other*, *Source endpoint* to *Cloud Run* and as *Cloud Run service* select your Cloud Run Function
-      - Set *Destination* to *Current Cloud SQL Instance* and as port choose ``5432`` (apparently default PostgreSQL port)
-      - Run the test
-      - If succesful, test should end with *trace0 - Packet could be delivered*
-      - Make sure to use the latest revision of your Cloud Run Function. The test might still be set to an older variant that wasn't setup correctly and fail!
-
-    - **Secrets**:
-      - ``DATABASE_NAME`` - The actual name of the database
-      - ``DATABASE_PASSWORD`` - The general password to access the DB (not a user's PW)
-      - ``DATABASE_CONNECTION_NAME`` - The internal IP address (listed under *Private IP connectivity*)
-      - ``SERVICE_ACCOUNT_USER_NAME`` - The custom service account's principal
-  
-    SERVICE_ACCOUNT_USER_NAME is wrong!!! You need to use the database account's id that is related to the database password!
 
 - **Connection/Deployment errors:**
 ``google.cloud.sql.connector`` needs to be put as ``cloud.sql.connector`` in the requirements! Otherwise deployment will fail!
+
+<br>
+
+>***Leaving some of the following explanations here... However they're not really relevant when using Cloud SQL connector.***
 
 *Temporary failure in name resolution*
 ```
@@ -163,3 +133,73 @@ Most likely you're connecting using the connection name. However if VPC is activ
 "Database connection error: could not translate host name "ausbildungmining:europe-west1:ausbildung-mining-postgresql-id" to address: Name or service not known"
 ```
 Cloud Run Service is not connected via VPC.
+
+## 15.02.2025
+
+### Program setup for PostgreSQL
+
+**Secrets management**
+- There are some secrets needed to setup the connection later:
+  - Project ID
+  - Instance connection name *(of the Cloud SQL instance)*
+  - Service Account user name
+  - Database name
+- These secrets could all be stored on GitHub. But they are all GCP-related and changing them for the Cloud Function would require redeployment each time. That's where **Google Secret Manager** comes into play.
+- Google Secret Manager will store:
+  - Connection name
+  - Service Account user name
+  - Database name
+- Inside of GCP, the Cloud Run Function needs to connect to secret manager to obtain the secrets
+- To connect to secret manager it needs the project ID. To not store it in public, the project ID is stored as GitHub secret and handed over to the Cloud Run Function as environment variable.
+- The Cloud Run Function can then obtain the project ID at runtime as env-variable. It uses it to get the remaining secrets from secret manager.
+
+>**Some notes about Secret Manager**
+>- Secrets can be stored in multiple versions *(like code commits)*
+>- Secrets can be *disabled* or *destroyed*
+>- **But!** Referencing a disabled or destroyed secret will fail.<br>
+Best practice for now: Just add a new version in case the secret changes.
+
+<br>
+
+**Connection Setup in code**
+- To connect to SQL, **[Google Cloud SQL Connector](https://pypi.org/project/cloud-sql-python-connector/#configuring-the-connector)** is used
+- To connect to PostgreSQL, it needs a database driver ([pg8000](https://pypi.org/project/pg8000/))
+- The connection uses IAM authentication inside GCP, so no password is needed
+
+---
+
+### Key-points for SQL connection on GCP
+
+[Official documentation to connect from Cloud Run to Cloud SQL](https://cloud.google.com/sql/docs/postgres/connect-run#public-ip-default_1)
+
+**Cloud SQL/PostgreSQL**
+- Public IP needs to be enabled (uses IAM authentication)
+- No need for private IP and specific network
+- Google Cloud Services authorization *not* needed
+- Set SSL mode to *Require trusted clients certificates*
+
+**Cloud Run Function**
+- The function connects using *Google Cloud SQL Connector*, *pg8000* and *Google Secrets manager*, hence these 3 need to be in the ``requirements.txt``.
+- **Note** that the library name for ``requirements.txt`` might differ from the name used for ``import``!
+- No VPC needed!
+- *Cloud SQL connections* do *not* need to be specifically set in Cloud Run
+- Really everything is handled by Google Cloud SQL connectors.
+
+<br>
+
+>Setup a connectivity test to easily ensure connectivity between Cloud Run and Cloud SQL without the need for redeployment.
+
+*Although Google Cloud SQL Connectors make things very easy, it might get a lot more difficult when dealing with added security or more complex connections...*
+---
+
+### Some more PostgreSQL basics
+
+- Select database
+  ```SQL
+  SET search_path TO database_name;
+  SELECT * FROM table_name
+  ```
+
+---
+
+### Work notes
