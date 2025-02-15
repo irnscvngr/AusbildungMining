@@ -195,15 +195,26 @@ Best practice for now: Just add a new version in case the secret changes.
 
 ### Some more PostgreSQL basics
 
-- Select database
+- Select schema
   ```SQL
-  SET search_path TO database_name;
+  SET search_path TO schema_name;
   SELECT * FROM table_name
+  ```
+
+- Alternatively use prefix:<br>
+  **Note!** *You must use double quotation marks to maintain case-sensitivity here!*
+  ```SQL
+  -- This works:
+  SELECT * FROM "SchemaName".table_name
+  -- This DOES NOT work:
+  SELECT * FROM SchemaName.table_name
+  -- because it gets parsed as:
+  SELECT * FROM schemaname.table_name
   ```
 
 - Add new value *(in the sense of "creating" it)*
   ```SQL
-  SET search_path TO database_name;
+  SET search_path TO schema_name;
   INSERT INTO table_name (column_name) VALUES (value_to_add);
   ```
 
@@ -216,6 +227,12 @@ Best practice for now: Just add a new version in case the secret changes.
 
 **SQL injection!**<br>
 *Beware of SQL injection! Here's an example:*
+
+INSERT EXAMPLE!
+
+**Notes**
+- SQLalchemy provides some means so make SQL-statements *pythonic*
+- For this you can setup a ``Table``-object and than perform methods on it, like ``table.insert()``
 
 
 ---
