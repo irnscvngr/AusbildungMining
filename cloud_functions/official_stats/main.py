@@ -16,6 +16,3 @@ def main(request):
         res_string += f"{key} : {off_stats_dict[key]}\n"
     # Return results as string
     return res_string, 200
-    
-    # write_to_sql()
-    # return 'Done.', 200

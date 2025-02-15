@@ -81,10 +81,14 @@
 
     Note: Don't use full service account e-mail here! Use user name as it is displayed in the Users-overview of the database (ending on \*.iam)
     ```PostgreSQL
+    -- Careful! Granting rights on schema only might NOT work!
     GRANT ALL ON SCHEMA "AusbildungMining" TO "service@account.mail"
+
+    -- instead grant rights on SPECIFIC TABLES - this worked!
+    GRANT ALL ON TABLE "SchemaName".table_name TO "service@account.mail"
     ```
   - Use Cloud Secret Manager to store service account credentials (email, database name, cloud sql connection name)
-    - SERVICE_ACCOUNT_USER_NAME (== email ending on \*.iam)
+    - SERVICE_ACCOUNT_USER_NAME (ending on \*.iam)
     - DATABASE_NAME
     - DB_CONNECTION_NAME (found under "Connections" in SQL-overview)
 
@@ -225,6 +229,21 @@ Best practice for now: Just add a new version in case the secret changes.
   WHERE index_column=index_value
   ```
 
+- Delete values:
+  ```SQL
+  DELETE FROM your_table_name
+  WHERE your_condition;
+  ```
+
+- Check user-rights on specific table:
+  *(good for troubleshooting in case e.g. inserts don't work)*
+  ```SQL
+  SELECT grantee, privilege_type
+  FROM information_schema.table_privileges
+  WHERE table_schema = schema_name
+    AND table_name = table_name; 
+  ```
+
 **SQL injection!**<br>
 *Beware of SQL injection! Here's an example:*
 
@@ -237,4 +256,52 @@ INSERT EXAMPLE!
 
 ---
 
-### Work notes
+### Work notes/summary
+- Service Account must be granted rights ***specifically to SQL Table - NOT schema***!
+
+- Also make sure that Service Account has *Cloud SQL Client* and *Cloud SQL instance user* roles in IAM.
+
+- Rights are granted by logging in Cloud SQL studio with *postgres*-user.<br>
+  Then ``GRANT ALL ON "SchemaName".table_name TO service_account_name``.
+
+- Check rights to specific table using code-example above!
+
+- Ideally ``sqlalchemy`` expression language is used for access.
+
+- For simple tests make sure to not supply column-name as *sqlalchemy-parameter*. It only works when supplied either directly or using f-string *(beware of sql-injection)*.
+
+- ``commit()``-statement must follow after all ``execute()``-statements or data will not be written to database!
+
+<br>
+
+- ***Established connection and data-transfer from Cloud Run Function to Cloud SQL PostgreSQL database*** 🎉🥳🍻
+
+<br>
+
+**Next steps**
+- Add cron-job so Cloud Run Function is executed daily
+
+- Setup dedicated API endpoint for Cloud SQL that handles datatransfer. Should provide the following:
+
+  - Using ``requests.post()`` should enable easy data transfer to database by providing python-dict/JSON data.<br>
+  *Example transfer:*
+    ```Python
+    url = "google.cloud.api-endpoint.mockup.url"
+    params = {
+      table_name:'official_stats',
+      date:datetime.date(2025, 2, 15),
+      company_count:5512,
+      ...
+      total_count:152421
+    }
+    requests.post(url,params)
+    ```
+  - In the same way, the endpoint should enable data-extraction using ``requests.get()``
+
+  - For this, the endpoint needs to "deconstruct" the incoming data and pass it to the database. Tables and incoming data need to be correctly structured for this.
+
+  - Dependent on the provided ``table_name`` the endpoint needs to "know what to do"
+
+- Add additional Cloud Run Functions that use the API endpoint to add various new data to the database
+
+- Add data analysis, visualization, dashboard, ML, AI stuff!
