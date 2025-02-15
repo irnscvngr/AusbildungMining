@@ -146,6 +146,7 @@ def write_to_sql(res_dict={}):
         with conn.cursor() as cursor:
             # Add current date to table
             cursor.execute("INSERT INTO official_stats (date) VALUES (CURRENT_DATE)")
+            conn.commit()
             # Go through all values
             for key in res_dict.keys():
                 print(f"Inserting value for {key}...")

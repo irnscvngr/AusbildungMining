@@ -201,6 +201,14 @@ Best practice for now: Just add a new version in case the secret changes.
   SELECT * FROM table_name
   ```
 
+- Add new value *(in the sense of "creating" it)*
+  ```SQL
+  SET search_path TO database_name;
+  INSERT INTO table_name (column_name) VALUES (value_to_add);
+  ```
+
+- 
+
 ---
 
 ### Work notes
