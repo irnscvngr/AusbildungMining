@@ -64,12 +64,12 @@
     ```PostgreSQL
     -- Use AusbildungMining Schema
     SET search_path TO "AusbildungMining";
-    -- Create new table
+    -- Create new table allowing NULL values
     CREATE TABLE official_stats (
     date DATE PRIMARY KEY,
-    feature1 INTEGER,
-    feature2 INTEGER,
-    feature3 INTEGER
+    feature1 INTEGER NULL,
+    feature2 INTEGER NULL,
+    feature3 INTEGER NULL
     );
     ```
 
@@ -190,6 +190,7 @@ Best practice for now: Just add a new version in case the secret changes.
 >Setup a connectivity test to easily ensure connectivity between Cloud Run and Cloud SQL without the need for redeployment.
 
 *Although Google Cloud SQL Connectors make things very easy, it might get a lot more difficult when dealing with added security or more complex connections...*
+
 ---
 
 ### Some more PostgreSQL basics
