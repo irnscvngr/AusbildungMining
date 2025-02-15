@@ -150,7 +150,7 @@ def write_to_sql(res_dict={}):
     try:
         # initialize Cloud SQL Python Connector as context manager
         # (removes need to close the connection)
-        with Connector() as connector:
+        with Connector(refresh_strategy="lazy") as connector:
             # Initialize connection pool
             pool = init_connection_pool(connector)
             print("Connection to database successful!")
@@ -168,10 +168,12 @@ def write_to_sql(res_dict={}):
                 for key, value in res_dict.items():  # Iterate through official stats
                     print(f"Updating value for {key}...")
 
-                    insert_stmt = sqlalchemy.text("""UPDATE "Ausbildung.Mining".official_stats SET (:key) = (:VALUE) WHERE date = (:date)""")
-                    db_conn.execute(insert_stmt, parameters={'key':key,'value':value, 'date':current_date})
+                    insert_stmt = sqlalchemy.text(f"""UPDATE "AusbildungMining".official_stats SET {key} = (:value) WHERE date = (:date)""")
+                    db_conn.execute(insert_stmt, parameters={'value':value, 'date':current_date})
                     # Commit statements
-                    # db_conn.commit()
+                    db_conn.commit()
+                
+                print("Database update complete!")
             
     except Exception as e:
         print(f"Connection to database failed. {e}")
