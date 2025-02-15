@@ -214,6 +214,10 @@ Best practice for now: Just add a new version in case the secret changes.
   WHERE index_column=index_value
   ```
 
+**SQL injection!**<br>
+*Beware of SQL injection! Here's an example:*
+
+
 ---
 
 ### Work notes
