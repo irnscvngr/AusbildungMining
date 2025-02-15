@@ -157,7 +157,8 @@ def write_to_sql(res_dict={}):
         
             # interact with Cloud SQL database using connection pool
             with pool.connect() as db_conn:
-                current_date = datetime.date.today() 
+                # Take current time as timestamp
+                current_date = datetime.datetime.now()
                 
                 # 1. Insert the date (parameterized)
                 print("Adding current date...")

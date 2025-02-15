@@ -305,3 +305,18 @@ INSERT EXAMPLE!
 - Add additional Cloud Run Functions that use the API endpoint to add various new data to the database
 
 - Add data analysis, visualization, dashboard, ML, AI stuff!
+
+---
+
+Okay, I'm quickly adding CRON scheduler!
+
+- Enable **CRON scheduler API**
+
+- Create new job
+
+- Give it a name, select your region
+
+- Use [cron-expression](https://crontab.cronhub.io/) to define interval
+
+- For testing the scheduler uses the public address of the Cloud Run Function
+
