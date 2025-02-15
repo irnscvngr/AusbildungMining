@@ -5,7 +5,7 @@ import datetime
 
 import requests
 from bs4 import BeautifulSoup
-import psycopg2
+import sqlalchemy
 
 from google.cloud import secretmanager
 client = secretmanager.SecretManagerServiceClient()
@@ -140,17 +140,20 @@ def write_to_sql(res_dict={}):
             return conn
     
     try:
-        conn = getconn()
+        # create connection pool
+        pool = sqlalchemy.create_engine(
+            "postgresql+pg8000://",
+            creator=getconn(),
+        )
         print("Connection to database successful!")
         
         # Use context to write to DB
-        with conn.cursor() as cursor:
+        with pool.connect() as db_conn:
             current_date = datetime.date.today() 
             
             # 1. Insert the date (parameterized)
             print("Adding current date...")
-            cursor.execute("INSERT INTO official_stats (date) VALUES (%s)", (current_date,))
-            conn.commit()
+            db_conn.execute("INSERT INTO official_stats (date) VALUES (%s)", (current_date,))
 
             # 2. Update other columns (parameterized)
             for key, value in res_dict.items():  # Iterate through official stats
@@ -159,10 +162,10 @@ def write_to_sql(res_dict={}):
                 # Construct the UPDATE query dynamically but safely
                 update_query = f"UPDATE official_stats SET {key} = %s WHERE date = %s"
 
-                cursor.execute(update_query, (value, current_date))
-                conn.commit()
+                db_conn.execute(update_query, (value, current_date))
             
-        # Close connection
+        # Commit and close connection
+        db_conn.commit()
         conn.close()
     except Exception as e:
         print(f"Connection to database failed. {e}")
