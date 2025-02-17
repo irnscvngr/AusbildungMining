@@ -18,14 +18,13 @@ import re
 import os
 import datetime
 
+# Note! import will cause authentication-attempt with GCP
 from google.cloud import secretmanager
 from google.cloud.sql.connector import Connector
 
 import requests
 from bs4 import BeautifulSoup
 import sqlalchemy
-
-client = secretmanager.SecretManagerServiceClient()
 
 def get_official_stats():
     """
@@ -137,6 +136,7 @@ def get_secret(secret_name):
     project_id = os.environ.get('GCP_PROJECT_ID')
     # Setup connection to GCP secret manager
     name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
+    client = secretmanager.SecretManagerServiceClient()
     response = client.access_secret_version(request={"name": name})
     # Return secret value
     return response.payload.data.decode("UTF-8")

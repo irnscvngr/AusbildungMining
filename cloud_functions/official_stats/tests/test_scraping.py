@@ -10,7 +10,7 @@ import pytest
 # Get parent directory to import modules to test
 curdir = os.path.dirname(__file__)
 sys.path.append(os.path.dirname(curdir))
-
+# pylint:disable=wrong-import-position
 from official_stats import get_official_stats
 
 expected_keys = ['company_count',
@@ -25,6 +25,9 @@ expected_keys = ['company_count',
 
 # Replace actual scraping result with mockup
 @patch("official_stats.requests.get")
+# Patch the GCP imports as they will try to authenticate with GCP which fails on GitHub
+@patch("google.cloud.secretmanager.SecretManagerServiceClient")  # Mock the client class
+@patch("google.cloud.sql.connector.Connector")  # Mock the Connector class
  # Because of mockup, this test will return lots of warnings. Surpress them:
 @pytest.mark.filterwarnings("ignore::UserWarning")
 def testscrape_response_200(mockup_request):
@@ -46,6 +49,9 @@ def testscrape_response_200(mockup_request):
 
 # Replace actual scraping result with mockup
 @patch("official_stats.requests.get")
+# Patch the GCP imports as they will try to authenticate with GCP which fails on GitHub
+@patch("google.cloud.secretmanager.SecretManagerServiceClient")  # Mock the client class
+@patch("google.cloud.sql.connector.Connector")  # Mock the Connector class
  # Because of mockup, this test will return lots of warnings. Surpress them:
 @pytest.mark.filterwarnings("ignore::UserWarning")
 def testscrape_response_404(mockup_request):
