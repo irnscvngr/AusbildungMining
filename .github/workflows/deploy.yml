@@ -5,7 +5,7 @@ permissions:
 
 on:
   workflow_run:
-    workflows: ['tests']
+    workflows: ['test_functions']
     types: [completed]
   workflow_dispatch: # Manual trigger
 
