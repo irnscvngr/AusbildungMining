@@ -1,4 +1,4 @@
-name: deploy_to_gcp
+name: test_functions
 
 permissions:
   id-token: write

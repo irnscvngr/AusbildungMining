@@ -358,8 +358,9 @@ Okay, I'm quickly adding CRON scheduler!
 - ``deploy_to_gcp.yml`` deploys functions to GCP.<br>
   It is triggered upon succesful run of ``tests.yml`` or can be triggered manually.
 
-- **Note!** To have one ``yml`` reference another, it needs to point to it's ``name`` (given inside the actual code), not to the file-name!<br>
-*(Comparable to GCP's entry point)*
+- To reference one workflow from another, ``workflow_run`` is used. [Also look here](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_run).
+
+- 
 
 <br>
 
