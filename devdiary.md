@@ -368,4 +368,6 @@ Okay, I'm quickly adding CRON scheduler!
 
 - Ensure existence of ``__init__.py`` (even if empty) in any directory where py-files are, ***including their parent-directories!***
 
+- Using ``pytests`` for testing
+
 - 
