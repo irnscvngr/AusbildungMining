@@ -1,16 +1,11 @@
-name: Deploy to Cloud Functions
+name: deploy_to_gcp
 
 permissions:
   id-token: write
 
 on:
-    # workflow_dispatch:  # Manually trigger the workflow
-    # push:
-    #     branches: [official_stats]
-    #     paths:          
-    #       - 'cloud_functions/**'  # Only trigger if changes are in the 'cloud-functions' directory
     workflow_run:
-      workflows: [tests] # Trigger after the "tests" workflow completes
+      workflows: [test_functions] # Trigger after test-yml is completed (note: uses actual "name" in yml-file)
       types: [completed] # Only trigger on successful completion
     workflow_dispatch: # Manual trigger
 
