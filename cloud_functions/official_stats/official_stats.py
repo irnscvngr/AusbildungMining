@@ -1,16 +1,31 @@
+"""
+This file connects to Ausbildung.de and get's "official" numbers of companies
+and vacancies. Ausbildung.de list 7 types of vacancies, as well as the total count.
+This make 9 values to return in total.
+The keys are:
+- company_count
+- integrated_degree_programs
+- educational_trainings
+- qualifications
+- regular_apprenticeships
+- inhouse_trainings
+- educational_trainings_and_regular_apprenticeships
+- training_progams
+- total_count
+"""
 import warnings
 import re
 import os
 import datetime
 
+from google.cloud import secretmanager
+from google.cloud.sql.connector import Connector
+
 import requests
 from bs4 import BeautifulSoup
 import sqlalchemy
 
-from google.cloud import secretmanager
 client = secretmanager.SecretManagerServiceClient()
-
-from google.cloud.sql.connector import Connector
 
 def get_official_stats():
     """
@@ -24,7 +39,8 @@ def get_official_stats():
     print("\n--Receiving official stats--\n")
     # --- GET COMPANY COUNT
     url = "https://www.ausbildung.de/unternehmen/alle/"
-    response = requests.get(url)
+    response = requests.get(url,timeout=20)
+    print(response.content)
     soup = BeautifulSoup(response.content,'html.parser')
     try:
         print("Processing: company_count")
@@ -34,10 +50,11 @@ def get_official_stats():
         # The result is of format "5.258 Unternehmen"
         # ->Extract digits and remove dot
         company_count = ''.join(re.findall(r'\d+',company_count))
-    except:
+    # pylint:disable=broad-exception-caught
+    except Exception as e:
         # In case of failure just store nan
-        warnings.warn("Company count not found in HTML! Storing nan instead.")
-        company_count = "nan"
+        print(f"Failed to get company count. Storing empty string instead. Error: {e}")
+        company_count = ""
 
     # Initialize results dictionary and add company count to it
     res_dict = {"company_count":company_count}
@@ -70,7 +87,7 @@ def get_official_stats():
             # Select a parameter
             params[key] = 1
             # Perform API-call:
-            response = requests.get(url, params=params)
+            response = requests.get(url, params=params,timeout=20)
             soup = BeautifulSoup(response.content,'html.parser')
             # Extract count-element
             res = soup.find(class_="title title--size-md title--left").text
@@ -80,11 +97,12 @@ def get_official_stats():
             res_dict[key_clean] = res
             # Reset API parameter
             params[key] = 0
-        except:
+        # pylint:disable=broad-exception-caught
+        except Exception as e:
             # In case of failure just store nan
-            warnings.warn(f"API call failed for {key_clean}! Storing nan instead.")
-            res_dict[key_clean] = "nan"
-    
+            warnings.warn(f"API call failed for {key_clean}! Storing empty string instead. {e}")
+            res_dict[key_clean] = ""
+
     # Set all API parameters to 1 so that the search returns a total count
     for key in list(params.keys())[3:]:
         params[key] = 1
@@ -92,7 +110,7 @@ def get_official_stats():
     try:
         print("Processing: total_count")
         # Perform API call
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=20)
         soup = BeautifulSoup(response.content,'html.parser')
         # Extract count-element
         res = soup.find(class_="title title--size-md title--left").text
@@ -100,10 +118,11 @@ def get_official_stats():
         res = re.search(r"\d+",res)[0]
         # Store value to results dictionary
         res_dict['total_count'] = res
-    except:
+    # pylint:disable=broad-exception-caught
+    except Exception as e:
         # In case of failure just store nan
-        warnings.warn(f"API call failed for total_count! Storing nan instead.")
-        res_dict['total_count'] = "nan"
+        warnings.warn(f"Failed to get total count. Storing empty string instead. Error: {e}")
+        res_dict['total_count'] = ""
 
     # Progress and return:
     print("\n--Official stats received!--\n")
@@ -122,7 +141,10 @@ def get_secret(secret_name):
     # Return secret value
     return response.payload.data.decode("UTF-8")
 
-def write_to_sql(res_dict={}):
+def write_to_sql(res_dict):
+    """
+    Writes scraping results to Cloud SQL using google.cloud.sql.connectors.
+    """
     # helper function to return SQLAlchemy connection pool
     def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
         # function used to generate database connection
@@ -130,7 +152,7 @@ def write_to_sql(res_dict={}):
             instance_connection_name = get_secret("DB_CONNECTION_NAME")
             db_user = get_secret("SERVICE_ACCOUNT_USER_NAME")
             db_name = get_secret("DATABASE_NAME")
-            
+
             conn = connector.connect(
                 instance_connection_name,
                 "pg8000",
@@ -146,7 +168,7 @@ def write_to_sql(res_dict={}):
             creator=getconn, # only pass the function, don't call it!
         )
         return pool
-    
+
     try:
         # initialize Cloud SQL Python Connector as context manager
         # (removes need to close the connection)
@@ -154,14 +176,15 @@ def write_to_sql(res_dict={}):
             # Initialize connection pool
             pool = init_connection_pool(connector)
             print("Connection to database successful!")
-        
+
             # interact with Cloud SQL database using connection pool
             with pool.connect() as db_conn:
                 # Take current time as timestamp
                 current_date = datetime.datetime.now()
-                
+
                 # 1. Insert the date (parameterized)
                 print("Adding current date...")
+                # pylint:disable=line-too-long
                 insert_stmt = sqlalchemy.text("""INSERT INTO "AusbildungMining".official_stats (date) VALUES (:date)""")
                 db_conn.execute(insert_stmt, parameters={"date":current_date})
 
@@ -173,8 +196,8 @@ def write_to_sql(res_dict={}):
                     db_conn.execute(insert_stmt, parameters={'value':value, 'date':current_date})
                     # Commit statements
                     db_conn.commit()
-                
+
                 print("Database update complete!")
-            
+    # pylint:disable=broad-exception-caught
     except Exception as e:
-        print(f"Connection to database failed. {e}")
+        warnings.warn(f"Connection to database failed. {e}")
