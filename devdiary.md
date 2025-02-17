@@ -344,23 +344,27 @@ Okay, I'm quickly adding CRON scheduler!
 
 - For super basic testing enter ``http://localhost:8080/`` into a browser to perform a ``GET``-request on the function.
 
+- Seems to be a bit laborious. I'm skipping this for now...
+
 <br>
 
 ---
 
 ### Setup CI/CD
 
-- I'm using two different YAML-files: ``test_functions.yml`` and ``deploy_to_gcp.yml``
+- I'm using two different YAML-files: ``tests.yml`` and ``deploy.yml``
 
-- ``test_functions.yml`` performs basic linting, integrity tests etc.<br>
+- ``tests.yml`` performs basic linting, integrity tests etc.<br>
   Is triggered upon pushes to repo or can be triggered manually.
 
-- ``deploy_to_gcp.yml`` deploys functions to GCP.<br>
+- ``deploy.yml`` deploys functions to GCP.<br>
   It is triggered upon succesful run of ``tests.yml`` or can be triggered manually.
 
 - To reference one workflow from another, ``workflow_run`` is used. [Also look here](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_run).
 
-- 
+- **Note!** When referencing workflows, you need to provide the ``name`` of the workflow used inside the yml-code. Don't use the name of the yml-file!
+
+>*Referencing workflows using ``workflow_run`` only works if the specified workflows are present in the ``main``-branch of the project!*
 
 <br>
 
@@ -374,4 +378,13 @@ Okay, I'm quickly adding CRON scheduler!
 
 - Using ``pytests`` for testing
 
-- 
+- Use ``os`` and ``sys`` to  manage module-paths, because both ``pylint`` and ``pytest`` sometimes struggle with the filepaths (probably because of multiple drives).
+
+<br>
+
+### Next steps
+
+- Create database API endpoint on GCP (see last notes)
+- Maybe add simple scraper for Arbeitsagentur Jobs
+
+## 18.02.2025
