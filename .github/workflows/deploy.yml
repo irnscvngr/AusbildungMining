@@ -4,39 +4,12 @@ permissions:
   id-token: write
 
 on:
-  push:
-        branches: [official_stats]
-        paths:
-            - 'cloud_functions/**'
+  workflow_run:
+    workflows: ['tests']
+    types: [completed]
   workflow_dispatch: # Manual trigger
 
 jobs:
-  # Perform linting and unittests
-  test_official_stats:
-          runs-on: ubuntu-latest
-          steps:
-              - name: 'Checkout'
-                uses: 'actions/checkout@v3'
-
-              - name: Set up Python
-                uses: actions/setup-python@v4
-                with:
-                  python-version: '3.8'
-              
-              - name: Install dependencies
-                run: |
-                  python -m pip install --upgrade pip
-                  pip install -r cloud_functions/official_stats/requirements.txt
-                  pip install pylint
-                  pip install pytest
-
-              - name: Linting
-                run: pylint cloud_functions/.
-              
-              - name: unittests
-                run : pytest
-  
-  # Actually deploy to GCP
   deploy_to_gcp:
       runs-on: ubuntu-latest # Specify virtual machine for running the job
       steps: # Sequence of steps for this job
