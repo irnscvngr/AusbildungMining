@@ -19,7 +19,9 @@ import os
 import datetime
 
 # Note! import will cause authentication-attempt with GCP
+# pylint:disable=no-name-in-module
 from google.cloud import secretmanager
+# pylint:disable=import-error
 from google.cloud.sql.connector import Connector
 
 import requests
