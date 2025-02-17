@@ -1,6 +1,7 @@
 requests
 beautifulsoup4
 sqlalchemy
+functions-framework
 google-cloud-secret-manager
 cloud-sql-python-connector
 pg8000

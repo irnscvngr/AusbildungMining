@@ -1,6 +1,7 @@
 """
 Initial test to later setup API endpoint for database connection
 """
+# pylint:disable=import-error
 import functions_framework
 
 @functions_framework.http

@@ -1,6 +1,7 @@
 """
 Super basic test function to get started on GCP.
 """
+# pylint:disable=import-error
 import functions_framework
 
 @functions_framework.http
