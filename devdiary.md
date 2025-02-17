@@ -324,3 +324,48 @@ Okay, I'm quickly adding CRON scheduler!
 - Apparently **"workflows"** can enable GCP-internal communication between scheduler an Cloud Run Function
 
 - Function now runs daily at 3am CET
+
+## 17.02.2025
+
+### Testing GCP functions locally
+
+- Setup for local development with Google's ``functions-framework``: [Link](https://cloud.google.com/blog/topics/developers-practitioners/how-to-develop-and-test-your-cloud-functions-locally)
+
+- ``functions-framework`` on PyPi: [Link](https://pypi.org/project/functions-framework/)
+
+- Install ``functions-framework`` (see above).
+
+- Run ``functions-framework`` on the function you'd like to test:<br>
+  ***Note:** The ``target`` is the entry point of your main-file. This means it refers to a function-name in source-code, not a py-file name!*
+  ```bash
+  functions-framework --target=main
+  ```
+  This will start a development-server.
+
+- For super basic testing enter ``http://localhost:8080/`` into a browser to perform a ``GET``-request on the function.
+
+<br>
+
+---
+
+### Setup CI/CD
+
+- I'm using two different YAML-files: ``tests.yml`` and ``deploy.yml``
+
+- ``tests.yml`` performs basic linting, integrity tests etc.<br>
+  Is triggered upon pushes to repo or can be triggered manually.
+
+- ``deploy.yml`` deploys functions to GCP.<br>
+  It is triggered upon succesful run of ``tests.yml`` or can be triggered manually.
+
+<br>
+
+---
+
+### Testing
+
+- I'm using ``pylint`` for linting
+
+- Ensure existence of ``__init__.py`` (even if empty) in any directory where py-files are, ***including their parent-directories!***
+
+- 

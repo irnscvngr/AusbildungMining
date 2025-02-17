@@ -4,11 +4,15 @@ permissions:
   id-token: write
 
 on:
-    workflow_dispatch:  # Manually trigger the workflow
-    push:
-        branches: [official_stats]
-        paths:          
-          - 'cloud_functions/**'  # Only trigger if changes are in the 'cloud-functions' directory
+    # workflow_dispatch:  # Manually trigger the workflow
+    # push:
+    #     branches: [official_stats]
+    #     paths:          
+    #       - 'cloud_functions/**'  # Only trigger if changes are in the 'cloud-functions' directory
+    workflow_run:
+      workflows: [tests] # Trigger after the tests workflow completes
+      types: [completed] # Only trigger on successful completion
+    workflow_dispatch: # Manual trigger
 
 jobs: # Sequence of jobs for this workflow
     deploy:
