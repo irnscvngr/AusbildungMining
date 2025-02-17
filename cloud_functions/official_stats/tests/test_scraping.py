@@ -23,14 +23,14 @@ expected_keys = ['company_count',
                      'training_programs',
                      'total_count']
 
-# Replace actual scraping result with mockup
+# # Replace actual scraping result with mockup
 @patch("official_stats.requests.get")
-# Patch the GCP imports as they will try to authenticate with GCP which fails on GitHub
+# # Patch the GCP imports as they will try to authenticate with GCP which fails on GitHub
 @patch("google.cloud.secretmanager.SecretManagerServiceClient")  # Mock the client class
 @patch("google.cloud.sql.connector.Connector")  # Mock the Connector class
  # Because of mockup, this test will return lots of warnings. Surpress them:
 @pytest.mark.filterwarnings("ignore::UserWarning")
-def testscrape_response_200(mockup_request):
+def testscrape_response_200(mock_secret_manager, mock_connector, mockup_request):
     """
     Execute scrape-function with mockup response to check if
     results-dictionary is returned correctly.
@@ -54,7 +54,7 @@ def testscrape_response_200(mockup_request):
 @patch("google.cloud.sql.connector.Connector")  # Mock the Connector class
  # Because of mockup, this test will return lots of warnings. Surpress them:
 @pytest.mark.filterwarnings("ignore::UserWarning")
-def testscrape_response_404(mockup_request):
+def testscrape_response_404(mock_secret_manager, mock_connector, mockup_request):
     """
     Execute scrape-function with mockup response to check if
     results-dictionary is returned correctly.
