@@ -10,7 +10,7 @@ on:
     #     paths:          
     #       - 'cloud_functions/**'  # Only trigger if changes are in the 'cloud-functions' directory
     workflow_run:
-      workflows: [tests] # Trigger after the tests workflow completes
+      workflows: [tests] # Trigger after the "tests" workflow completes
       types: [completed] # Only trigger on successful completion
     workflow_dispatch: # Manual trigger
 
@@ -28,8 +28,18 @@ jobs: # Sequence of jobs for this workflow
             workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
             service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
      
+        - name: Deploy "database_endpoint"
+          run: |
+            gcloud functions deploy database_endpoint \
+            --region europe-west1 \
+            --source cloud_functions/database_endpoint \
+            --trigger-http \
+            --runtime python39 \
+            --entry-point main \
+            --allow-unauthenticated \
+            --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+
         - name: Deploy "official_stats"
-          # No quote marks for secret in env-variable
           run: |
             gcloud functions deploy official_stats \
             --region europe-west1 \
