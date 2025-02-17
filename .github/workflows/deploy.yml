@@ -1,0 +1,73 @@
+name: deploy_to_gcp
+
+permissions:
+  id-token: write
+
+on:
+  push:
+        branches: [official_stats]
+        paths:
+            - 'cloud_functions/**'
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  # Perform linting and unittests
+  test_official_stats:
+          runs-on: ubuntu-latest
+          steps:
+              - name: 'Checkout'
+                uses: 'actions/checkout@v3'
+
+              - name: Set up Python
+                uses: actions/setup-python@v4
+                with:
+                  python-version: '3.8'
+              
+              - name: Install dependencies
+                run: |
+                  python -m pip install --upgrade pip
+                  pip install -r cloud_functions/official_stats/requirements.txt
+                  pip install pylint
+                  pip install pytest
+
+              - name: Linting
+                run: pylint cloud_functions/.
+              
+              - name: unittests
+                run : pytest
+  
+  # Actually deploy to GCP
+  deploy_to_gcp:
+      runs-on: ubuntu-latest # Specify virtual machine for running the job
+      steps: # Sequence of steps for this job
+      - name: 'Checkout'
+        uses: 'actions/checkout@v3'
+
+      - name: 'Google auth'
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+    
+      - name: Deploy "database_endpoint"
+        run: |
+          gcloud functions deploy database_endpoint \
+          --region europe-west1 \
+          --source cloud_functions/database_endpoint \
+          --trigger-http \
+          --runtime python39 \
+          --entry-point main \
+          --allow-unauthenticated \
+          --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+
+      - name: Deploy "official_stats"
+        run: |
+          gcloud functions deploy official_stats \
+          --region europe-west1 \
+          --source cloud_functions/official_stats \
+          --trigger-http \
+          --runtime python39 \
+          --entry-point main \
+          --allow-unauthenticated \
+          --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \

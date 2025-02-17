@@ -350,13 +350,16 @@ Okay, I'm quickly adding CRON scheduler!
 
 ### Setup CI/CD
 
-- I'm using two different YAML-files: ``tests.yml`` and ``deploy.yml``
+- I'm using two different YAML-files: ``test_functions.yml`` and ``deploy_to_gcp.yml``
 
-- ``tests.yml`` performs basic linting, integrity tests etc.<br>
+- ``test_functions.yml`` performs basic linting, integrity tests etc.<br>
   Is triggered upon pushes to repo or can be triggered manually.
 
-- ``deploy.yml`` deploys functions to GCP.<br>
+- ``deploy_to_gcp.yml`` deploys functions to GCP.<br>
   It is triggered upon succesful run of ``tests.yml`` or can be triggered manually.
+
+- **Note!** To have one ``yml`` reference another, it needs to point to it's ``name`` (given inside the actual code), not to the file-name!<br>
+*(Comparable to GCP's entry point)*
 
 <br>
 
