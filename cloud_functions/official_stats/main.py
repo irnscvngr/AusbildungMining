@@ -1,8 +1,7 @@
 """
 Main function that acts as entry point for Google Cloud Run Functions
 """
-
-# pylint: disable=import-error
+# pylint:disable=import-error
 import functions_framework
 
 from official_stats import get_official_stats, write_to_sql
