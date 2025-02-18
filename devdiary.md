@@ -394,3 +394,28 @@ Okay, I'm quickly adding CRON scheduler!
   Correct version: ``def main(request)``
 
 - Created project diagram and added to ``README``
+
+- Cloud SQL is ***expensive!*** Reduce costs by starting/stopping instance only for the time of scraping.<br>
+To do this, use two Cloud Run Functions with a service account in ``Cloud SQL admin`` role.<br>
+These Functions start the instance right before scraping and stop it shortly afterwards.
+
+An example function looks like this:
+```Python
+from google.cloud import sqladmin
+
+def start_cloud_sql(request):
+    client = sqladmin.SqlAdminServiceClient()
+    project_id = "your-project-id"  # Replace with your GCP project ID
+    instance_name = "your-instance-name"  # Replace with your Cloud SQL instance name
+
+    try:
+        # Replace with client.stop to stop instance
+        operation = client.start(project=project_id, instance=instance_name)
+        operation_name = operation.name
+        print(f"Starting Cloud SQL instance: {instance_name}")
+        return "Instance start initiated"  # Return success message
+
+    except Exception as e:
+        print(f"Error starting Cloud SQL instance: {e}")
+        return f"Error: {e}", 500  # Return error message with 500 status code
+```
