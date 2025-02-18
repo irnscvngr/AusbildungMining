@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 1122.5197 793.70081"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="Diagram.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.0268353"
+     inkscape:cx="561.92069"
+     inkscape:cy="396.8504"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch5"
+       inkscape:swatch="solid"
+       inkscape:label="text_color">
+      <stop
+         style="stop-color:#191919;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       id="swatch4"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="swatch3"
+       inkscape:swatch="solid"
+       inkscape:label="box_color">
+      <stop
+         style="stop-color:#b8c2cc;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+    </linearGradient>
+    <rect
+       x="94.465002"
+       y="99.334332"
+       width="200.6164"
+       height="69.144486"
+       id="rect2" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch3"
+       id="linearGradient3"
+       x1="45.771705"
+       y1="123.19404"
+       x2="336.95764"
+       y2="123.19404"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch3"
+       id="linearGradient4"
+       x1="45.771706"
+       y1="267.3262"
+       x2="336.95764"
+       y2="267.3262"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.6504066,0,-134.91609)" />
+    <rect
+       x="94.465004"
+       y="99.334335"
+       width="200.61639"
+       height="69.144485"
+       id="rect2-8" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient10"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient11"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
+    <rect
+       x="94.465004"
+       y="99.334335"
+       width="200.61639"
+       height="69.144485"
+       id="rect2-8-5" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient17"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:url(#linearGradient3)"
+       id="rect1"
+       width="1100.5455"
+       height="119.78551"
+       x="45.771706"
+       y="63.301285"
+       ry="15.118111" />
+    <rect
+       style="fill:url(#linearGradient4);stroke-width:1.86317"
+       id="rect3"
+       width="291.18594"
+       height="197.69479"
+       x="45.771706"
+       y="207.43346"
+       ry="15.118111" />
+    <text
+       xml:space="preserve"
+       id="text1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Oswald;-inkscape-font-specification:'Oswald, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2);fill:url(#linearGradient11);fill-opacity:1"
+       transform="translate(-35.592984,-20.451187)"><tspan
+         x="94.464844"
+         y="121.65382"
+         id="tspan2">local development</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1-5"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:Oswald;-inkscape-font-specification:'Oswald, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-8);fill:url(#linearGradient10);fill-opacity:1"
+       transform="translate(-35.208984,123.60014)"><tspan
+         x="94.464844"
+         y="126.61376"
+         id="tspan3">CI/CD</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1-5-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:'Oswald Light';-inkscape-font-specification:'Oswald Light, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-8-5);fill:url(#linearGradient17);fill-opacity:1"
+       transform="translate(-34.952986,159.09052)"><tspan
+         x="94.464844"
+         y="119.17381"
+         id="tspan4">GitHub Actions</tspan></text>
+  </g>
+</svg>

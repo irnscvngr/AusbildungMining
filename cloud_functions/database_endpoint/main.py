@@ -5,7 +5,7 @@ Initial test to later setup API endpoint for database connection
 import functions_framework
 
 @functions_framework.http
-def main():
+def main(request):
     """
     Just return a message.
     """

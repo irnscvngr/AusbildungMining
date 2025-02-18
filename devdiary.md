@@ -388,3 +388,7 @@ Okay, I'm quickly adding CRON scheduler!
 - Maybe add simple scraper for Arbeitsagentur Jobs
 
 ## 18.02.2025
+
+- Last night's execution failed because ``def main()`` was missing the input variable!<br>
+  ***It needs to be applied, even if it's not used in code!***<br>
+  Correct version: ``def main(request)``
