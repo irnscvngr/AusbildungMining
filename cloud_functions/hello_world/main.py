@@ -5,7 +5,7 @@ Super basic test function to get started on GCP.
 import functions_framework
 
 @functions_framework.http
-def hello_world():
+def hello_world(request):
     """
     Just return a message.
     """

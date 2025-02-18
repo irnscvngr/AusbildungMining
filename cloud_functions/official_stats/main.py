@@ -7,7 +7,7 @@ import functions_framework
 from official_stats import get_official_stats, write_to_sql
 
 @functions_framework.http
-def main():
+def main(request):
     """
     Entry point for GCP.
     """
