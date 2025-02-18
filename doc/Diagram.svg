@@ -32,9 +32,18 @@
      inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer3" />
   <defs
      id="defs1">
+    <linearGradient
+       id="swatch18"
+       inkscape:swatch="solid"
+       inkscape:label="box_inside_color">
+      <stop
+         style="stop-color:#8a9299;stop-opacity:1;"
+         offset="0"
+         id="stop18" />
+    </linearGradient>
     <linearGradient
        id="swatch5"
        inkscape:swatch="solid"
@@ -85,7 +94,7 @@
        x2="336.95764"
        y2="267.3262"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,1.6504066,0,-134.91609)" />
+       gradientTransform="matrix(1,0,0,2.2113823,0,-251.28121)" />
     <rect
        x="94.465004"
        y="99.334335"
@@ -125,6 +134,86 @@
        y1="129.52679"
        x2="249.90234"
        y2="129.52679" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch18"
+       id="linearGradient18"
+       x1="60.663853"
+       y1="346.69629"
+       x2="322.06549"
+       y2="346.69629"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(9.399959e-6)" />
+    <rect
+       x="94.465004"
+       y="99.334335"
+       width="200.61639"
+       height="69.144485"
+       id="rect2-8-5-2" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient22"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
+    <rect
+       x="94.465004"
+       y="99.334335"
+       width="256.31888"
+       height="45.409592"
+       id="rect2-8-5-2-1" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient26"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
+    <rect
+       x="94.465004"
+       y="99.334335"
+       width="256.31888"
+       height="45.409592"
+       id="rect2-8-5-2-1-8" />
+    <rect
+       x="94.465004"
+       y="99.334335"
+       width="200.61639"
+       height="69.144485"
+       id="rect2-8-5-2-3" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch18"
+       id="linearGradient46"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(370.33616,50.153808)"
+       x1="60.663853"
+       y1="346.69629"
+       x2="322.06549"
+       y2="346.69629" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient53"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch5"
+       id="linearGradient54"
+       gradientUnits="userSpaceOnUse"
+       x1="95.730469"
+       y1="129.52679"
+       x2="249.90234"
+       y2="129.52679" />
   </defs>
   <g
      inkscape:label="Ebene 1"
@@ -139,13 +228,13 @@
        y="63.301285"
        ry="15.118111" />
     <rect
-       style="fill:url(#linearGradient4);stroke-width:1.86317"
+       style="fill:url(#linearGradient4);stroke-width:2.1567"
        id="rect3"
        width="291.18594"
-       height="197.69479"
+       height="264.89154"
        x="45.771706"
        y="207.43346"
-       ry="15.118111" />
+       ry="20.256779" />
     <text
        xml:space="preserve"
        id="text1"
@@ -153,7 +242,7 @@
        transform="translate(-35.592984,-20.451187)"><tspan
          x="94.464844"
          y="121.65382"
-         id="tspan2">local development</tspan></text>
+         id="tspan6">local development</tspan></text>
     <text
        xml:space="preserve"
        id="text1-5"
@@ -161,7 +250,7 @@
        transform="translate(-35.208984,123.60014)"><tspan
          x="94.464844"
          y="126.61376"
-         id="tspan3">CI/CD</tspan></text>
+         id="tspan7">CI/CD</tspan></text>
     <text
        xml:space="preserve"
        id="text1-5-7"
@@ -169,6 +258,63 @@
        transform="translate(-34.952986,159.09052)"><tspan
          x="94.464844"
          y="119.17381"
-         id="tspan4">GitHub Actions</tspan></text>
+         id="tspan8">GitHub Actions</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="SubBox_Tests">
+    <rect
+       style="fill:url(#linearGradient18);stroke-width:0.500322"
+       id="rect17"
+       width="261.40164"
+       height="85.700211"
+       x="60.66386"
+       y="303.84619" />
+    <text
+       xml:space="preserve"
+       id="text1-5-7-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:'Oswald Light';-inkscape-font-specification:'Oswald Light, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-8-5-2);fill:url(#linearGradient22);fill-opacity:1"
+       transform="translate(-27.587732,209.91786)"><tspan
+         x="94.464844"
+         y="119.17381"
+         id="tspan9">Tests</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1-5-7-6-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Oswald Light';-inkscape-font-specification:'Oswald Light, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-8-5-2-1);fill:url(#linearGradient26);fill-opacity:1"
+       transform="translate(-28.718397,244.80245)"><tspan
+         x="94.464844"
+         y="114.21388"
+         id="tspan10">Linting, Unittests, Integration tests</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="SubBox_Tests 1"
+     transform="translate(-370.33614,49.667168)">
+    <rect
+       style="fill:url(#linearGradient46);stroke-width:0.500322"
+       id="rect17-6"
+       width="261.40164"
+       height="85.700211"
+       x="431"
+       y="354" />
+    <text
+       xml:space="preserve"
+       id="text1-5-7-6-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:'Oswald Light';-inkscape-font-specification:'Oswald Light, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-8-5-2-3);fill:url(#linearGradient53);fill-opacity:1"
+       transform="translate(342.74841,260.07166)"><tspan
+         x="94.464844"
+         y="119.17381"
+         id="tspan11">Deployment</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text1-5-7-6-2-8"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Oswald Light';-inkscape-font-specification:'Oswald Light, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-8-5-2-1-8);fill:url(#linearGradient54);fill-opacity:1"
+       transform="translate(341.61774,294.95625)"><tspan
+         x="94.464844"
+         y="114.21388"
+         id="tspan12">Linting, Unittests, Integration tests</tspan></text>
   </g>
 </svg>
