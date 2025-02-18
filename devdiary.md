@@ -392,3 +392,5 @@ Okay, I'm quickly adding CRON scheduler!
 - Last night's execution failed because ``def main()`` was missing the input variable!<br>
   ***It needs to be applied, even if it's not used in code!***<br>
   Correct version: ``def main(request)``
+
+- Created project diagram and added to ``README``
