@@ -4,6 +4,7 @@ Initial test to later setup API endpoint for database connection
 # pylint:disable=import-error
 import functions_framework
 
+# pylint:disable=unused-argument
 @functions_framework.http
 def main(request):
     """

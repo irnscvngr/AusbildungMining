@@ -6,6 +6,7 @@ import functions_framework
 
 from official_stats import get_official_stats, write_to_sql
 
+# pylint:disable=unused-argument
 @functions_framework.http
 def main(request):
     """
