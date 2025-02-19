@@ -1,0 +1,6 @@
+[REPORTS]
+output-format=text # Set output format (text is good for CI)
+score=yes # Enable score calculation
+
+[MASTER]
+fail-under=8.5 # Set minimum required score (adjust as needed)
