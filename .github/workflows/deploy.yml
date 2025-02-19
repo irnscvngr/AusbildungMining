@@ -46,3 +46,14 @@ jobs:
           --entry-point main \
           --allow-unauthenticated \
           --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+      
+      - name: Deploy "toggle_cloudsql"
+        run: |
+          gcloud functions deploy toggle_cloudsql \
+          --region europe-west1 \
+          --source cloud_functions/toggle_cloudsql \
+          --trigger-http \
+          --runtime python39 \
+          --entry-point main \
+          --allow-unauthenticated \
+          --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
