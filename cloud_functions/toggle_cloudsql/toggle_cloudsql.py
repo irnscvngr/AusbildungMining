@@ -9,7 +9,7 @@ from google.cloud import sqladmin
 from google.cloud import secretmanager
 
 # pylint:disable=unused-argument
-def start_cloud_sql():
+def toggle_cloudsql():
     """
     Connects to specified Cloud SQL instance and starts it.
     """
