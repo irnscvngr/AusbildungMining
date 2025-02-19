@@ -5,7 +5,7 @@ permissions:
 
 on:
   push:
-        branches: [official_stats]
+        # branches: [official_stats]
         paths:
             - 'cloud_functions/**'   # Trigger on Cloud Function changes
             - '.github/workflows/**' # Trigger on workflow changes
