@@ -459,3 +459,71 @@ def main(request):
 
 It's not using Python unfortunately, but it works.<br>
 *(Regarding Python: I searched all possible repos, tutorials or forum threads. There's currently no way to set this up with Python as there's no way to setup ``sqladmin`` with Python on GCP)*
+
+<br>
+
+---
+
+### Arbeitsagentur Scraping
+
+- Scraping this page: [Link](https://www.arbeitsagentur.de/jobsuche/suche?angebotsart=1)
+
+- There are 4 types of vacancies:
+  - 1 - ``Arbeit``
+  - 2 - ``Ausbildung/Duales Studium``
+  - 3 - ``Praktikum/Trainee/Werkstudent``
+  - 4 - ``Selbstständigkeit``
+
+- Using hidden API - results are returned as JSON!
+
+- Primary keys are:<br>
+*(secondary keys sublisted)*
+  - ``stellenangebote``
+  - ``maxErgebnisse`` - the total number of vacancies per type
+  - ``page``
+  - ``size``
+  - ``facetten`` - Contains detailed lists, like vacancy count per city, industry etc.
+    - ``befristung``
+    - ``externestellenboersen``
+    - ``branche``
+    - ``beruf``
+    - ``arbeitsort``
+    - ``arbeitgeber``
+    - ``veroeffentlichtseit``
+    - ``arbeitszeit``
+    - ``arbeitsort_plz``
+
+- ``branche``
+  ```Python
+  {
+    "1":"Bau, Architektur",
+    "2":"Chemie, Pharma, Biotechnologie",
+    "3":"Elektro, Feinmechanik, Optik, Medizintechnik",
+    "4":"Bildung, Erziehung, Unterricht",
+    "5":"Fahrzeugbau, Fahrzeuginstandhaltung",
+    "6":"Banken, Finanzdienstleistungen, Immobilien, Versicherungen",
+    "7":"Gesundheit, Soziales",
+    "8":"Rohstoffverarbeitung, Glas, Keramik, Kunststoff, Holz"
+    "9":"Einzelhandel, Großhandel, Außenhandel",
+    "10":"Hotel, Gaststätten, Tourismus, Kunst, Kultur, Freizeit",
+    "11":"IT, Computer, Telekommunikation",
+    "12":"Landwirtschaft, Forstwirtschaft, Gartenbau",
+    "13":"Management, Beratung, Recht, Steuern",
+    "14":"Medien, Informationsdienste",
+    "15":"Metall, Maschinenbau, Anlagenbau",
+    "16":"Konsum- und Gebrauchsgüter",
+    "17":"Nahrungs- / Genussmittelherstellung",
+    "18":"Öffentlicher Dienst, Organisationen",
+    "19":"Papier, Druck, Verpackung",
+    "20":"Rohstoffgewinnung, Rohstoffaufbereitung",
+    "21":"Logistik, Transport, Verkehr",
+    "22":"Abfallwirtschaft, Energieversorgung, Wasserversorgung",
+    "23":"Sicherheits-, Reinigungs- oder Reparaturdienstleistungen",
+    "24":"Werbung, Öffentlichkeitsarbeit",
+    "25":"Wissenschaft, Forschung, Entwicklung",
+    "26":---
+    "27":"Arbeitsvermittlung, privat",
+    "28":"Arbeitnehmerüberlassung, Zeitarbeit",
+    "29":"Sonstige Dienstleistungen",
+   }
+  ```
