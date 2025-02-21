@@ -4,6 +4,7 @@ This function is used to start the Cloud SQL instance
 
 import os
 
+# pylint:disable=import-error
 # pylint:disable=no-name-in-module
 from google.cloud import sqladmin
 from google.cloud import secretmanager
