@@ -457,5 +457,5 @@ def main(request):
 
 [This Google tutorial](https://cloud.google.com/blog/topics/developers-practitioners/lower-development-costs-schedule-cloud-sql-instances-start-and-stop) explains how to setup Cloud Run Functions with Pub/Sub and Cloud Scheduler to automate starting and stopping of the Cloud SQL instance.
 
-It's no using Python unfortunately, but it works.<br>
+It's not using Python unfortunately, but it works.<br>
 *(Regarding Python: I searched all possible repos, tutorials or forum threads. There's currently no way to set this up with Python as there's no way to setup ``sqladmin`` with Python on GCP)*
