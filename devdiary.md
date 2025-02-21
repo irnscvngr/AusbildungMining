@@ -419,3 +419,43 @@ def start_cloud_sql(request):
         print(f"Error starting Cloud SQL instance: {e}")
         return f"Error: {e}", 500  # Return error message with 500 status code
 ```
+
+## 19.02.2025
+
+- Python SQL client: https://cloud.google.com/sql/docs/mysql/admin-api/libraries#python
+
+## 21.02.2025
+
+### Handling URL-requests
+
+You can perform typical requests like ``GET`` or ``POST`` on your cloud-function.<br>
+To send parameters via URL, you can append them using ``?parameter_name=parameter_value``.
+
+So if your function's URL is<br>
+``https://test-func-1234.europe-west1.run.app``<br>
+and you wanna pass a parameter ``username``,<br>
+then your call would be<br>
+``https://test-func-1234.europe-west1.run.app?username=testuser``
+
+Inside the function-code, you can get these parameters using ``.args``.
+
+```Python
+import functions_framework
+
+@functions_framework.http
+def main(request):
+    # Return the value of "username" that's passed by URL
+    request_type = request.args.get('username')
+    return username,200
+```
+
+<br>
+
+---
+
+### Automatically starting/stopping Cloud SQL instance
+
+[This Google tutorial](https://cloud.google.com/blog/topics/developers-practitioners/lower-development-costs-schedule-cloud-sql-instances-start-and-stop) explains how to setup Cloud Run Functions with Pub/Sub and Cloud Scheduler to automate starting and stopping of the Cloud SQL instance.
+
+It's no using Python unfortunately, but it works.<br>
+*(Regarding Python: I searched all possible repos, tutorials or forum threads. There's currently no way to set this up with Python as there's no way to setup ``sqladmin`` with Python on GCP)*
