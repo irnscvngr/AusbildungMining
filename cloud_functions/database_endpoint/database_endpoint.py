@@ -8,8 +8,6 @@ import traceback
 
 # pylint:disable=import-error
 import sqlalchemy
-from sqlalchemy import create_engine, MetaData, Table
-from sqlalchemy.sql import insert, update
 
 # Note! import will cause authentication-attempt with GCP
 # pylint:disable=no-name-in-module
@@ -52,7 +50,7 @@ def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
         )
         return conn
     # create connection pool
-    pool = create_engine(
+    pool = sqlalchemy.create_engine(
         "postgresql+pg8000://",
         creator=getconn, # only pass the function, don't call it!
     )
@@ -64,21 +62,13 @@ def post_to_db(sql_post_data:dict):
     Takes dictionary and posts to specified table.
     """
     try:
-        # print('A',Connector)
-        # print('B',Connector())
-        # initialize Cloud SQL Python Connector as context manager
+        # Initialize Cloud SQL Python Connector as context manager
         # (removes need to close the connection)
-        with Connector(refresh_strategy="lazy") as connector: # This is where GCP tries to authenticate!
-            # print('C',connector)
+        # This is where GCP tries to authenticate!:
+        with Connector(refresh_strategy="lazy") as connector:
             # Initialize connection pool
             pool = init_connection_pool(connector)
             print("Connection to database successful!")
-
-            metadata = MetaData()
-            cloud_table = Table(
-                sql_post_data['table_name'], metadata,
-                autoload_with=pool
-                )
 
             # Connect to and interact with Cloud SQL database using connection pool
             with pool.connect() as db_conn:
@@ -87,19 +77,25 @@ def post_to_db(sql_post_data:dict):
 
                 # 1. Insert the date (parameterized)
                 print("Adding current date...")
-                insert_statement = insert(cloud_table).values(name='date', value=current_date)
-                db_conn.execute(insert_statement)
+                insert_stmt = sqlalchemy.text(
+                    f"""INSERT INTO
+                    "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
+                    (date) VALUES (:date)""")
+                db_conn.execute(insert_stmt, parameters={"date":current_date})
+                print("Date added!")
 
                 # 2. Update other columns (parameterized)
                 for key,value in sql_post_data.items():
                     # Skip initial 2 keys, as they don't appear in the table
                     if key not in ['schema_name','table_name']:
                         print(f"Updating value for {key}...")
-                        insert_statement = (update(cloud_table)
-                                            .where(cloud_table.c.name == key)
-                                            .values(value=value)
-                                            )
-                        db_conn.execute(insert_statement)
+                        insert_stmt = sqlalchemy.text(
+                            f"""UPDATE
+                            "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
+                            SET {key} = (:value) WHERE date = (:date)""")
+                        db_conn.execute(insert_stmt,
+                                        parameters={'value':value, 'date':current_date})
+                        print(f"{key} updated!")
 
                 db_conn.commit()
                 print("Database update complete!")

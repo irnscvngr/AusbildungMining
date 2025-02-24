@@ -37,23 +37,23 @@ def test_post_to_db(mocker):
     # Mock the connection pool
     mocker.patch('database_endpoint.init_connection_pool', return_value=mock_pool)
 
-    # Mock MetaData and Table
-    mock_table = Mock()
-    mock_table.insert.result_value = 42
-    mocker.patch('database_endpoint.Table', return_value=mock_table)
+    # # Mock MetaData and Table
+    # mock_table = Mock()
+    # mock_table.insert.result_value = 42
+    # mocker.patch('database_endpoint.Table', return_value=mock_table)
 
-    # Mock insert function
-    mock_insert = Mock()
-    mock_insert.values.return_value = datetime.datetime.now()
-    mocker.patch('database_endpoint.insert', return_value=mock_insert)
+    # # Mock insert function
+    # mock_insert = Mock()
+    # mock_insert.values.return_value = datetime.datetime.now()
+    # mocker.patch('database_endpoint.insert', return_value=mock_insert)
 
-    # Mock update function
-    mock_update = Mock()
-    def return_input(value):
-        return value
-    # Make the insert statement return the value from the input dictionary
-    mock_update.where.return_value.values.side_effect = return_input
-    mocker.patch('database_endpoint.update', return_value=mock_update)
+    # # Mock update function
+    # mock_update = Mock()
+    # def return_input(value):
+    #     return value
+    # # Make the insert statement return the value from the input dictionary
+    # mock_update.where.return_value.values.side_effect = return_input
+    # mocker.patch('database_endpoint.update', return_value=mock_update)
 
     # 5. Prepare test data
     test_data = {
