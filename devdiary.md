@@ -484,6 +484,9 @@ It's not using Python unfortunately, but it works.<br>
   - ``size``
   - ``facetten`` - Contains detailed lists, like vacancy count per city, industry etc.
     - ``befristung``
+      - ``1`` - befristet
+      - ``2`` - unbefristet
+      - ``3`` - keine Angabe
     - ``externestellenboersen``
     - ``branche``
     - ``beruf``
@@ -491,6 +494,11 @@ It's not using Python unfortunately, but it works.<br>
     - ``arbeitgeber``
     - ``veroeffentlichtseit``
     - ``arbeitszeit``
+      - ``ho`` - Home Office
+      - ``mj`` - Minijob
+      - ``snw`` - Schicht/Nacht/Wochenende
+      - ``tz`` - Teilzeit
+      - ``vz`` - Vollzeit
     - ``arbeitsort_plz``
 
 - ``branche``
@@ -527,3 +535,8 @@ It's not using Python unfortunately, but it works.<br>
     "29":"Sonstige Dienstleistungen",
    }
   ```
+
+## 23.02.2025
+
+- A quick check shows: Starting/Stopping the SQL instance to write new values over night works!
+
