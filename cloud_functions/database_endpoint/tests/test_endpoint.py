@@ -28,19 +28,19 @@ def test_post_to_db(mocker):
     
     post_to_db({})
     
-    # # Mock the connect engine
-    # mock_pool = Mock(name='MockPool')
-    # mock_pool.connect.return_value.__enter__ = mock_pool
-    # mock_pool.connect.return_value.__enter__.return_value.execute.return_value = 42
-    # mock_pool.connect.return_value.__exit__ = mock_pool
+    # Mock the connect engine
+    mock_pool = Mock(name='MockPool')
+    mock_pool.connect.return_value.__enter__ = mock_pool
+    mock_pool.connect.return_value.__enter__.return_value.execute.return_value = 42
+    mock_pool.connect.return_value.__exit__ = mock_pool
 
-    # # Mock the connection pool
-    # mocker.patch('database_endpoint.init_connection_pool', return_value=mock_pool)
+    # Mock the connection pool
+    mocker.patch('database_endpoint.init_connection_pool', return_value=mock_pool)
 
-    # # Mock MetaData and Table
-    # mock_table = Mock()
-    # mock_table.insert.result_value = 42
-    # mocker.patch('database_endpoint.Table', return_value=mock_table)
+    # Mock MetaData and Table
+    mock_table = Mock()
+    mock_table.insert.result_value = 42
+    mocker.patch('database_endpoint.Table', return_value=mock_table)
 
     # # Mock insert function
     # mock_insert = Mock()
