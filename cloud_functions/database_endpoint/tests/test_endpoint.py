@@ -21,6 +21,10 @@ def test_post_to_db(mocker):
     """
     Tests the for-loop part of post_to_db.
     """
+    # Patch GCP stuff to avoid authentication errors on GitHub
+    mocker.patch('google.cloud.secretmanager.SecretManagerServiceClient')
+    mocker.patch('google.cloud.sql.connector.Connector')
+
     # Mock the connect engine
     mock_pool = Mock(name='MockPool')
     mock_pool.connect.return_value.__enter__ = mock_pool
