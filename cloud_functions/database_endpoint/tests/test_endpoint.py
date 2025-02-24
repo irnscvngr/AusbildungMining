@@ -22,8 +22,8 @@ def test_post_to_db(mocker):
     Tests the for-loop part of post_to_db.
     """
     # Patch GCP stuff to avoid authentication errors on GitHub
-    mocker.patch('google.cloud.secretmanager.SecretManagerServiceClient')
-    mocker.patch('google.cloud.sql.connector.Connector')
+    sm_mock = mocker.patch('google.cloud.secretmanager')
+    con_mock = mocker.patch('google.cloud.sql.connector.Connector')
 
     # Mock the connect engine
     mock_pool = Mock(name='MockPool')
@@ -69,6 +69,9 @@ def test_post_to_db(mocker):
 
     # 6. Call the function
     post_to_db(test_data)
+    
+    print(f"Secret Manager Mock: {sm_mock}, {sm_mock.call_count}")
+    print(f"Connector Mock: {con_mock}, {con_mock.call_count}")
 
     # Check that the execution is called the correct number of times
     exec_call_count = (mock_pool
@@ -78,8 +81,6 @@ def test_post_to_db(mocker):
                        .return_value
                        .execute.call_count)
     target_call_count = 1+len(test_data)-2
-
-    print(f"\nCalls to db_conn.execute(): {exec_call_count}/{target_call_count}\n")
 
     # Call count should be 1 (cur. date) + number of entries in test_data
     # minus the two first keys that are skipped
