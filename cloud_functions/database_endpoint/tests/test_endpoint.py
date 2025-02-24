@@ -45,13 +45,13 @@ def test_post_to_db(mocker):
     mock_insert.values.return_value = datetime.datetime.now()
     mocker.patch('database_endpoint.insert', return_value=mock_insert)
 
-    # # Mock update function
-    # mock_update = Mock()
-    # def return_input(value):
-    #     return value
-    # # Make the insert statement return the value from the input dictionary
-    # mock_update.where.return_value.values.side_effect = return_input
-    # mocker.patch('database_endpoint.update', return_value=mock_update)
+    # Mock update function
+    mock_update = Mock()
+    def return_input(value):
+        return value
+    # Make the insert statement return the value from the input dictionary
+    mock_update.where.return_value.values.side_effect = return_input
+    mocker.patch('database_endpoint.update', return_value=mock_update)
 
     # 5. Prepare test data
     test_data = {
@@ -71,19 +71,19 @@ def test_post_to_db(mocker):
     # 6. Call the function
     post_to_db(test_data)
     
-    # print(f"Secret Manager Mock: {sm_mock}, {sm_mock.call_count}")
-    # print(f"Connector Mock: {con_mock}, {con_mock.call_count}")
+    print(f"Secret Manager Mock: {sm_mock}, {sm_mock.call_count}")
+    print(f"Connector Mock: {con_mock}, {con_mock.call_count}")
 
-    # # Check that the execution is called the correct number of times
-    # exec_call_count = (mock_pool
-    #                    .connect
-    #                    .return_value
-    #                    .__enter__
-    #                    .return_value
-    #                    .execute.call_count)
-    # target_call_count = 1+len(test_data)-2
+    # Check that the execution is called the correct number of times
+    exec_call_count = (mock_pool
+                       .connect
+                       .return_value
+                       .__enter__
+                       .return_value
+                       .execute.call_count)
+    target_call_count = 1+len(test_data)-2
     
-    # print(f"\nCalls to db_conn.execute(): {exec_call_count}/{target_call_count}\n")
+    print(f"\nCalls to db_conn.execute(): {exec_call_count}/{target_call_count}\n")
 
     # # Call count should be 1 (cur. date) + number of entries in test_data
     # # minus the two first keys that are skipped
