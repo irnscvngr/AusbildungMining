@@ -23,7 +23,8 @@ def test_post_to_db(mocker):
     """
     # Patch GCP stuff to avoid authentication errors on GitHub
     sm_mock = mocker.patch('google.cloud.secretmanager')
-    con_mock = mocker.patch('google.cloud.sql.connector.Connector')
+    mock_connector = Mock()
+    con_mock = mocker.patch('google.cloud.sql.connector.Connector',return_value=mock_connector)
 
     # Mock the connect engine
     mock_pool = Mock(name='MockPool')
