@@ -31,33 +31,33 @@ def get_secret(secret_name):
     return response.payload.data.decode("UTF-8")
 
 
-# def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
-#     """
-#     Helper function to return SQLAlchemy connection pool
-#     """
-#     def getconn():
-#         """
-#         Function used to generate database connection
-#         """
-#         instance_connection_name = get_secret("DB_CONNECTION_NAME")
-#         db_user = get_secret("SERVICE_ACCOUNT_USER_NAME")
-#         db_name = get_secret("DATABASE_NAME")
+def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
+    """
+    Helper function to return SQLAlchemy connection pool
+    """
+    def getconn():
+        """
+        Function used to generate database connection
+        """
+        instance_connection_name = get_secret("DB_CONNECTION_NAME")
+        db_user = get_secret("SERVICE_ACCOUNT_USER_NAME")
+        db_name = get_secret("DATABASE_NAME")
 
-#         conn = connector.connect(
-#             instance_connection_name,
-#             "pg8000",
-#             user=db_user,
-#             db=db_name,
-#             enable_iam_auth=True, # important! enables IAM authentication
-#         )
-#         return conn
-#     # create connection pool
-#     pool = create_engine(
-#         "postgresql+pg8000://",
-#         creator=getconn, # only pass the function, don't call it!
-#     )
-#     # Return an sqlalchemy engine
-#     return pool
+        conn = connector.connect(
+            instance_connection_name,
+            "pg8000",
+            user=db_user,
+            db=db_name,
+            enable_iam_auth=True, # important! enables IAM authentication
+        )
+        return conn
+    # create connection pool
+    pool = create_engine(
+        "postgresql+pg8000://",
+        creator=getconn, # only pass the function, don't call it!
+    )
+    # Return an sqlalchemy engine
+    return pool
 
 print(Connector)
 
