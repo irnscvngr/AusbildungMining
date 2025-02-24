@@ -26,8 +26,6 @@ def test_post_to_db(mocker):
     mock_connector = Mock()
     mock_connector.__enter__ = mock_connector
     mock_connector.__exit__ = mock_connector
-    # mock_connector.sec
-    # con_mock = mocker.patch('google.cloud.sql.connector.connector.Connector',return_value=mock_connector)
     con_mock = mocker.patch('database_endpoint.Connector',return_value=mock_connector)
     
     # Mock the connect engine
@@ -89,6 +87,6 @@ def test_post_to_db(mocker):
     
     print(f"\nCalls to db_conn.execute(): {exec_call_count}/{target_call_count}\n")
 
-    # # Call count should be 1 (cur. date) + number of entries in test_data
-    # # minus the two first keys that are skipped
-    # assert exec_call_count == target_call_count
+    # Call count should be 1 (cur. date) + number of entries in test_data
+    # minus the two first keys that are skipped
+    assert exec_call_count == target_call_count
