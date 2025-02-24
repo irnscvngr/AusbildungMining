@@ -74,11 +74,11 @@ def post_to_db(sql_post_data:dict):
             # pool = init_connection_pool(connector)
             print("Connection to database successful!")
 
-    #         metadata = MetaData()
-    #         cloud_table = Table(
-    #             sql_post_data['table_name'], metadata,
-    #             autoload_with=pool
-    #             )
+            metadata = MetaData()
+            cloud_table = Table(
+                sql_post_data['table_name'], metadata,
+                autoload_with=pool
+                )
 
     #         # Connect to and interact with Cloud SQL database using connection pool
     #         with pool.connect() as db_conn:
