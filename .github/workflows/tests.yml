@@ -36,4 +36,4 @@ jobs:
                 run: pylint --fail-under=8 cloud_functions/.
               
               - name: unittests
-                run : pytest
+                run : pytest -s cloud_functions/
