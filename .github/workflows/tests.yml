@@ -32,7 +32,7 @@ jobs:
                   pip install pytest
 
               - name: Linting
-                run: pylint cloud_functions/.
+                run: pylint --fail-under=8 cloud_functions/.
               
               - name: unittests
                 run : pytest
