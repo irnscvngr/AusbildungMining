@@ -13,22 +13,22 @@ from sqlalchemy.sql import insert, update
 
 # Note! import will cause authentication-attempt with GCP
 # pylint:disable=no-name-in-module
-# from google.cloud import secretmanager
+from google.cloud import secretmanager
 from google.cloud.sql.connector import Connector
 
-# def get_secret(secret_name):
-#     """
-#     Retrieves a secret from Secret Manager
-#     to setup database connection later.
-#     """
-#     # Get project ID from environment variables
-#     project_id = os.environ.get('GCP_PROJECT_ID')
-#     # Setup connection to GCP secret manager
-#     name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
-#     client = secretmanager.SecretManagerServiceClient()
-#     response = client.access_secret_version(request={"name": name})
-#     # Return secret value
-#     return response.payload.data.decode("UTF-8")
+def get_secret(secret_name):
+    """
+    Retrieves a secret from Secret Manager
+    to setup database connection later.
+    """
+    # Get project ID from environment variables
+    project_id = os.environ.get('GCP_PROJECT_ID')
+    # Setup connection to GCP secret manager
+    name = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
+    client = secretmanager.SecretManagerServiceClient()
+    response = client.access_secret_version(request={"name": name})
+    # Return secret value
+    return response.payload.data.decode("UTF-8")
 
 
 # def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
