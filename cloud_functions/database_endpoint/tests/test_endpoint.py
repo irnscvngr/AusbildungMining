@@ -24,7 +24,7 @@ def test_post_to_db(mocker):
     # Mock the connect engine
     mock_pool = Mock(name='MockPool')
     mock_pool.connect.return_value.__enter__ = mock_pool
-    mock_pool.connect.return_value.__enter__.return_value.execute.return_value = None
+    mock_pool.connect.return_value.__enter__.return_value.execute.return_value = 42
     mock_pool.connect.return_value.__exit__ = mock_pool
 
     # Mock the connection pool
@@ -67,12 +67,16 @@ def test_post_to_db(mocker):
     post_to_db(test_data)
 
     # Check that the execution is called the correct number of times
-    assert (mock_pool
-            .connect
-            .return_value
-            .__enter__
-            .return_value
-            .execute
-            # Call count should be 1 (cur. date) + number of entries in test_data
-            # minus the two first keys that are skipped
-            .call_count) == 1+len(test_data)-2
+    exec_call_count = (mock_pool
+                       .connect
+                       .return_value
+                       .__enter__
+                       .return_value
+                       .execute.call_count)
+    target_call_count = 1+len(test_data)-2
+
+    print(f"\nCalls to db_conn.execute(): {exec_call_count}/{target_call_count}\n")
+
+    # Call count should be 1 (cur. date) + number of entries in test_data
+    # minus the two first keys that are skipped
+    assert exec_call_count == target_call_count
