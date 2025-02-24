@@ -85,7 +85,6 @@ def post_to_db(sql_post_data:dict):
                 # 1. Insert the date (parameterized)
                 print("Adding current date...")
                 insert_statement = insert(cloud_table).values(name='date', value=current_date)
-                print(db_conn.execute(insert_statement))
                 db_conn.execute(insert_statement)
 
                 # 2. Update other columns (parameterized)
@@ -97,7 +96,6 @@ def post_to_db(sql_post_data:dict):
                                             .where(cloud_table.c.name == key)
                                             .values(value=value)
                                             )
-                        print(db_conn.execute(insert_statement))
                         db_conn.execute(insert_statement)
 
                 db_conn.commit()
