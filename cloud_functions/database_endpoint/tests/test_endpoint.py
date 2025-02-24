@@ -26,8 +26,6 @@ def test_post_to_db(mocker):
     mock_connector = Mock()
     con_mock = mocker.patch('google.cloud.sql.connector.Connector',return_value=mock_connector)
     
-    post_to_db({})
-    
     # Mock the connect engine
     mock_pool = Mock(name='MockPool')
     mock_pool.connect.return_value.__enter__ = mock_pool
@@ -55,23 +53,23 @@ def test_post_to_db(mocker):
     # mock_update.where.return_value.values.side_effect = return_input
     # mocker.patch('database_endpoint.update', return_value=mock_update)
 
-    # # 5. Prepare test data
-    # test_data = {
-    #     "schema_name":"AusbildungMining",
-    #     "table_name":"mock_official_stats",
-    #     "company_count": "5533",
-    #     "integrated_degree_programs": "26540",
-    #     "educational_trainings": "7238",
-    #     "qualifications": "6735",
-    #     "regular_apprenticeships": "104718",
-    #     "inhouse_trainings": "899",
-    #     "educational_trainings_and_regular_apprenticeships": "4298",
-    #     "training_programs": "9785",
-    #     "total_count": "150047"
-    #     }
+    # 5. Prepare test data
+    test_data = {
+        "schema_name":"AusbildungMining",
+        "table_name":"mock_official_stats",
+        "company_count": "5533",
+        "integrated_degree_programs": "26540",
+        "educational_trainings": "7238",
+        "qualifications": "6735",
+        "regular_apprenticeships": "104718",
+        "inhouse_trainings": "899",
+        "educational_trainings_and_regular_apprenticeships": "4298",
+        "training_programs": "9785",
+        "total_count": "150047"
+        }
 
-    # # 6. Call the function
-    # post_to_db(test_data)
+    # 6. Call the function
+    post_to_db(test_data)
     
     # print(f"Secret Manager Mock: {sm_mock}, {sm_mock.call_count}")
     # print(f"Connector Mock: {con_mock}, {con_mock.call_count}")
