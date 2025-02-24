@@ -63,51 +63,52 @@ def post_to_db(sql_post_data:dict):
     """
     Takes dictionary and posts to specified table.
     """
-    try:
-        # initialize Cloud SQL Python Connector as context manager
-        # (removes need to close the connection)
-        with Connector(refresh_strategy="lazy") as connector:
-            # Initialize connection pool
-            pool = init_connection_pool(connector)
-            print("Connection to database successful!")
+    pass
+    # try:
+    #     # initialize Cloud SQL Python Connector as context manager
+    #     # (removes need to close the connection)
+    #     with Connector(refresh_strategy="lazy") as connector:
+    #         # Initialize connection pool
+    #         pool = init_connection_pool(connector)
+    #         print("Connection to database successful!")
 
-            metadata = MetaData()
-            cloud_table = Table(
-                sql_post_data['table_name'], metadata,
-                autoload_with=pool
-                )
+    #         metadata = MetaData()
+    #         cloud_table = Table(
+    #             sql_post_data['table_name'], metadata,
+    #             autoload_with=pool
+    #             )
 
-            # Connect to and interact with Cloud SQL database using connection pool
-            with pool.connect() as db_conn:
-                # Take current time as timestamp
-                current_date = datetime.datetime.now()
+    #         # Connect to and interact with Cloud SQL database using connection pool
+    #         with pool.connect() as db_conn:
+    #             # Take current time as timestamp
+    #             current_date = datetime.datetime.now()
 
-                # 1. Insert the date (parameterized)
-                print("Adding current date...")
-                insert_statement = insert(cloud_table).values(name='date', value=current_date)
-                db_conn.execute(insert_statement)
+    #             # 1. Insert the date (parameterized)
+    #             print("Adding current date...")
+    #             insert_statement = insert(cloud_table).values(name='date', value=current_date)
+    #             db_conn.execute(insert_statement)
 
-                # 2. Update other columns (parameterized)
-                for key,value in sql_post_data.items():
-                    # Skip initial 2 keys, as they don't appear in the table
-                    if key not in ['schema_name','table_name']:
-                        print(f"Updating value for {key}...")
-                        insert_statement = (update(cloud_table)
-                                            .where(cloud_table.c.name == key)
-                                            .values(value=value)
-                                            )
-                        db_conn.execute(insert_statement)
+    #             # 2. Update other columns (parameterized)
+    #             for key,value in sql_post_data.items():
+    #                 # Skip initial 2 keys, as they don't appear in the table
+    #                 if key not in ['schema_name','table_name']:
+    #                     print(f"Updating value for {key}...")
+    #                     insert_statement = (update(cloud_table)
+    #                                         .where(cloud_table.c.name == key)
+    #                                         .values(value=value)
+    #                                         )
+    #                     db_conn.execute(insert_statement)
 
-                db_conn.commit()
-                print("Database update complete!")
+    #             db_conn.commit()
+    #             print("Database update complete!")
 
-#     # # pylint:disable=broad-exception-caught
-    except Exception as e:
-        # Get the traceback information
-        tb = traceback.extract_tb(e.__traceback__)
-        _, line_number, func_name, text = tb[-1]
-        warnings.warn(f"""Connection to database failed.
-                      Error: {e}
-                      Line: {line_number}
-                      Function: {func_name}
-                      Text: {text}""")
+    # # pylint:disable=broad-exception-caught
+    # except Exception as e:
+    #     # Get the traceback information
+    #     tb = traceback.extract_tb(e.__traceback__)
+    #     _, line_number, func_name, text = tb[-1]
+    #     warnings.warn(f"""Connection to database failed.
+    #                   Error: {e}
+    #                   Line: {line_number}
+    #                   Function: {func_name}
+    #                   Text: {text}""")
