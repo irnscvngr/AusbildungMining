@@ -40,10 +40,10 @@ def test_post_to_db(mocker):
     mock_table.insert.result_value = 42
     mocker.patch('database_endpoint.Table', return_value=mock_table)
 
-    # # Mock insert function
-    # mock_insert = Mock()
-    # mock_insert.values.return_value = datetime.datetime.now()
-    # mocker.patch('database_endpoint.insert', return_value=mock_insert)
+    # Mock insert function
+    mock_insert = Mock()
+    mock_insert.values.return_value = datetime.datetime.now()
+    mocker.patch('database_endpoint.insert', return_value=mock_insert)
 
     # # Mock update function
     # mock_update = Mock()

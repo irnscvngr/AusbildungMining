@@ -77,15 +77,15 @@ def post_to_db(sql_post_data:dict):
                 autoload_with=pool
                 )
 
-#             # Connect to and interact with Cloud SQL database using connection pool
-#             with pool.connect() as db_conn:
-#                 # Take current time as timestamp
-#                 current_date = datetime.datetime.now()
+            # Connect to and interact with Cloud SQL database using connection pool
+            with pool.connect() as db_conn:
+                # Take current time as timestamp
+                current_date = datetime.datetime.now()
 
-#                 # 1. Insert the date (parameterized)
-#                 print("Adding current date...")
-#                 insert_statement = insert(cloud_table).values(name='date', value=current_date)
-#                 db_conn.execute(insert_statement)
+                # 1. Insert the date (parameterized)
+                print("Adding current date...")
+                insert_statement = insert(cloud_table).values(name='date', value=current_date)
+                db_conn.execute(insert_statement)
 
 #                 # 2. Update other columns (parameterized)
 #                 for key,value in sql_post_data.items():
