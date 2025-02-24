@@ -81,6 +81,8 @@ def test_post_to_db(mocker):
                        .return_value
                        .execute.call_count)
     target_call_count = 1+len(test_data)-2
+    
+    print(f"\nCalls to db_conn.execute(): {exec_call_count}/{target_call_count}\n")
 
     # Call count should be 1 (cur. date) + number of entries in test_data
     # minus the two first keys that are skipped

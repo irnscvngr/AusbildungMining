@@ -4,6 +4,7 @@ Blablabla...
 import os
 import datetime
 import warnings
+import traceback
 
 # pylint:disable=import-error
 import sqlalchemy
@@ -103,4 +104,10 @@ def post_to_db(sql_post_data:dict):
 
     # # pylint:disable=broad-exception-caught
     except Exception as e:
-        warnings.warn(f"Connection to database failed. {e}")
+        # Get the traceback information
+        tb = traceback.extract_tb(e.__traceback__)
+        _, line_number, func_name, _ = tb[-1]
+        warnings.warn(f"""Connection to database failed.
+                      Error: {e}
+                      Line: {line_number}
+                      Function: {func_name}""")
