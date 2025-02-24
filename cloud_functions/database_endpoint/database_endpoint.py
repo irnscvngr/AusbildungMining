@@ -87,19 +87,19 @@ def post_to_db(sql_post_data:dict):
                 insert_statement = insert(cloud_table).values(name='date', value=current_date)
                 db_conn.execute(insert_statement)
 
-#                 # 2. Update other columns (parameterized)
-#                 for key,value in sql_post_data.items():
-#                     # Skip initial 2 keys, as they don't appear in the table
-#                     if key not in ['schema_name','table_name']:
-#                         print(f"Updating value for {key}...")
-#                         insert_statement = (update(cloud_table)
-#                                             .where(cloud_table.c.name == key)
-#                                             .values(value=value)
-#                                             )
-#                         db_conn.execute(insert_statement)
+                # 2. Update other columns (parameterized)
+                for key,value in sql_post_data.items():
+                    # Skip initial 2 keys, as they don't appear in the table
+                    if key not in ['schema_name','table_name']:
+                        print(f"Updating value for {key}...")
+                        insert_statement = (update(cloud_table)
+                                            .where(cloud_table.c.name == key)
+                                            .values(value=value)
+                                            )
+                        db_conn.execute(insert_statement)
 
-#                 db_conn.commit()
-#                 print("Database update complete!")
+                db_conn.commit()
+                print("Database update complete!")
 
 #     # # pylint:disable=broad-exception-caught
     except Exception as e:
