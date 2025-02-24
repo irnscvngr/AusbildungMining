@@ -64,12 +64,13 @@ def post_to_db(sql_post_data:dict):
     Takes dictionary and posts to specified table.
     """
     try:
+        print("test!")
         # initialize Cloud SQL Python Connector as context manager
         # (removes need to close the connection)
-        with Connector(refresh_strategy="lazy") as connector:
-            # Initialize connection pool
-            # pool = init_connection_pool(connector)
-            print("Connection to database successful!")
+        # with Connector(refresh_strategy="lazy") as connector:
+        #     # Initialize connection pool
+        #     # pool = init_connection_pool(connector)
+        #     print("Connection to database successful!")
 
     #         metadata = MetaData()
     #         cloud_table = Table(
