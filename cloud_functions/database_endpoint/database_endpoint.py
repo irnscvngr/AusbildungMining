@@ -68,7 +68,7 @@ def post_to_db(sql_post_data:dict):
         # (removes need to close the connection)
         with Connector(refresh_strategy="lazy") as connector:
             # Initialize connection pool
-            pool = init_connection_pool(connector)
+            # pool = init_connection_pool(connector)
             print("Connection to database successful!")
 
     #         metadata = MetaData()
