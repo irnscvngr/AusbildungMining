@@ -24,17 +24,6 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
-    
-      - name: Deploy "database_endpoint"
-        run: |
-          gcloud functions deploy database_endpoint \
-          --region europe-west1 \
-          --source cloud_functions/database_endpoint \
-          --trigger-http \
-          --runtime python39 \
-          --entry-point main \
-          --allow-unauthenticated \
-          --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
 
       - name: Deploy "official_stats"
         run: |
@@ -46,3 +35,16 @@ jobs:
           --entry-point main \
           --allow-unauthenticated \
           --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+
+      - name: Deploy "database_endpoint"
+        run: |
+          gcloud functions deploy database_endpoint \
+          --region europe-west1 \
+          --source cloud_functions/database_endpoint \
+          --trigger-http \
+          --runtime python39 \
+          --entry-point main \
+          --allow-unauthenticated \
+          --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+
+      

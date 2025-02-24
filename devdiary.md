@@ -459,3 +459,21 @@ def main(request):
 
 It's not using Python unfortunately, but it works.<br>
 *(Regarding Python: I searched all possible repos, tutorials or forum threads. There's currently no way to set this up with Python as there's no way to setup ``sqladmin`` with Python on GCP)*
+
+## 24.02.2025
+
+### Structure of custom API endpoint
+
+A manual statement currently looks like this:<br>
+``INSERT INTO "SchemaName".tableName (columnName) VALUES (:variableName)``
+
+That means a custom API endpoint should receive the following parameters:
+
+- Schema name
+- Table name
+- Column name(s) and corresponding value(s)
+
+*The database name is stored as Google Secret and hence is not to be changed dynamically. If values should be posted to another database, a second instance using another Secret needs to be used.*
+
+- Some helpful info about mocking a context manager for testing: https://stackoverflow.com/questions/28850070/python-mocking-a-context-manager
+
