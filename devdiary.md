@@ -504,3 +504,13 @@ Some helpful info about mocking a context manager for testing: https://stackover
   con_mock = mocker.patch('database_endpoint.Connector',return_value=mock_connector)
   ```
 - Print the ``Connector`` object in your function and check if it's returning the ``Mock``-class. You can test this locally without uploading to GitHub. If it's not the ``Mock``-class, GCP will try to authenticate and fail on GitHub!
+
+<br>
+
+---
+
+<br>
+
+- Add "proper" API key to access API endpoint from local dev-environment
+
+- Take care of access management (other cloud functions to API endpoint)
