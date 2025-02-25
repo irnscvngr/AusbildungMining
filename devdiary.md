@@ -540,3 +540,59 @@ It's not using Python unfortunately, but it works.<br>
 
 - A quick check shows: Starting/Stopping the SQL instance to write new values over night works!
 
+
+
+## 24.02.2025
+
+### Structure of custom API endpoint
+
+>**Remember!** The service account running the API endpoint needs to be granted write-priviliges on the respective database-table for everything to work!
+
+A manual statement currently looks like this:<br>
+``INSERT INTO "SchemaName".tableName (columnName) VALUES (:variableName)``
+
+A custom API endpoint should receive the following parameters:
+
+- Schema name
+- Table name
+- Column name(s) and corresponding value(s)
+
+*The database name is stored as Google Secret and hence is not to be changed dynamically. If values should be posted to another database, a second instance using another Secret needs to be used.*
+
+<br>
+
+---
+
+### Some words about testing
+
+Some helpful info about mocking a context manager for testing: https://stackoverflow.com/questions/28850070/python-mocking-a-context-manager
+
+**Linting**
+- To keep linting from breaking your deploying don't just use ``pylint``.
+- Instead, use ``pylint --fail-under=8`` to use a threshold for code-quality
+- Otherwise it will only work if the code is 10/10
+
+<br>
+
+**GCP authentication**
+- Since GitHub runs the code on it's own virtual machine, GCP authentication will not work
+- This is where GCP tries to connect and authenticate: ``with Connector(refresh_strategy="lazy") as connector:``
+- The failed authentication will throw an error and fail your test
+- Use the following (for an example function located in ``database_endpoint``) to correctly mock the GCP ``Connector``:
+  ```Python
+  mock_connector = Mock()
+  mock_connector.__enter__ = mock_connector
+  mock_connector.__exit__ = mock_connector
+  con_mock = mocker.patch('database_endpoint.Connector',return_value=mock_connector)
+  ```
+- Print the ``Connector`` object in your function and check if it's returning the ``Mock``-class. You can test this locally without uploading to GitHub. If it's not the ``Mock``-class, GCP will try to authenticate and fail on GitHub!
+
+<br>
+
+---
+
+<br>
+
+- Add "proper" API key to access API endpoint from local dev-environment
+
+- Take care of access management (other cloud functions to API endpoint)
