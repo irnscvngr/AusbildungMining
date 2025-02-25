@@ -664,3 +664,27 @@ return response
 
 That's because ``requests.get()`` returns a ``requests.response`` object, which is none of the valid types listed in the error message above.<br>
 You might say ``Response instance`` counts, but this refers to a ``Flask`` response. That's the reason you can not just chain responses as shown above.
+
+---
+
+### Cloud Run Service connection summed up
+
+- It's all about setting up authentication again:
+  - VPC
+  - Service account role
+  - ID token for IAM authentication
+
+- The called service's URL is used twice: As so called audience (that's a result of the "require authentication" security setting) and as actual service-URL to connect
+
+- All cloud functions to connect with the DB endpoint will need to provide the ID token.
+
+- The DB endpoint URL is stored as google secret.
+
+- Maybe generate ``headers`` containing the ID token in a separate function to declutter code.
+
+- **REMEMBER** For all new type of data, a separate table needs to be created on Cloud SQL. For these tables the service account of DB endpoint needs to be granted access rights!
+
+<br>
+
+---
+
