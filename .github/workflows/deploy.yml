@@ -7,6 +7,7 @@ on:
   workflow_run:
     workflows: ['test_functions']
     types: [completed]
+    branches: [main] # Only deploy automatically on main
   workflow_dispatch: # Manual trigger
 
 jobs:

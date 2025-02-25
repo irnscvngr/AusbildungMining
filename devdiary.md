@@ -596,3 +596,71 @@ Some helpful info about mocking a context manager for testing: https://stackover
 - Add "proper" API key to access API endpoint from local dev-environment
 
 - Take care of access management (other cloud functions to API endpoint)
+
+## 25.02.2025
+
+A helpful documentation on service-to-service connection on GCP:
+https://cloud.google.com/run/docs/authenticating/service-to-service#run-service-to-service-example-python
+
+Also a bit helpful, but not 100%:<br>
+https://cloud.google.com/run/docs/securing/private-networking#from-other-services
+
+That's also interesting but potentially not needed.<br>
+As I understand it, *private service connect* is only needed if you wanna build connections between two VPCs or two GCP projects.<br>
+https://cloud.google.com/vpc/docs/configure-private-service-connect-apis
+
+---
+
+### Connecting two cloud run services
+
+To connect a Cloud Run Service to another, the following must be set:
+
+- The receiving service must be set to **Internal Ingress** (found under ``NETWORKING``).
+
+- Under security ``SECURITY`` set authentication to **Require authentication**
+
+- For the sending service, select ``EDIT & REDEPLOY``. Then under ``NETWORKING`` activate **Connect to a VPC for outbound traffic**.
+
+-  Activate **Use Serverless VPC Access connectors** (might maybe also work for *
+Send traffic directly to a VPC*). Then select the default network.
+
+- For **Traffic routing** select **Route all traffic to the VPC**.
+
+- Make sure both services use the correct service accounts at runtime! The service account of the sending service needs the **Cloud Run Invoker** role.
+
+- The VPC has a subnet that can be selected when setting *Connect to a VPC for outbound traffic*. This subnet needs **Private Google Access** to be activated (possible under VPC-settings->subnets->and then the subnet for the corresponding region, e.g. 
+europe-west1).<br><br>
+It might be that this is not needed when using *serverless VPC access connectors*. Need to check the whole procedure again...
+
+- Now a general connection should be possible, however you might still receive an authentication error. This is because besides being connected through VPC, the calling service still needs to send an **ID token**.<br>
+Check [here](https://cloud.google.com/run/docs/authenticating/service-to-service#use_the_authentication_libraries) under **use the authentication libraries** on how to make the calling service provide that ID token.
+
+- Now the connection should generally work. You can test it by adding ``auth_header = request.headers.get("Authorization")`` to the called service and having it print that ``auth_header``, then check the logs (not elegant, but works).
+
+<br>
+
+---
+
+You might stumble upon this error:
+```
+TypeError: The view function did not return a valid response. The return type must be a string, dict, list, tuple with headers or status, Response instance, or WSGI callable, but it was a Response.
+```
+This happens when your Cloud Run Function does not send the proper return-value.<br>
+Try out a standard response like:
+```Python
+return "Hello World!",200
+```
+This should work. **Careful!** What *-does not-* work is chaining responses!<br>
+So imagine having a function A returning something like this:
+```Python
+return "This is a response from function A", 200
+```
+And then in another function B using that very same response as return:
+```Python
+response = requests.get(url,headers=headers,timeout=20)
+return response
+```
+**This** will lead to exactly the error mentioned above!
+
+That's because ``requests.get()`` returns a ``requests.response`` object, which is none of the valid types listed in the error message above.<br>
+You might say ``Response instance`` counts, but this refers to a ``Flask`` response. That's the reason you can not just chain responses as shown above.
