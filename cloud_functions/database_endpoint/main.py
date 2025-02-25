@@ -26,4 +26,6 @@ def main(request):
         "total_count": "150047"
         }
     post_to_db(test_data)
-    return "Hello World! This will be the database API endpoint.", 200
+    
+    print('database-endpoint function ran until the end!!')
+    return 'Hello, this is a response coming from database-endpoint!',200
