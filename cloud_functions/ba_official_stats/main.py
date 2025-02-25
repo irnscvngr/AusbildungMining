@@ -44,8 +44,25 @@ def main(request):
     # Setup header to send ID token for authentication
     headers = {"Authorization": f"Bearer {id_token}"}
 
+    test_data = {
+        "schema_name":"AusbildungMining",
+        "table_name":"mock_official_stats",
+        "company_count": "5537",
+        "integrated_degree_programs": "26549",
+        "educational_trainings": "7198",
+        "qualifications": "6750",
+        "regular_apprenticeships": "105189",
+        "inhouse_trainings": "899",
+        "educational_trainings_and_regular_apprenticeships": "4295",
+        "training_programs": "9937",
+        "total_count": "150649"
+    }
+
     # Send request to database endpoint using ID token for authentication
-    response = requests.get(db_endpoint_url, headers=headers, timeout=20)
+    response = requests.post(db_endpoint_url,
+    headers=headers,
+    params=test_data,
+    timeout=20)
 
     # Let's have a look at the endpoint's response
     print(response.content, response)
