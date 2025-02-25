@@ -25,11 +25,11 @@ jobs:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
-      - name: Deploy "database_endpoint"
+      - name: Deploy "ba_official_stats"
         run: |
-          gcloud functions deploy database_endpoint \
+          gcloud functions deploy ba_official_stats \
           --region europe-west1 \
-          --source cloud_functions/database_endpoint \
+          --source cloud_functions/ba_official_stats \
           --trigger-http \
           --runtime python39 \
           --entry-point main \
