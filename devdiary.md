@@ -688,3 +688,140 @@ You might say ``Response instance`` counts, but this refers to a ``Flask`` respo
 
 ---
 
+## 26.02.2025
+
+### The continued story of service connectivity
+
+Okay so to connect a service to another service (that is set to internal ingress only), there are 4 possible setup-options. However the services also need to be able to connect to the public internet. Let's see:
+
+| | ``Send traffic``<br>``directly to a VPC`` | ``Use Serverless VPC``<br>``Access connectors`` |
+| --- | --- | --- |
+| ``Route only requests to``<br>``private IPs to the VPC`` | Public internet: ✔<br>Internal connect: ❌ | Public internet: ✔<br>Internal connect: ❌ |
+| ``Route all traffic to the VPC`` | Public internet: ❌<br>Internal connect: ✔ | Public internet: ❌<br>Internal connect: ✔ |
+
+*Apparently using a serverless VPC access connector is not necessary for service-to-service connections!*
+
+<br>
+
+The following tutorial explains how to setup a service-to-service connection while also maintaining a public internet connection:<br>
+*It works! But it's using ``gloud`` CLI...*
+
+https://codelabs.developers.google.com/codelabs/how-to-access-internal-only-service-while-retaining-internet#2
+
+#### About DNS zoning
+
+So apparently it works like this:
+
+- The calling service is set to:
+  - ``Send traffic directly to a VPC``
+  - ``Route only requests to private IPs to the VPC``
+
+- This means (as I understand) that traffic is generally send to the VPC, however only requests that are resolved to private IPs are actually routed to the VPC.
+
+- When the service sends requests to a domain (say ``https://www.example.com``) this domain gets resolved into an IP address.<br>
+GCP then checks if this IP address counts as private or public. For this example the IP is public and the request would "travel" to the public web.
+
+- If the calling service would be set to ``Route all traffic to the VPC`` then even though ``https://www.example.com`` is public, the request would be "trapped" inside the VPC which usually results in a timeout-error.
+
+- The problem: The service we are trying to call is set ``Internal Ingress``, meaning it only allows access to requests coming from internal/private addresses.
+
+- When we call the service with it's ``*.run.app``-URL the domain is **not** resolved into a private IP. This means the request is also **not** routed through the VPC, but "travels" through the public internet. Hence the service we are calling receives a **public** request, which of course does not work. This results in an error.
+
+- This sounds as if both routing only requests to private IP to VPC **as well as** routing **all** traffic to VPC does not work. Enter: DNS zones!
+
+#### Setup DNS zoning
+
+- So we set the calling service to ``Send traffic directly to a VPC``.<br>
+  Then using Cloud DNS we create a new DNS zone of type *private*.<br>
+
+- The DNS name is the ``*.run.app``-URL of our service, *but **without** ``https:// ``* in the beginning.<br>
+So just: ``SERVICE-NAME-PROJECT-ID.REGION-NAME.run.app``
+
+- We can leave ``Options`` at default (private).
+
+- Then we add our network (usually ``default``) to the new DNS zone.
+
+- This now means, that the ``*.run.app``-URL of our service gets resolved into a *private* IP address by GCP, which is important!<br>
+As I said earlier, if it's not resolved to be private (which happens by default), it becomes a public IP which won't work with our private service.
+
+- **But:** This will still not work.<br>
+  Apparently our new zone needs a type ``A`` record-set *(whatever that is!)*.
+
+- Fortunately, this also happens in the tutorial linked above.<br>
+  So, what to do? Click on the newly created DNS zone.
+
+- It should display two record-sets, of type ``SOA`` and type ``NS``. Clicking ``Add Standard`` allows us to add an additional set.
+
+- For DNS name we - again - choose our service's ``*.run.app``-URL, which should already be entered for us (so actually we do not need to paste it again).
+
+- ``Resource record type`` must of course be set to ``A`` now.
+
+- ``TTL`` is apparently some type of cache and we can set a storage duration. The tutorial says 60 minutes, however I've had it set to 5 min. (default value) and it still worked.
+
+- Now comes the tricky part:<br>
+  We need to add 4 IP addresses to this new record set *(where ever they're coming from - I don't know!)*<br>
+  These IP addresses are:
+  - ``199.36.153.8``
+  - ``199.36.153.9``
+  - ``199.36.153.10``
+  - ``199.36.153.11``
+
+- After adding these addresses we can try and execute our calling service again. It should now successfully be able to call **both** the internal, private service **and** a public URL on the internet.<br>
+*Remember that the calling service still needs to authenticate itself using ``google-auth``!*
+
+<br>
+
+---
+
+### Using a VM for troubleshooting
+
+- You can create a new VM in GCP
+
+- Click on the VM and under ``DETAILS`` -> ``Network interfaces`` check if the VM is using the VPC-network
+
+- Click on the VM and use SSH to open a terminal (just click on ``SSH``)
+
+- Enter ``Python3 --version`` to check the python version
+  - Should Python not be installed:
+    ```Bash
+    sudo apt update
+    sudo apt install python3 python3-pip
+    ```
+
+- Enter ``Python3`` to start Python
+
+- Import ``requests``, then enter ``requests.get("https://curlmyip.org/", timeout=20)`` to check if the VM can perform a public connection (meaning ``Response[200]``)
+
+<br>
+
+>***ALWAYS MAKE SURE TO STOP THE VM TO AVOID COSTS!!!***
+
+- Try to resolve the hostname of the Cloud Run service (the one with internal access only):<br>
+  - First, update the machine and install ``dnsutils``:
+    ```Bash
+    sudo apt update
+    sudo apt install dnsutils
+    ```
+  - Then, execute the following:<br>
+  ``nslookup SERVICE-NAME-PROJECT-ID.europe-west1.run.app``<br>
+  ``dig SERVICE-NAME-PROJECT-ID.europe-west1.run.app``<br>
+
+  - If you've setup VPC and DNS zoning succesfully, the first command should return:<br>
+    *(of course with respective naming instead of those placeholders)*
+    ```Bash
+    Server:         127.0.0.53
+    Address:        127.0.0.53#53
+
+    Non-authoritative answer:
+    Name:   SERVICE-NAME-PROJECT-ID.REGION-NAME.run.app
+    Address: 199.36.153.10
+    Name:   SERVICE-NAME-PROJECT-ID.REGION-NAME.run.app
+    Address: 199.36.153.9
+    Name:   SERVICE-NAME-PROJECT-ID.REGION-NAME.run.app
+    Address: 199.36.153.8
+    Name:   SERVICE-NAME-PROJECT-ID.REGION-NAME.run.app
+    Address: 199.36.153.11
+    ```
+
+>***ALWAYS MAKE SURE TO STOP THE VM TO AVOID COSTS!!!***
+
