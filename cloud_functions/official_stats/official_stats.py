@@ -41,7 +41,7 @@ def get_official_stats():
     # --- GET COMPANY COUNT
     url = "https://www.ausbildung.de/unternehmen/alle/"
     response = requests.get(url,timeout=20)
-    print(response.content)
+
     soup = BeautifulSoup(response.content,'html.parser')
     try:
         print("Processing: company_count")
