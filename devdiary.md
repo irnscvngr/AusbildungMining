@@ -825,3 +825,7 @@ As I said earlier, if it's not resolved to be private (which happens by default)
 
 >***ALWAYS MAKE SURE TO STOP THE VM TO AVOID COSTS!!!***
 
+## 27.02.2025
+
+Added basic Streamlit app:<br>
+https://ausbildungmining.streamlit.app/
