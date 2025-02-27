@@ -843,3 +843,32 @@ Some final words and summary of the connection process:
   - The calling service still uses direct ingress via VPC.
   - But it routes only traffic to private IPs to VPC.
   - To make this possible, a DNS zone needs to be created in the VPC.
+
+## 27.02.2025
+
+### Yay, new errors! Deployment fails
+
+Error message:
+```
+ERROR: (gcloud.functions.deploy) ResponseError: status=[409], code=[Ok], message=[Could not create Cloud Run service ba-official-stats. A Cloud Run service with this name already exists. Please redeploy the function with a different name.]
+```
+
+Need to add ``--no-gen2 \`` as flag to ``gcloud functions deploy`` because it now adds ``--gen2`` by default to new deployments (GCP went from Cloud Functions to Cloud **Run** Functions only a few days ago...).<br>
+My existing functions are thereby ``gen1`` and I guess that's why it fails to update with ``gen2``.
+
+-> Now deployment does not fail, however cloud run function is **not** updated!
+
+<br>
+
+---
+
+### Grants on Postgres to successful write to tables
+
+The service account of the database endpoint needs to have access to **both** the schema **and** table to be able to write data.
+
+That means:
+
+```SQL
+GRANT ALL ON SCHEMA "SchemaName" TO "service-acc@mail-address.iam"
+GRANT ALL ON TABLE "SchemaName".TableName TO "service-acc@mail-address.iam"
+```
