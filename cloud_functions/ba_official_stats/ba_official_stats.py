@@ -69,7 +69,7 @@ def get_data(wtype=1):
         del data[key]
 
     # Import int->str industry naming
-    filepath = 'cloud_functions/ba_official_stats/data/industry_keys.json'
+    filepath = 'industry_keys.json'
     with open(filepath, 'r', encoding='utf-8') as f:
         temp_keys = json.load(f)
     data['branche'] = switch_keys(data['branche'],temp_keys)

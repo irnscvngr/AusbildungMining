@@ -77,8 +77,5 @@ def main(request):
     params=res_dict,
     timeout=20)
 
-    # Let's have a look at the endpoint's response
-    print(response.content, response)
-
     # Give simple feedback
-    return "Function ba-official-stats executed.", 200
+    return response.content, response.status_code
