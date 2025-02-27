@@ -12,8 +12,8 @@ on:
 
 jobs:
   deploy_to_gcp:
-      # Only deploy if tests were successful
-      if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      # Only deploy if tests were successful or if manually triggered
+      if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
       runs-on: ubuntu-latest # Specify virtual machine for running the job
       steps: # Sequence of steps for this job
       - name: 'Checkout'
@@ -36,5 +36,6 @@ jobs:
           --entry-point main \
           --allow-unauthenticated \
           --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+          --no-gen2 \
 
       
