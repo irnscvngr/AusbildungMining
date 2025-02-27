@@ -825,3 +825,21 @@ As I said earlier, if it's not resolved to be private (which happens by default)
 
 >***ALWAYS MAKE SURE TO STOP THE VM TO AVOID COSTS!!!***
 
+<br>
+
+---
+
+Some final words and summary of the connection process:
+
+- Private connection from service to service needs VPC!
+
+- The VPC's subnet needs to have *Private Google Access* enabled
+
+- If only private connection is needed, it's sufficient to set the calling service to use direct ingress via VPC and route **all** outbound traffic to VPC.
+
+- The calling service's service account needs the *Cloud Run Invoker* role.
+
+- If the calling service shall also be able to call the public internet, some adjustments are needed:
+  - The calling service still uses direct ingress via VPC.
+  - But it routes only traffic to private IPs to VPC.
+  - To make this possible, a DNS zone needs to be created in the VPC.

@@ -13,6 +13,8 @@ from google.cloud import secretmanager
 import google.auth.transport.requests
 import google.oauth2.id_token
 
+from ba_official_stats import get_data
+
 def get_secret(secret_name):
     """
     Retrieves a secret from Secret Manager
@@ -63,24 +65,16 @@ def main(request):
     except Exception as e:
         warnings.warn(f'Public request failed! {e}')
 
-    test_data = {
-        "schema_name":"AusbildungMining",
-        "table_name":"mock_official_stats",
-        "company_count": "5537",
-        "integrated_degree_programs": "26549",
-        "educational_trainings": "7198",
-        "qualifications": "6750",
-        "regular_apprenticeships": "105189",
-        "inhouse_trainings": "899",
-        "educational_trainings_and_regular_apprenticeships": "4295",
-        "training_programs": "9937",
-        "total_count": "150649"
-    }
+    # Get data for wtype "Arbeit"
+    data = get_data(wtype=0)
+    res_dict = data['befristung']
+    res_dict['schema_name'] = 'ArbeitsagenturMining'
+    res_dict['table_name'] = 'arbeit_befristung'
 
     # Send request to database endpoint using ID token for authentication
     response = requests.post(db_endpoint_url,
     headers=headers,
-    params=test_data,
+    params=res_dict,
     timeout=20)
 
     # Let's have a look at the endpoint's response
