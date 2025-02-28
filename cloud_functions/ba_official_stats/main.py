@@ -7,6 +7,7 @@ import warnings
 # pylint:disable=import-error
 import functions_framework
 import requests
+from requests.exceptions import RequestException
 
 from google.cloud import secretmanager
 # For authenticating with database-endpoint cloud function
@@ -56,11 +57,16 @@ def send_data_to_db(wtype,dict_key,table_name):
         response = requests.post(db_endpoint_url,
         headers=headers,
         params=res_dict,
-        timeout=20)
+        # Set longer timeout because it might take some time
+        # to write larger chunks of data to database
+        timeout=120)
         return response
+    except RequestException as e:
+        raise RuntimeError(
+            f"Connection error during request to database: {e}") from e
     except Exception as e:
-        warnings.warn(f'Connection to database failed! {e}')
-        return
+        raise RuntimeError(
+            f"Unexpected error during request to database: {e}") from e
 
 # pylint:disable=unused-argument
 @functions_framework.http
@@ -68,7 +74,6 @@ def main(request):
     """
     Entry point for GCP.
     """
-
     # Test call to database-endpoint to verify internal/PRIVATE connection
     try:
         response = requests.get(db_endpoint_url,
@@ -76,19 +81,31 @@ def main(request):
         timeout=20)
         print('--Private request successful!--')
         print(f"Empty GET request to database endpoint: {response.status_code}, {response.content}")
+    except RequestException as e:
+        raise RuntimeError(
+            f"Connection error during private request to database: {e}") from e
     except Exception as e:
-        warnings.warn(f'Private request failed! {e}')
+        raise RuntimeError(
+            f"Unexpected error during private request to database: {e}") from e
 
     # Test call to curlmyip to verify external/PUBLIC connection
     try:
-        response = requests.get("https://curlmyip.org/",timeout=20)
+        url = "https://curlmyip.org/"
+        response = requests.get(url,timeout=20)
         print('--Public request successful!--')
         print(f"External call: {response.status_code}, {response.content}")
+    except RequestException as e:
+        raise RuntimeError(f"Connection error during public request to {url}: {e}") from e
     except Exception as e:
-        warnings.warn(f'Public request failed! {e}')
+        raise RuntimeError(f"Unexpected error during public request to {url}: {e}") from e
 
-    response = send_data_to_db(wtype=0,dict_key='befristung',table_name='arbeit_befristung')
-    response = send_data_to_db(wtype=0,dict_key='branche',table_name='arbeit_branche')
+    # POST requests to database
+    response = send_data_to_db(wtype=0,
+                               dict_key='befristung',
+                               table_name='arbeit_befristung')
+    response = send_data_to_db(wtype=0,
+                               dict_key='branche',
+                               table_name='arbeit_branche')
 
     # # Get data for wtype "Arbeit"
     # data = get_data(wtype=0)
