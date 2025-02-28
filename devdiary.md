@@ -872,3 +872,32 @@ That means:
 GRANT ALL ON SCHEMA "SchemaName" TO "service-acc@mail-address.iam"
 GRANT ALL ON TABLE "SchemaName".TableName TO "service-acc@mail-address.iam"
 ```
+
+## 28.02.2025
+
+### Some words on Streamlit
+
+Say a repo structure is like this:
+```
+my-repo/
+├── README.md
+├── cloud_functions/
+│   ├── foo.py
+│   └── bar.py
+├── streamlit_folder/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── data/
+│       └── testdata.csv
+└── devdiary.md
+```
+
+Then streamlit launches the app like this:
+```
+streamlit run streamlit_folder/main.py
+```
+Which means for streamlit, root equals repo-root.<br>
+That means filepaths **don't** start on the level of the streamlit-subfolder.
+
+If you'd want to access ``testdata.csv`` in the example-structure above, the path would be ``streamlit_folder/data/testdata.csv``.
+
