@@ -7,7 +7,7 @@ import streamlit as st
 
 from streamlit_backend import get_vacancies
 
-st.set_page_config(page_title="My Tab Title")
+st.set_page_config(page_title="AusbildungMining")
 
 st.title("AusbildungMining")
 
@@ -38,7 +38,7 @@ fig = px.line(vacancies_select,
 st.plotly_chart(fig)
 
 
-official_stats_df = pd.read_csv('data/AusbildungMining/official_stats_2025-02-26.csv')
+official_stats_df = pd.read_csv('frontend_streamlit/data/AusbildungMining/official_stats_2025-02-26.csv')
 
 official_stats_df['timestamp'] = pd.to_datetime(official_stats_df['timestamp'])
 
