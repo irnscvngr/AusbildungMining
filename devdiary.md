@@ -932,3 +932,12 @@ If you'd want to access ``testdata.csv`` in the example-structure above, the pat
   - must begin with letter (a-z) or underscore (_)
   - subsequent characters can be letters, digits (0-9) or underscores
   - default max. length of names is 31
+
+<br>
+
+---
+
+### Additional notes
+
+- curlmyip.org had a bad certificate! Hence public requests failed. Replaced it with ``https://www.example.com`` - now it works again!
+

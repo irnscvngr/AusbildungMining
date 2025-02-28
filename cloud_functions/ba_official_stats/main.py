@@ -2,7 +2,6 @@
 Main function that acts as entry point for Google Cloud Run Functions
 """
 import os
-import warnings
 
 # pylint:disable=import-error
 import functions_framework
@@ -90,7 +89,7 @@ def main(request):
 
     # Test call to curlmyip to verify external/PUBLIC connection
     try:
-        url = "https://curlmyip.org/"
+        url = "https://www.example.com/"
         response = requests.get(url,timeout=20)
         print('--Public request successful!--')
         print(f"External call: {response.status_code}, {response.content}")
@@ -106,18 +105,6 @@ def main(request):
     response = send_data_to_db(wtype=0,
                                dict_key='branche',
                                table_name='arbeit_branche')
-
-    # # Get data for wtype "Arbeit"
-    # data = get_data(wtype=0)
-    # res_dict = data['befristung']
-    # res_dict['schema_name'] = 'ArbeitsagenturMining'
-    # res_dict['table_name'] = 'arbeit_befristung'
-
-    # # Send request to database endpoint using ID token for authentication
-    # response = requests.post(db_endpoint_url,
-    # headers=headers,
-    # params=res_dict,
-    # timeout=20)
 
     # Give simple feedback
     return response.content, response.status_code
