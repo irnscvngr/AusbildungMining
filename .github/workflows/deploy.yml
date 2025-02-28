@@ -26,16 +26,15 @@ jobs:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
-      - name: Deploy "ba_official_stats"
+      - name: Deploy "ba-official-stats-rev"
         run: |
-          gcloud functions deploy ba_official_stats \
-          --region europe-west1 \
-          --source cloud_functions/ba_official_stats \
+          gcloud functions deploy ba-official-stats-rev \
+          --region=europe-west1 \
+          --source=cloud_functions/ba_official_stats \
           --trigger-http \
-          --runtime python39 \
-          --entry-point main \
+          --runtime=python39 \
+          --entry-point=main \
           --allow-unauthenticated \
           --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
-          --no-gen2 \
-
+          --service-account='${{ secrets.WIF_SERVICE_ACCOUNT }}'
       
