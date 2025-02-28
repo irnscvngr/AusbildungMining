@@ -901,3 +901,34 @@ That means filepaths **don't** start on the level of the streamlit-subfolder.
 
 If you'd want to access ``testdata.csv`` in the example-structure above, the path would be ``streamlit_folder/data/testdata.csv``.
 
+<br>
+
+---
+
+### Cloud Run Functions
+
+- Somehow updating the scraper for Bundesagentur für Arbeit stopped working.
+
+- I blame this on Google updating from Cloud Functions + Cloud Run to Cloud **Run** Functions only.
+
+- Problems:
+  - Couldn't use IAM authenticated access because audience was always `None`.
+  - Only had ``run.app`` URLs.
+  - Deployment via GitHub actions displayed as successful, however no actual new revisions on GCP.
+
+- Deployed a completely new function under new name and now everything runs smoothly.
+
+- Here's the reference for ``gcloud`` CLI:
+  https://cloud.google.com/sdk/gcloud/reference/functions/deploy
+
+<br>
+
+---
+
+### PostreSQL
+
+- Column names:<br>
+  *(Source: https://www.postgresql.org/docs/7.0/syntax525.htm)*
+  - must begin with letter (a-z) or underscore (_)
+  - subsequent characters can be letters, digits (0-9) or underscores
+  - default max. length of names is 31

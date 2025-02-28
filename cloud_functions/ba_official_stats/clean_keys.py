@@ -3,7 +3,7 @@ Function to take a dictionary with Umlauts in keys
 and return "the same" dictionary but without Umlauts
 (only affects keys, not values!)
 """
-umlaut_map = {
+change_map = {
     "ä": "ae",
     "ö": "oe",
     "ü": "ue",
@@ -18,7 +18,7 @@ def replace_umlauts(text):
     Take umlaut-map and replace umlauts in strings
     with non-umlauts.
     """
-    for umlaut, replacement in umlaut_map.items():
+    for umlaut, replacement in change_map.items():
         text = text.replace(umlaut, replacement)
     return text
 

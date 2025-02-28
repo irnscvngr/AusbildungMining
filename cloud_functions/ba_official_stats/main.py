@@ -29,23 +29,45 @@ def get_secret(secret_name):
     # Return secret value
     return response.payload.data.decode("UTF-8")
 
+# Get the cloud function's URL to setup a request
+db_endpoint_url = get_secret('DB_ENDPOINT_RUN_URL')
+
+audience = get_secret('DB_ENDPOINT_URL')
+
+# Some authentication stuff...
+auth_req = google.auth.transport.requests.Request()
+id_token = google.oauth2.id_token.fetch_id_token(auth_req, audience)
+
+# Setup header to send ID token for authentication
+headers = {"Authorization": f"Bearer {id_token}"}
+
+def send_data_to_db(wtype,dict_key,table_name):
+    """
+    Send selected scraped data to Cloud SQL
+    """
+    # Get data for wtype "Arbeit"
+    data = get_data(wtype)
+    res_dict = data[dict_key]
+    res_dict['schema_name'] = 'ArbeitsagenturMining'
+    res_dict['table_name'] = table_name
+
+    # Send request to database endpoint using ID token for authentication
+    try:
+        response = requests.post(db_endpoint_url,
+        headers=headers,
+        params=res_dict,
+        timeout=20)
+        return response
+    except Exception as e:
+        warnings.warn(f'Connection to database failed! {e}')
+        return
+
 # pylint:disable=unused-argument
 @functions_framework.http
 def main(request):
     """
     Entry point for GCP.
     """
-    # Get the cloud function's URL to setup a request
-    db_endpoint_url = get_secret('DB_ENDPOINT_RUN_URL')
-
-    audience = get_secret('DB_ENDPOINT_URL')
-    
-    # Some authentication stuff...
-    auth_req = google.auth.transport.requests.Request()
-    id_token = google.oauth2.id_token.fetch_id_token(auth_req, audience)
-    
-    # Setup header to send ID token for authentication
-    headers = {"Authorization": f"Bearer {id_token}"}
 
     # Test call to database-endpoint to verify internal/PRIVATE connection
     try:
@@ -65,17 +87,20 @@ def main(request):
     except Exception as e:
         warnings.warn(f'Public request failed! {e}')
 
-    # Get data for wtype "Arbeit"
-    data = get_data(wtype=0)
-    res_dict = data['befristung']
-    res_dict['schema_name'] = 'ArbeitsagenturMining'
-    res_dict['table_name'] = 'arbeit_befristung'
+    response = send_data_to_db(wtype=0,dict_key='befristung',table_name='arbeit_befristung')
+    response = send_data_to_db(wtype=0,dict_key='branche',table_name='arbeit_branche')
 
-    # Send request to database endpoint using ID token for authentication
-    response = requests.post(db_endpoint_url,
-    headers=headers,
-    params=res_dict,
-    timeout=20)
+    # # Get data for wtype "Arbeit"
+    # data = get_data(wtype=0)
+    # res_dict = data['befristung']
+    # res_dict['schema_name'] = 'ArbeitsagenturMining'
+    # res_dict['table_name'] = 'arbeit_befristung'
+
+    # # Send request to database endpoint using ID token for authentication
+    # response = requests.post(db_endpoint_url,
+    # headers=headers,
+    # params=res_dict,
+    # timeout=20)
 
     # Give simple feedback
     return response.content, response.status_code
