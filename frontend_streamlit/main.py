@@ -22,7 +22,9 @@ with tab1:
     st.write('Under construction...')
 
 with tab2:
-
+    """
+    ### Vakanzen auf Ausbildung.de
+    """
     vacancies = stb.get_vacancies()
 
     professions = pd.Series(vacancies['Beruf'].unique()).sort_values()
@@ -64,6 +66,10 @@ with tab2:
 
     st.plotly_chart(fig)
 
+    """
+    #### Regionale Verteilung
+    """
+
     # TIMESTAMP SELECT
     if 'date_select' not in st.session_state:
         st.session_state['date_select'] = timestamps.values[-1]
@@ -80,8 +86,7 @@ with tab2:
                     'Bundesland':'first',
                     'id':'first'}))
 
-
-    fig = stb.plot_map(vacancies)
+    fig = stb.plot_map(vacancies,prof_select)    
 
     st.plotly_chart(fig)
 

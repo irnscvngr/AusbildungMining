@@ -900,6 +900,23 @@ Which means for streamlit, root equals repo-root.<br>
 That means filepaths **don't** start on the level of the streamlit-subfolder.
 
 If you'd want to access ``testdata.csv`` in the example-structure above, the path would be ``streamlit_folder/data/testdata.csv``.
+<br>
+<br>
+
+**Module loading errors**
+
+There might be an error where the frontend py-file wants to load a function from the backend and streamlit says "no attribute", e.g. like:
+```
+module 'streamlit_backend' has no attribute 'add_geoinfo_to_vacancies'
+```
+That might be due to caching.
+
+On the streamlit-app-page's upper right corner click the three dots icon and choose ``Clear cache (C)``.
+
+Then in the lower right corner click ``Manage app``, then click the three dots icon and choose ``Reboot app``.
+
+That should get rid of the import error.
+
 
 <br>
 
@@ -940,4 +957,8 @@ If you'd want to access ``testdata.csv`` in the example-structure above, the pat
 ### Additional notes
 
 - curlmyip.org had a bad certificate! Hence public requests failed. Replaced it with ``https://www.example.com`` - now it works again!
+
+<br>
+
+## 02.03.2025
 

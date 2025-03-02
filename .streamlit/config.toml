@@ -1,0 +1,17 @@
+[client]
+showErrorDetails = "none"
+
+[theme]
+# The preset Streamlit theme that your custom theme inherits from.
+# One of "light" or "dark".
+base = "dark"
+
+# Primary accent color for interactive elements.
+primaryColor = "#F2542D"
+
+# Background color for the main content area.
+backgroundColor = "#181c20"
+
+# Background color used for the sidebar and most interactive widgets.
+# (should be dark for dark mode or light for light mode)
+secondaryBackgroundColor = "#f2542d"
