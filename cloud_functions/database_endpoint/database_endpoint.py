@@ -72,30 +72,24 @@ def post_to_db(sql_post_data:dict):
 
             # Connect to and interact with Cloud SQL database using connection pool
             with pool.connect() as db_conn:
-                # Take current time as timestamp
-                current_date = datetime.datetime.now()
+                # Get separate dict that only contains key-value pairs
+                # that get actually written into a table
+                items = sql_post_data.copy()
+                del items['schema_name']
+                del items['table_name']
 
-                # 1. Insert the date (parameterized)
-                print("Adding current date...")
-                insert_stmt = sqlalchemy.text(
-                    f"""INSERT INTO
-                    "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
-                    (date) VALUES (:date)""")
-                db_conn.execute(insert_stmt, parameters={"date":current_date})
-                print("Date added!")
+                # Store all column names
+                columns = ", ".join(items.keys())
+                # Convert all values to string and store stem
+                values = ", ".join([str(val) for val in items.values()])
 
-                # 2. Update other columns (parameterized)
-                for key,value in sql_post_data.items():
-                    # Skip initial 2 keys, as they don't appear in the table
-                    if key not in ['schema_name','table_name']:
-                        print(f"Updating value for {key}...")
-                        insert_stmt = sqlalchemy.text(
-                            f"""UPDATE
-                            "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
-                            SET {key} = (:value) WHERE date = (:date)""")
-                        db_conn.execute(insert_stmt,
-                                        parameters={'value':value, 'date':current_date})
-                        print(f"{key} updated!")
+                print("Writing to database...")
+                # Insert all values to all columns
+                insert_stmt = sqlalchemy.text(f"""
+                INSERT INTO "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
+                ({columns}) VALUES ({values});
+                """)
+                db_conn.execute(insert_stmt)
 
                 db_conn.commit()
                 print("Database update complete!")

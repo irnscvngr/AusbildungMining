@@ -962,3 +962,86 @@ That should get rid of the import error.
 
 ## 02.03.2025
 
+- Fixed Streamlit app (didn't load backend, see "Module loading errors" above)
+
+- Added custom theme to streamlit app
+
+- Added state-specific scraping to BA_scraping, but need to finish
+
+## 03.02.2025
+
+### A flexible PostgreSQL table for future scraping
+
+Currently tables have "date" (being date *and* time) as primary key. This means there can always be just one row per timestamp.
+
+Adding e.g. vacancies for all German states for a specific timestamp won't work this way. Instead, the following sort of table should be used:
+
+```SQL
+CREATE TABLE "SchemaName".mock_table (
+id SERIAL PRIMARY KEY,
+-- timestamp DATE, (this allows for date only)
+timestamp TIMESTAMP WITHOUT TIME ZONE, -- date AND time
+branche_a INTEGER,
+branche_b INTEGER
+);
+```
+
+This creates a table with an "id"-column that automatically increments for each new insert.
+
+| id  | timestamp | branche_a | branche_b |
+| --- | --- | --- | --- |
+| - | - | - | - |
+
+
+You can enter specific values directly *(which is unlikely, but just to show it)*:
+
+```SQL
+INSERT INTO "SchemaName".mock_table(branche_a) VALUES (25);
+```
+
+| id  | timestamp | branche_a | branche_b |
+| --- | --- | --- | --- |
+| 1 | - | 25 | - |
+
+As you see, id starts with 1. Let's add another value:
+
+```SQL
+INSERT INTO "SchemaName".mock_table(branche_b) VALUES (67);
+```
+
+| id  | timestamp | branche_a | branche_b |
+| --- | --- | --- | --- |
+| 1 | - | 25 | - |
+| 2 | - | - | 67 |
+
+Okay, now let's add a proper row:
+
+```SQL
+INSERT INTO "SchemaName".mock_table(timestamp,branche_a,branche_b) VALUES (CURRENT_DATE, 12345, 54321);
+```
+
+| id  | timestamp | branche_a | branche_b |
+| --- | --- | --- | --- |
+| 1 | - | 25 | - |
+| 2 | - | - | 67 |
+| 3 | 2025-03-03T06:24:46.478891Z | 12345 | 54321 |
+
+Nice thing is, we can also alter the table after it's creation. Let's add another column:
+
+```SQL
+ALTER TABLE "SchemaName".mock_table
+ADD COLUMN branche_c INTEGER;
+```
+
+We'll add a value to the new column and inspect the results:
+
+```SQL
+INSERT INTO "SchemaName".mock_table(timestamp,branche_a,branche_b,branche_c) VALUES (CURRENT_DATE, 12345, 54321,777);
+```
+
+| id  | timestamp | branche_a | branche_b | branche_c |
+| --- | --- | --- | --- | --- |
+| 1 | - | 25 | - | - |
+| 2 | - | - | 67 | - |
+| 3 | 2025-03-03T06:24:46.478891Z | 12345 | 54321 | - |
+| 4 | 2025-03-03T06:26:48.478891Z | 12345 | 54321 | 777 |

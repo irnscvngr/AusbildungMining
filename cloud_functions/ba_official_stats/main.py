@@ -2,6 +2,8 @@
 Main function that acts as entry point for Google Cloud Run Functions
 """
 import os
+import time
+import datetime
 
 # pylint:disable=import-error
 import functions_framework
@@ -13,7 +15,7 @@ from google.cloud import secretmanager
 import google.auth.transport.requests
 import google.oauth2.id_token
 
-from ba_official_stats import get_data
+from ba_official_stats import get_full_data
 
 def get_secret(secret_name):
     """
@@ -41,31 +43,44 @@ id_token = google.oauth2.id_token.fetch_id_token(auth_req, audience)
 # Setup header to send ID token for authentication
 headers = {"Authorization": f"Bearer {id_token}"}
 
-def send_data_to_db(wtype,dict_key,table_name):
+def send_data_to_db(full_data,dict_key,table_name):
     """
     Send selected scraped data to Cloud SQL
     """
-    # Get data for wtype "Arbeit"
-    data = get_data(wtype)
-    res_dict = data[dict_key]
-    res_dict['schema_name'] = 'ArbeitsagenturMining'
-    res_dict['table_name'] = table_name
+    # Get current timestamp
+    timestamp = datetime.datetime.now()
 
-    # Send request to database endpoint using ID token for authentication
-    try:
-        response = requests.post(db_endpoint_url,
-        headers=headers,
-        params=res_dict,
-        # Set longer timeout because it might take some time
-        # to write larger chunks of data to database
-        timeout=120)
-        return response
-    except RequestException as e:
-        raise RuntimeError(
-            f"Connection error during request to database: {e}") from e
-    except Exception as e:
-        raise RuntimeError(
-            f"Unexpected error during request to database: {e}") from e
+    # Go through all states
+    for key,state_dataset in full_data:
+        # Wait to limit load on API
+        time.sleep(0.1)
+
+        # Select requested sub-data from state-dataset (e.g. industry)
+        select_state_data = state_dataset[dict_key]
+        # Store state to sub-dataset
+        select_state_data['bundesland'] = key
+
+        # Add database-information to dict
+        select_state_data['schema_name'] = 'ArbeitsagenturMining'
+        select_state_data['table_name'] = table_name
+        select_state_data['timestamp'] = timestamp
+
+        # Send request to database endpoint using ID token for authentication
+        try:
+            response = requests.post(db_endpoint_url,
+                                     headers=headers,
+                                     params=select_state_data,
+                                     # Set longer timeout because it might take some time
+                                     # to write larger chunks of data to database
+                                     timeout=60)
+            return response
+        except RequestException as e:
+            raise RuntimeError(
+                f"Connection error during request to database: {e}") from e
+        except Exception as e:
+            raise RuntimeError(
+                f"Unexpected error during request to database: {e}") from e  
+
 
 # pylint:disable=unused-argument
 @functions_framework.http
@@ -99,12 +114,11 @@ def main(request):
         raise RuntimeError(f"Unexpected error during public request to {url}: {e}") from e
 
     # POST requests to database
-    response = send_data_to_db(wtype=0,
-                               dict_key='befristung',
-                               table_name='arbeit_befristung')
-    response = send_data_to_db(wtype=0,
+    full_data = get_full_data(wtype=0)
+
+    response = send_data_to_db(full_data,
                                dict_key='branche',
-                               table_name='arbeit_branche')
+                               table_name='arbeit_branche_bl')
 
     # Give simple feedback
     return response.content, response.status_code
