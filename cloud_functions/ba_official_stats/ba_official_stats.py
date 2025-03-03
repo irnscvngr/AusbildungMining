@@ -120,7 +120,7 @@ def get_full_data(wtype=0):
     # Initialize new dict to store data for all states
     full_data = {}
 
-    for state_id in range(1,3+1):
+    for state_id in range(1,16+1):
         # Wait to limit scrape-rate
         time.sleep(0.2)
         # Get dataset for current state

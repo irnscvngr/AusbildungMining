@@ -26,6 +26,17 @@ jobs:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
+      - name: Deploy "database-endpoint"
+        run: |
+          gcloud functions deploy database-endpoint \
+          --region=europe-west1 \
+          --source=cloud_functions/database_endpoint \
+          --trigger-http \
+          --runtime=python39 \
+          --entry-point=main \
+          --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
+          --service-account='${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      
       - name: Deploy "ba-official-stats-rev"
         run: |
           gcloud functions deploy ba-official-stats-rev \
@@ -36,4 +47,3 @@ jobs:
           --entry-point=main \
           --set-env-vars GCP_PROJECT_ID=${{ secrets.GCP_PROJECT_ID }} \
           --service-account='${{ secrets.WIF_SERVICE_ACCOUNT }}'
-      
