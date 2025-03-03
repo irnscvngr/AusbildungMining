@@ -26,7 +26,7 @@ jobs:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
-      - name: Deploy "database-endpoint"
+      - name: Deploy "database-endpoint-rev"
         run: |
           gcloud functions deploy database-endpoint \
           --region=europe-west1 \
