@@ -28,7 +28,7 @@ jobs:
 
       - name: Deploy "database-endpoint-rev"
         run: |
-          gcloud functions deploy database-endpoint \
+          gcloud functions deploy database-endpoint-rev \
           --region=europe-west1 \
           --source=cloud_functions/database_endpoint \
           --trigger-http \
