@@ -78,18 +78,28 @@ def post_to_db(sql_post_data:dict):
                 del items['schema_name']
                 del items['table_name']
 
+                keys = list(items.keys())
+
                 # Store all column names
-                columns = ", ".join(items.keys())
-                # Convert all values to string and store stem
-                values = ", ".join([str(val) for val in items.values()])
+                columns = ", ".join(keys)
+
+                # Insert empty string at beginning of keys
+                keys.insert(0,'')
+                # Join keys together as one string
+                values_colon = ", :".join(keys)
+                # Remove ", " at the beginning
+                values_colon = values_colon[2:]
+
+                # values = ", ".join([str(val) for val in items.values()])
 
                 print("Writing to database...")
                 # Insert all values to all columns
                 insert_stmt = sqlalchemy.text(f"""
                 INSERT INTO "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
-                ({columns}) VALUES ({values});
+                ({columns}) VALUES ({values_colon});
                 """)
-                db_conn.execute(insert_stmt)
+
+                db_conn.execute(insert_stmt, parameters=items)
 
                 db_conn.commit()
                 print("Database update complete!")

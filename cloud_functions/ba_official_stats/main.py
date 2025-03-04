@@ -51,7 +51,7 @@ def send_data_to_db(full_data,dict_key,table_name):
     timestamp = datetime.datetime.now()
 
     # Go through all states
-    for key,state_dataset in full_data:
+    for key,state_dataset in full_data.items():
         # Wait to limit load on API
         time.sleep(0.1)
 
