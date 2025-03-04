@@ -82,7 +82,7 @@ def get_state_data(wtype=0,state_id=1):
         del data[key]
 
     # Import int->str industry naming
-    filepath = 'data/industry_keys_short.json'
+    filepath = 'data/industry_keys.json'
     with open(filepath, 'r', encoding='utf-8') as f:
         temp_keys = json.load(f)
     data['branche'] = switch_keys(data['branche'],temp_keys)

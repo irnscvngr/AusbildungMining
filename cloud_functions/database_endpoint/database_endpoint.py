@@ -1,8 +1,7 @@
 """
-Blablabla...
+API Endpoint to connect to Cloud SQL database
 """
 import os
-import datetime
 import warnings
 import traceback
 
@@ -57,6 +56,41 @@ def init_connection_pool(connector: Connector) -> sqlalchemy.engine.Engine:
     # Return an sqlalchemy engine
     return pool
 
+def post_to_arbeitsagentur(sql_post_data,db_conn):
+    """
+    Function to write data to schema "ArbeitsagenturMining"
+    """
+    # Get separate dict that only contains key-value pairs
+    # that get actually written into a table
+    items = sql_post_data.copy()
+    del items['schema_name']
+    del items['table_name']
+    del items['timestamp']
+    del items['bundesland']
+    del items['dict_key']
+
+    for dict_key_val,value in items.items():
+        # Say dict_key is "branche", then dict_key_val is
+        # a corresponding industry, like "gesundheit_soziales"
+        print(f"Updating {sql_post_data['dict_key']}: {dict_key_val}...") 
+        insert_stmt = sqlalchemy.text(f"""
+            INSERT INTO "{sql_post_data['schema_name']}"."{sql_post_data['table_name']}"
+                (timestamp, bundesland, {sql_post_data['dict_key']}, stellen)
+                VALUES (:timestamp, :bundesland, :{sql_post_data['dict_key']}, :stellen)
+            """)
+
+        db_conn.execute(insert_stmt,
+                        parameters={'timestamp':sql_post_data['timestamp'],
+                                    'bundesland':sql_post_data['bundesland'],
+                                    sql_post_data['dict_key']:dict_key_val,
+                                    'stellen':value})
+
+    db_conn.commit()
+    print("Database update complete!")
+
+    return
+
+
 def post_to_db(sql_post_data:dict):
     """
     Takes dictionary and posts to specified table.
@@ -72,39 +106,13 @@ def post_to_db(sql_post_data:dict):
 
             # Connect to and interact with Cloud SQL database using connection pool
             with pool.connect() as db_conn:
-                # Get separate dict that only contains key-value pairs
-                # that get actually written into a table
-                items = sql_post_data.copy()
-                del items['schema_name']
-                del items['table_name']
+                if sql_post_data['schema_name'] == 'ArbeitsagenturMining':
+                    post_to_arbeitsagentur(sql_post_data,db_conn)
 
-                keys = list(items.keys())
+                if sql_post_data['schema_name'] == 'AusbildungMining':
+                    raise RuntimeError("AusbildungMining is not setup for posting yet!")
 
-                # Store all column names
-                columns = ", ".join(keys)
-
-                # Insert empty string at beginning of keys
-                keys.insert(0,'')
-                # Join keys together as one string
-                values_colon = ", :".join(keys)
-                # Remove ", " at the beginning
-                values_colon = values_colon[2:]
-
-                # values = ", ".join([str(val) for val in items.values()])
-
-                print("Writing to database...")
-                # Insert all values to all columns
-                insert_stmt = sqlalchemy.text(f"""
-                INSERT INTO "{sql_post_data['schema_name']}".{sql_post_data['table_name']}
-                ({columns}) VALUES ({values_colon});
-                """)
-
-                db_conn.execute(insert_stmt, parameters=items)
-
-                db_conn.commit()
-                print("Database update complete!")
-
-    # # pylint:disable=broad-exception-caught
+    # pylint:disable=broad-exception-caught
     except Exception as e:
         # Get the traceback information
         tb = traceback.extract_tb(e.__traceback__)

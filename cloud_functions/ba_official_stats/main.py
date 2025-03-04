@@ -57,8 +57,12 @@ def send_data_to_db(full_data,dict_key,table_name):
 
         # Select requested sub-data from state-dataset (e.g. industry)
         select_state_data = state_dataset[dict_key]
+        # Store dict_key for use when writing to database
+        select_state_data['dict_key'] = dict_key
         # Store state to sub-dataset
         select_state_data['bundesland'] = key
+
+        print(f"Updating values for state {key}")
 
         # Add database-information to dict
         select_state_data['schema_name'] = 'ArbeitsagenturMining'
@@ -73,13 +77,15 @@ def send_data_to_db(full_data,dict_key,table_name):
                                      # Set longer timeout because it might take some time
                                      # to write larger chunks of data to database
                                      timeout=60)
-            return response
+            print(f"Values for {key} updated!")
         except RequestException as e:
             raise RuntimeError(
                 f"Connection error during request to database: {e}") from e
         except Exception as e:
             raise RuntimeError(
-                f"Unexpected error during request to database: {e}") from e  
+                f"Unexpected error during request to database: {e}") from e
+        
+    return response
 
 
 # pylint:disable=unused-argument
@@ -113,12 +119,18 @@ def main(request):
     except Exception as e:
         raise RuntimeError(f"Unexpected error during public request to {url}: {e}") from e
 
-    # POST requests to database
+    # WEBSRAPING
     full_data = get_full_data(wtype=0)
+    print(f"Webscraping complete. Found results for following states: {list(full_data.keys())}")
 
-    response = send_data_to_db(full_data,
-                               dict_key='branche',
-                               table_name='arbeit_branche_bl')
+    # POST requests to database
+    dict_keys = ['branche','beruf','arbeitgeber','arbeitsort_plz','arbeitszeit','befristung']
+    for dict_key in dict_keys:
+        response = send_data_to_db(full_data,
+                                dict_key=dict_key,
+                                table_name=f"arbeit_{dict_key}")
+
+    print("Finished sending data to database!")
 
     # Give simple feedback
     return response.content, response.status_code

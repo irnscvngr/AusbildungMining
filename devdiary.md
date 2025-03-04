@@ -1045,3 +1045,77 @@ INSERT INTO "SchemaName".mock_table(timestamp,branche_a,branche_b,branche_c) VAL
 | 2 | - | - | 67 | - |
 | 3 | 2025-03-03T06:24:46.478891Z | 12345 | 54321 | - |
 | 4 | 2025-03-03T06:26:48.478891Z | 12345 | 54321 | 777 |
+
+## 04.03.2025
+
+### On auto-increment id's in Postgres
+
+You can setup a postgres table to use an auto-incrementing column like this:
+```SQL
+CREATE TABLE my_table (
+    id SERIAL PRIMARY KEY,
+);
+```
+
+But when trying to write to this table, although granting rights on schema **and** table beforhand, you might get this error:
+```
+UserWarning: Connection to database failed.
+
+Error: (pg8000.exceptions.DatabaseError) {'S': 'ERROR', 'V': 'ERROR', 'C': '42501', 'M': 'permission denied for sequence table_name_id_seq', 'F': 'sequence.c', 'L': '667', 'R': 'nextval_internal'}
+```
+
+This is due to the service-account not having usage-rights on that id-sequence.
+
+When creating an auto-incrementing id-column, postgres implicitly creates an *id-sequence*, usually named after the original table like this:
+```
+TableName_SequenceName_seq
+```
+
+The service account needs to be granted usage on that specific sequence. Grant this usage-right like this:
+
+```SQL
+GRANT USAGE ON SEQUENCE "SchemaName"."TableName"_id_seq TO service_account_mail;
+```
+
+<br>
+
+---
+
+### Tall tables vs. wide tables
+
+Yesterdays approach of having a variable table structure was not smart.
+
+Having a fixed table structure has multiple benefits for future work. I'll go on using the following structure.<br>
+I'll then use different general structures per source, i.e. one structure for Arbeitsagentur, one structure for Ausbildung.de etc.
+
+```SQL
+CREATE TABLE "SchemaName"."TableName"(
+  id SERIAL PRIMARY KEY,
+  timestamp TIMESTAMP WITHOUT TIME ZONE,
+  bundesland VARCHAR(255),
+  branche VARCHAR(255),
+  stellen INTEGER
+);
+```
+
+The above mentioned structure easily allows for varying numbers of "branche" per "bundesland", which probably makes it especially suited for professions later. Also aggregating things is very easy here.
+
+To have the service-account write to the new table, the following rights must be granted:
+
+```SQL
+GRANT ALL ON SCHEMA "SchemaName" TO "service@account-mail.iam";
+GRANT ALL ON TABLE "SchemaName"."TableName" TO "service@account-mail.iam";
+GRANT USAGE ON SEQUENCE "SchemaName"."TableName" TO "service@account-mail.iam";
+```
+
+<br>
+
+---
+
+- Finished BA implementation
+  - Scrapes all values per state
+  - Writes values to database (tall table format)
+
+- Ausbildung.de scraping now doesn't work anymore
+  - Need to adjust API endpoint (provide separate function)
+
