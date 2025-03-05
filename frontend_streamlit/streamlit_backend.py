@@ -85,3 +85,60 @@ def plot_map(vacancies,prof_select):
                   )
 
     return fig
+
+def get_state_names():
+    """
+    Returns list of german state names
+    """
+    with open("frontend_streamlit/data/maps/ars-to-state.json",encoding='utf-8') as f:
+        state_names = json.load(f)
+    return list(state_names.values())
+
+@st.cache_data
+def get_ba_values(param='branche'):
+    if param=='branche':
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Branche_2025-03-04 (22_33_49).csv"
+    if param=='beruf':
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Beruf_2025-03-04 (22_25_31).csv"
+    if param=='arbeitgeber':
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitgeber_2025-03-04 (22_35_28).csv"
+    if param=='arbeitszeit':
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitszeit_2025-03-04 (22_36_51).csv"
+    if param=='befristung':
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Befristung_2025-03-04 (22_38_45).csv"
+        
+    ba_df = pd.read_csv(filename,                                                                                                                                            
+                        header=None,
+                        names= ['id','timestamp','bundesland',param,'stellen']
+                        )
+    return ba_df
+
+def ba_get_top10_values(ba_df,state_select):
+    timestamps = list(ba_df['timestamp'].unique())
+
+    ba_df = ba_df[ba_df['bundesland']==state_select]
+
+    ba_df = ba_df[ba_df['timestamp']==timestamps[-1]]
+
+    ba_df = ba_df.drop(columns=['id','timestamp','bundesland'])
+
+    ba_df = ba_df.nlargest(10,'stellen').reset_index(drop=True)
+    return ba_df
+    
+
+def ba_plot_state_top10(ba_df,xmax):
+    
+    col = ba_df.columns[0]
+
+    fig = px.bar(ba_df.sort_values('stellen'),
+                 x='stellen',
+                 y=col,
+                #  range_x=[0,xmax]
+                 )
+
+    fig.update_layout(xaxis_title='',
+                      yaxis_title='',
+                      margin={"r":0,"t":15,"l":0,"b":0},
+                      height=300)
+    
+    return fig
