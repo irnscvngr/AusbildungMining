@@ -1,0 +1,950 @@
+1,2025-03-04 21:00:50.198677,Schleswig-Holstein,Home Office,229
+2,2025-03-04 21:00:50.198677,Schleswig-Holstein,Mini Job,881
+3,2025-03-04 21:00:50.198677,Schleswig-Holstein,Schicht/Nacht/Wochenende,2776
+4,2025-03-04 21:00:50.198677,Schleswig-Holstein,Teilzeit,8293
+5,2025-03-04 21:00:50.198677,Schleswig-Holstein,Vollzeit,19074
+6,2025-03-04 21:00:50.198677,Hamburg,Home Office,355
+7,2025-03-04 21:00:50.198677,Hamburg,Mini Job,376
+8,2025-03-04 21:00:50.198677,Hamburg,Schicht/Nacht/Wochenende,1608
+9,2025-03-04 21:00:50.198677,Hamburg,Teilzeit,3988
+10,2025-03-04 21:00:50.198677,Hamburg,Vollzeit,15891
+11,2025-03-04 21:00:50.198677,Niedersachsen,Home Office,813
+12,2025-03-04 21:00:50.198677,Niedersachsen,Mini Job,2514
+13,2025-03-04 21:00:50.198677,Niedersachsen,Schicht/Nacht/Wochenende,8582
+14,2025-03-04 21:00:50.198677,Niedersachsen,Teilzeit,21575
+15,2025-03-04 21:00:50.198677,Niedersachsen,Vollzeit,58221
+16,2025-03-04 21:00:50.198677,Bremen,Home Office,91
+17,2025-03-04 21:00:50.198677,Bremen,Mini Job,230
+18,2025-03-04 21:00:50.198677,Bremen,Schicht/Nacht/Wochenende,792
+19,2025-03-04 21:00:50.198677,Bremen,Teilzeit,2107
+20,2025-03-04 21:00:50.198677,Bremen,Vollzeit,8139
+21,2025-03-04 21:00:50.198677,Nordrhein-Westfalen,Home Office,1323
+22,2025-03-04 21:00:50.198677,Nordrhein-Westfalen,Mini Job,5061
+23,2025-03-04 21:00:50.198677,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15557
+24,2025-03-04 21:00:50.198677,Nordrhein-Westfalen,Teilzeit,39846
+25,2025-03-04 21:00:50.198677,Nordrhein-Westfalen,Vollzeit,113731
+26,2025-03-04 21:00:50.198677,Hessen,Home Office,615
+27,2025-03-04 21:00:50.198677,Hessen,Mini Job,2051
+28,2025-03-04 21:00:50.198677,Hessen,Schicht/Nacht/Wochenende,5454
+29,2025-03-04 21:00:50.198677,Hessen,Teilzeit,15349
+30,2025-03-04 21:00:50.198677,Hessen,Vollzeit,41215
+31,2025-03-04 21:00:50.198677,Rheinland-Pfalz,Home Office,314
+32,2025-03-04 21:00:50.198677,Rheinland-Pfalz,Mini Job,1505
+33,2025-03-04 21:00:50.198677,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4824
+34,2025-03-04 21:00:50.198677,Rheinland-Pfalz,Teilzeit,11104
+35,2025-03-04 21:00:50.198677,Rheinland-Pfalz,Vollzeit,27984
+36,2025-03-04 21:00:50.198677,Baden-Württemberg,Home Office,835
+37,2025-03-04 21:00:50.198677,Baden-Württemberg,Mini Job,5012
+38,2025-03-04 21:00:50.198677,Baden-Württemberg,Schicht/Nacht/Wochenende,10261
+39,2025-03-04 21:00:50.198677,Baden-Württemberg,Teilzeit,26225
+40,2025-03-04 21:00:50.198677,Baden-Württemberg,Vollzeit,82026
+41,2025-03-04 21:00:50.198677,Bayern,Home Office,1239
+42,2025-03-04 21:00:50.198677,Bayern,Mini Job,5111
+43,2025-03-04 21:00:50.198677,Bayern,Schicht/Nacht/Wochenende,16361
+44,2025-03-04 21:00:50.198677,Bayern,Teilzeit,38665
+45,2025-03-04 21:00:50.198677,Bayern,Vollzeit,108927
+46,2025-03-04 21:00:50.198677,Saarland,Home Office,81
+47,2025-03-04 21:00:50.198677,Saarland,Mini Job,363
+48,2025-03-04 21:00:50.198677,Saarland,Schicht/Nacht/Wochenende,910
+49,2025-03-04 21:00:50.198677,Saarland,Teilzeit,2587
+50,2025-03-04 21:00:50.198677,Saarland,Vollzeit,5392
+51,2025-03-04 21:00:50.198677,Berlin,Home Office,531
+52,2025-03-04 21:00:50.198677,Berlin,Mini Job,637
+53,2025-03-04 21:00:50.198677,Berlin,Schicht/Nacht/Wochenende,2542
+54,2025-03-04 21:00:50.198677,Berlin,Teilzeit,7298
+55,2025-03-04 21:00:50.198677,Berlin,Vollzeit,19728
+56,2025-03-04 21:00:50.198677,Brandenburg,Home Office,282
+57,2025-03-04 21:00:50.198677,Brandenburg,Mini Job,818
+58,2025-03-04 21:00:50.198677,Brandenburg,Schicht/Nacht/Wochenende,3189
+59,2025-03-04 21:00:50.198677,Brandenburg,Teilzeit,7000
+60,2025-03-04 21:00:50.198677,Brandenburg,Vollzeit,16874
+61,2025-03-04 21:00:50.198677,Mecklenburg-Vorpommern,Home Office,152
+62,2025-03-04 21:00:50.198677,Mecklenburg-Vorpommern,Mini Job,591
+63,2025-03-04 21:00:50.198677,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2369
+64,2025-03-04 21:00:50.198677,Mecklenburg-Vorpommern,Teilzeit,4815
+65,2025-03-04 21:00:50.198677,Mecklenburg-Vorpommern,Vollzeit,11574
+66,2025-03-04 21:00:50.198677,Sachsen,Home Office,509
+67,2025-03-04 21:00:50.198677,Sachsen,Mini Job,1194
+68,2025-03-04 21:00:50.198677,Sachsen,Schicht/Nacht/Wochenende,5948
+69,2025-03-04 21:00:50.198677,Sachsen,Teilzeit,11039
+70,2025-03-04 21:00:50.198677,Sachsen,Vollzeit,33177
+71,2025-03-04 21:00:50.198677,Sachsen-Anhalt,Home Office,211
+72,2025-03-04 21:00:50.198677,Sachsen-Anhalt,Mini Job,801
+73,2025-03-04 21:00:50.198677,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3229
+74,2025-03-04 21:00:50.198677,Sachsen-Anhalt,Teilzeit,5197
+75,2025-03-04 21:00:50.198677,Sachsen-Anhalt,Vollzeit,16089
+76,2025-03-04 21:00:50.198677,Thüringen,Home Office,253
+77,2025-03-04 21:00:50.198677,Thüringen,Mini Job,673
+78,2025-03-04 21:00:50.198677,Thüringen,Schicht/Nacht/Wochenende,4094
+79,2025-03-04 21:00:50.198677,Thüringen,Teilzeit,6355
+80,2025-03-04 21:00:50.198677,Thüringen,Vollzeit,19096
+81,2025-03-04 21:05:52.770929,Schleswig-Holstein,Home Office,229
+82,2025-03-04 21:05:52.770929,Schleswig-Holstein,Mini Job,881
+83,2025-03-04 21:05:52.770929,Schleswig-Holstein,Schicht/Nacht/Wochenende,2776
+84,2025-03-04 21:05:52.770929,Schleswig-Holstein,Teilzeit,8293
+85,2025-03-04 21:05:52.770929,Schleswig-Holstein,Vollzeit,19074
+86,2025-03-04 21:05:52.770929,Hamburg,Home Office,355
+87,2025-03-04 21:05:52.770929,Hamburg,Mini Job,376
+88,2025-03-04 21:05:52.770929,Hamburg,Schicht/Nacht/Wochenende,1608
+89,2025-03-04 21:05:52.770929,Hamburg,Teilzeit,3988
+90,2025-03-04 21:05:52.770929,Hamburg,Vollzeit,15891
+91,2025-03-04 21:05:52.770929,Niedersachsen,Home Office,813
+92,2025-03-04 21:05:52.770929,Niedersachsen,Mini Job,2514
+93,2025-03-04 21:05:52.770929,Niedersachsen,Schicht/Nacht/Wochenende,8582
+94,2025-03-04 21:05:52.770929,Niedersachsen,Teilzeit,21575
+95,2025-03-04 21:05:52.770929,Niedersachsen,Vollzeit,58221
+96,2025-03-04 21:05:52.770929,Bremen,Home Office,91
+97,2025-03-04 21:05:52.770929,Bremen,Mini Job,230
+98,2025-03-04 21:05:52.770929,Bremen,Schicht/Nacht/Wochenende,792
+99,2025-03-04 21:05:52.770929,Bremen,Teilzeit,2107
+100,2025-03-04 21:05:52.770929,Bremen,Vollzeit,8139
+101,2025-03-04 21:05:52.770929,Nordrhein-Westfalen,Home Office,1323
+102,2025-03-04 21:05:52.770929,Nordrhein-Westfalen,Mini Job,5061
+103,2025-03-04 21:05:52.770929,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15557
+104,2025-03-04 21:05:52.770929,Nordrhein-Westfalen,Teilzeit,39846
+105,2025-03-04 21:05:52.770929,Nordrhein-Westfalen,Vollzeit,113731
+106,2025-03-04 21:05:52.770929,Hessen,Home Office,615
+107,2025-03-04 21:05:52.770929,Hessen,Mini Job,2051
+108,2025-03-04 21:05:52.770929,Hessen,Schicht/Nacht/Wochenende,5454
+109,2025-03-04 21:05:52.770929,Hessen,Teilzeit,15349
+110,2025-03-04 21:05:52.770929,Hessen,Vollzeit,41215
+111,2025-03-04 21:05:52.770929,Bayern,Home Office,1239
+112,2025-03-04 21:05:52.770929,Bayern,Mini Job,5111
+113,2025-03-04 21:05:52.770929,Bayern,Schicht/Nacht/Wochenende,16361
+114,2025-03-04 21:05:52.770929,Bayern,Teilzeit,38665
+115,2025-03-04 21:05:52.770929,Bayern,Vollzeit,108927
+116,2025-03-04 21:05:52.770929,Saarland,Home Office,81
+117,2025-03-04 21:05:52.770929,Saarland,Mini Job,363
+118,2025-03-04 21:05:52.770929,Saarland,Schicht/Nacht/Wochenende,910
+119,2025-03-04 21:05:52.770929,Saarland,Teilzeit,2587
+120,2025-03-04 21:05:52.770929,Saarland,Vollzeit,5392
+121,2025-03-04 21:05:52.770929,Berlin,Home Office,531
+122,2025-03-04 21:05:52.770929,Berlin,Mini Job,637
+123,2025-03-04 21:05:52.770929,Berlin,Schicht/Nacht/Wochenende,2542
+124,2025-03-04 21:05:52.770929,Berlin,Teilzeit,7298
+125,2025-03-04 21:05:52.770929,Berlin,Vollzeit,19726
+126,2025-03-04 21:05:52.770929,Brandenburg,Home Office,282
+127,2025-03-04 21:05:52.770929,Brandenburg,Mini Job,818
+128,2025-03-04 21:05:52.770929,Brandenburg,Schicht/Nacht/Wochenende,3189
+129,2025-03-04 21:05:52.770929,Brandenburg,Teilzeit,7000
+130,2025-03-04 21:05:52.770929,Brandenburg,Vollzeit,16872
+131,2025-03-04 21:05:52.770929,Mecklenburg-Vorpommern,Home Office,152
+132,2025-03-04 21:05:52.770929,Mecklenburg-Vorpommern,Mini Job,591
+133,2025-03-04 21:05:52.770929,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2369
+134,2025-03-04 21:05:52.770929,Mecklenburg-Vorpommern,Teilzeit,4815
+135,2025-03-04 21:05:52.770929,Mecklenburg-Vorpommern,Vollzeit,11572
+136,2025-03-04 21:05:52.770929,Sachsen,Home Office,509
+137,2025-03-04 21:05:52.770929,Sachsen,Mini Job,1194
+138,2025-03-04 21:05:52.770929,Sachsen,Schicht/Nacht/Wochenende,5948
+139,2025-03-04 21:05:52.770929,Sachsen,Teilzeit,11039
+140,2025-03-04 21:05:52.770929,Sachsen,Vollzeit,33177
+141,2025-03-04 21:05:52.770929,Sachsen-Anhalt,Home Office,211
+142,2025-03-04 21:05:52.770929,Sachsen-Anhalt,Mini Job,801
+143,2025-03-04 21:05:52.770929,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3229
+144,2025-03-04 21:05:52.770929,Sachsen-Anhalt,Teilzeit,5197
+145,2025-03-04 21:05:52.770929,Sachsen-Anhalt,Vollzeit,16087
+146,2025-03-04 21:05:52.770929,Thüringen,Home Office,253
+147,2025-03-04 21:05:52.770929,Thüringen,Mini Job,673
+148,2025-03-04 21:05:52.770929,Thüringen,Schicht/Nacht/Wochenende,4094
+149,2025-03-04 21:05:52.770929,Thüringen,Teilzeit,6355
+150,2025-03-04 21:05:52.770929,Thüringen,Vollzeit,19096
+151,2025-03-04 21:22:19.399625,Schleswig-Holstein,Home Office,229
+152,2025-03-04 21:22:19.399625,Schleswig-Holstein,Mini Job,881
+153,2025-03-04 21:22:19.399625,Schleswig-Holstein,Schicht/Nacht/Wochenende,2776
+154,2025-03-04 21:22:19.399625,Schleswig-Holstein,Teilzeit,8294
+155,2025-03-04 21:22:19.399625,Schleswig-Holstein,Vollzeit,19074
+156,2025-03-04 21:22:19.399625,Hamburg,Home Office,355
+157,2025-03-04 21:22:19.399625,Hamburg,Mini Job,376
+158,2025-03-04 21:22:19.399625,Hamburg,Schicht/Nacht/Wochenende,1608
+159,2025-03-04 21:22:19.399625,Hamburg,Teilzeit,3988
+160,2025-03-04 21:22:19.399625,Hamburg,Vollzeit,15891
+161,2025-03-04 21:22:19.399625,Niedersachsen,Home Office,813
+162,2025-03-04 21:22:19.399625,Niedersachsen,Mini Job,2514
+163,2025-03-04 21:22:19.399625,Niedersachsen,Schicht/Nacht/Wochenende,8583
+164,2025-03-04 21:22:19.399625,Niedersachsen,Teilzeit,21576
+165,2025-03-04 21:22:19.399625,Niedersachsen,Vollzeit,58222
+166,2025-03-04 21:22:19.399625,Bremen,Home Office,91
+167,2025-03-04 21:22:19.399625,Bremen,Mini Job,230
+168,2025-03-04 21:22:19.399625,Bremen,Schicht/Nacht/Wochenende,792
+169,2025-03-04 21:22:19.399625,Bremen,Teilzeit,2107
+170,2025-03-04 21:22:19.399625,Bremen,Vollzeit,8139
+171,2025-03-04 21:22:19.399625,Nordrhein-Westfalen,Home Office,1323
+172,2025-03-04 21:22:19.399625,Nordrhein-Westfalen,Mini Job,5060
+173,2025-03-04 21:22:19.399625,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15557
+174,2025-03-04 21:22:19.399625,Nordrhein-Westfalen,Teilzeit,39844
+175,2025-03-04 21:22:19.399625,Nordrhein-Westfalen,Vollzeit,113729
+176,2025-03-04 21:22:19.399625,Hessen,Home Office,615
+177,2025-03-04 21:22:19.399625,Hessen,Mini Job,2051
+178,2025-03-04 21:22:19.399625,Hessen,Schicht/Nacht/Wochenende,5454
+179,2025-03-04 21:22:19.399625,Hessen,Teilzeit,15349
+180,2025-03-04 21:22:19.399625,Hessen,Vollzeit,41215
+181,2025-03-04 21:22:19.399625,Rheinland-Pfalz,Home Office,314
+182,2025-03-04 21:22:19.399625,Rheinland-Pfalz,Mini Job,1507
+183,2025-03-04 21:22:19.399625,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4826
+184,2025-03-04 21:22:19.399625,Rheinland-Pfalz,Teilzeit,11106
+185,2025-03-04 21:22:19.399625,Rheinland-Pfalz,Vollzeit,27984
+186,2025-03-04 21:22:19.399625,Baden-Württemberg,Home Office,835
+187,2025-03-04 21:22:19.399625,Baden-Württemberg,Mini Job,5012
+188,2025-03-04 21:22:19.399625,Baden-Württemberg,Schicht/Nacht/Wochenende,10261
+189,2025-03-04 21:22:19.399625,Baden-Württemberg,Teilzeit,26225
+190,2025-03-04 21:22:19.399625,Baden-Württemberg,Vollzeit,82030
+191,2025-03-04 21:22:19.399625,Bayern,Home Office,1239
+192,2025-03-04 21:22:19.399625,Bayern,Mini Job,5111
+193,2025-03-04 21:22:19.399625,Bayern,Schicht/Nacht/Wochenende,16361
+194,2025-03-04 21:22:19.399625,Bayern,Teilzeit,38665
+195,2025-03-04 21:22:19.399625,Bayern,Vollzeit,108921
+196,2025-03-04 21:22:19.399625,Saarland,Home Office,81
+197,2025-03-04 21:22:19.399625,Saarland,Mini Job,363
+198,2025-03-04 21:22:19.399625,Saarland,Schicht/Nacht/Wochenende,910
+199,2025-03-04 21:22:19.399625,Saarland,Teilzeit,2587
+200,2025-03-04 21:22:19.399625,Saarland,Vollzeit,5392
+201,2025-03-04 21:22:19.399625,Berlin,Home Office,531
+202,2025-03-04 21:22:19.399625,Berlin,Mini Job,637
+203,2025-03-04 21:22:19.399625,Berlin,Schicht/Nacht/Wochenende,2542
+204,2025-03-04 21:22:19.399625,Berlin,Teilzeit,7298
+205,2025-03-04 21:22:19.399625,Berlin,Vollzeit,19726
+206,2025-03-04 21:22:19.399625,Brandenburg,Home Office,282
+207,2025-03-04 21:22:19.399625,Brandenburg,Mini Job,818
+208,2025-03-04 21:22:19.399625,Brandenburg,Schicht/Nacht/Wochenende,3189
+209,2025-03-04 21:22:19.399625,Brandenburg,Teilzeit,7001
+210,2025-03-04 21:22:19.399625,Brandenburg,Vollzeit,16872
+211,2025-03-04 21:22:19.399625,Mecklenburg-Vorpommern,Home Office,152
+212,2025-03-04 21:22:19.399625,Mecklenburg-Vorpommern,Mini Job,591
+213,2025-03-04 21:22:19.399625,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2369
+214,2025-03-04 21:22:19.399625,Mecklenburg-Vorpommern,Teilzeit,4815
+215,2025-03-04 21:22:19.399625,Mecklenburg-Vorpommern,Vollzeit,11572
+216,2025-03-04 21:22:19.399625,Sachsen,Home Office,509
+217,2025-03-04 21:22:19.399625,Sachsen,Mini Job,1194
+218,2025-03-04 21:22:19.399625,Sachsen,Schicht/Nacht/Wochenende,5948
+219,2025-03-04 21:22:19.399625,Sachsen,Teilzeit,11039
+220,2025-03-04 21:22:19.399625,Sachsen,Vollzeit,33177
+221,2025-03-04 21:22:19.399625,Sachsen-Anhalt,Home Office,211
+222,2025-03-04 21:22:19.399625,Sachsen-Anhalt,Mini Job,801
+223,2025-03-04 21:22:19.399625,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3229
+224,2025-03-04 21:22:19.399625,Sachsen-Anhalt,Teilzeit,5197
+225,2025-03-04 21:22:19.399625,Sachsen-Anhalt,Vollzeit,16087
+226,2025-03-04 21:22:19.399625,Thüringen,Home Office,253
+227,2025-03-04 21:22:19.399625,Thüringen,Mini Job,673
+228,2025-03-04 21:22:19.399625,Thüringen,Schicht/Nacht/Wochenende,4094
+229,2025-03-04 21:22:19.399625,Thüringen,Teilzeit,6355
+230,2025-03-04 21:22:19.399625,Thüringen,Vollzeit,19096
+231,2025-03-05 02:04:11.063558,Schleswig-Holstein,Home Office,230
+232,2025-03-05 02:04:11.063558,Schleswig-Holstein,Mini Job,881
+233,2025-03-05 02:04:11.063558,Schleswig-Holstein,Schicht/Nacht/Wochenende,2776
+234,2025-03-05 02:04:11.063558,Schleswig-Holstein,Teilzeit,8287
+235,2025-03-05 02:04:11.063558,Schleswig-Holstein,Vollzeit,19034
+236,2025-03-05 02:04:11.063558,Hamburg,Home Office,357
+237,2025-03-05 02:04:11.063558,Hamburg,Mini Job,375
+238,2025-03-05 02:04:11.063558,Hamburg,Schicht/Nacht/Wochenende,1600
+239,2025-03-05 02:04:11.063558,Hamburg,Teilzeit,3978
+240,2025-03-05 02:04:11.063558,Hamburg,Vollzeit,15840
+241,2025-03-05 02:04:11.063558,Niedersachsen,Home Office,814
+242,2025-03-05 02:04:11.063558,Niedersachsen,Mini Job,2511
+243,2025-03-05 02:04:11.063558,Niedersachsen,Schicht/Nacht/Wochenende,8569
+244,2025-03-05 02:04:11.063558,Niedersachsen,Teilzeit,21552
+245,2025-03-05 02:04:11.063558,Niedersachsen,Vollzeit,58041
+246,2025-03-05 02:04:11.063558,Bremen,Home Office,92
+247,2025-03-05 02:04:11.063558,Bremen,Mini Job,230
+248,2025-03-05 02:04:11.063558,Bremen,Schicht/Nacht/Wochenende,792
+249,2025-03-05 02:04:11.063558,Bremen,Teilzeit,2102
+250,2025-03-05 02:04:11.063558,Bremen,Vollzeit,8113
+251,2025-03-05 02:04:11.063558,Nordrhein-Westfalen,Home Office,1320
+252,2025-03-05 02:04:11.063558,Nordrhein-Westfalen,Mini Job,5051
+253,2025-03-05 02:04:11.063558,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15542
+254,2025-03-05 02:04:11.063558,Nordrhein-Westfalen,Teilzeit,39743
+255,2025-03-05 02:04:11.063558,Nordrhein-Westfalen,Vollzeit,113418
+256,2025-03-05 02:04:11.063558,Hessen,Home Office,615
+257,2025-03-05 02:04:11.063558,Hessen,Mini Job,2049
+258,2025-03-05 02:04:11.063558,Hessen,Schicht/Nacht/Wochenende,5449
+259,2025-03-05 02:04:11.063558,Hessen,Teilzeit,15318
+260,2025-03-05 02:04:11.063558,Hessen,Vollzeit,41086
+261,2025-03-05 02:04:11.063558,Rheinland-Pfalz,Home Office,314
+262,2025-03-05 02:04:11.063558,Rheinland-Pfalz,Mini Job,1508
+263,2025-03-05 02:04:11.063558,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4827
+264,2025-03-05 02:04:11.063558,Rheinland-Pfalz,Teilzeit,11083
+265,2025-03-05 02:04:11.063558,Rheinland-Pfalz,Vollzeit,27917
+266,2025-03-05 02:04:11.063558,Baden-Württemberg,Home Office,833
+267,2025-03-05 02:04:11.063558,Baden-Württemberg,Mini Job,5000
+268,2025-03-05 02:04:11.063558,Baden-Württemberg,Schicht/Nacht/Wochenende,10226
+269,2025-03-05 02:04:11.063558,Baden-Württemberg,Teilzeit,26154
+270,2025-03-05 02:04:11.063558,Baden-Württemberg,Vollzeit,81672
+271,2025-03-05 02:04:11.063558,Bayern,Home Office,1239
+272,2025-03-05 02:04:11.063558,Bayern,Mini Job,5102
+273,2025-03-05 02:04:11.063558,Bayern,Schicht/Nacht/Wochenende,16332
+274,2025-03-05 02:04:11.063558,Bayern,Teilzeit,38608
+275,2025-03-05 02:04:11.063558,Bayern,Vollzeit,108535
+276,2025-03-05 02:04:11.063558,Saarland,Home Office,81
+277,2025-03-05 02:04:11.063558,Saarland,Mini Job,363
+278,2025-03-05 02:04:11.063558,Saarland,Schicht/Nacht/Wochenende,908
+279,2025-03-05 02:04:11.063558,Saarland,Teilzeit,2583
+280,2025-03-05 02:04:11.063558,Saarland,Vollzeit,5378
+281,2025-03-05 02:04:11.063558,Berlin,Home Office,530
+282,2025-03-05 02:04:11.063558,Berlin,Mini Job,637
+283,2025-03-05 02:04:11.063558,Berlin,Schicht/Nacht/Wochenende,2538
+284,2025-03-05 02:04:11.063558,Berlin,Teilzeit,7270
+285,2025-03-05 02:04:11.063558,Berlin,Vollzeit,19656
+286,2025-03-05 02:04:11.063558,Brandenburg,Home Office,281
+287,2025-03-05 02:04:11.063558,Brandenburg,Mini Job,817
+288,2025-03-05 02:04:11.063558,Brandenburg,Schicht/Nacht/Wochenende,3186
+289,2025-03-05 02:04:11.063558,Brandenburg,Teilzeit,6992
+290,2025-03-05 02:04:11.063558,Brandenburg,Vollzeit,16821
+291,2025-03-05 02:04:11.063558,Mecklenburg-Vorpommern,Home Office,153
+292,2025-03-05 02:04:11.063558,Mecklenburg-Vorpommern,Mini Job,590
+293,2025-03-05 02:04:11.063558,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2369
+294,2025-03-05 02:04:11.063558,Mecklenburg-Vorpommern,Teilzeit,4809
+295,2025-03-05 02:04:11.063558,Mecklenburg-Vorpommern,Vollzeit,11558
+296,2025-03-05 02:04:11.063558,Sachsen,Home Office,508
+297,2025-03-05 02:04:11.063558,Sachsen,Mini Job,1191
+298,2025-03-05 02:04:11.063558,Sachsen,Schicht/Nacht/Wochenende,5949
+299,2025-03-05 02:04:11.063558,Sachsen,Teilzeit,11022
+300,2025-03-05 02:04:11.063558,Sachsen,Vollzeit,33075
+301,2025-03-05 02:04:11.063558,Sachsen-Anhalt,Home Office,211
+302,2025-03-05 02:04:11.063558,Sachsen-Anhalt,Mini Job,796
+303,2025-03-05 02:04:11.063558,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3220
+304,2025-03-05 02:04:11.063558,Sachsen-Anhalt,Teilzeit,5180
+305,2025-03-05 02:04:11.063558,Sachsen-Anhalt,Vollzeit,16022
+306,2025-03-05 02:04:11.063558,Thüringen,Home Office,253
+307,2025-03-05 02:04:11.063558,Thüringen,Mini Job,673
+308,2025-03-05 02:04:11.063558,Thüringen,Schicht/Nacht/Wochenende,4092
+309,2025-03-05 02:04:11.063558,Thüringen,Teilzeit,6351
+310,2025-03-05 02:04:11.063558,Thüringen,Vollzeit,19037
+311,2025-03-06 02:03:43.076234,Schleswig-Holstein,Home Office,228
+312,2025-03-06 02:03:43.076234,Schleswig-Holstein,Mini Job,849
+313,2025-03-06 02:03:43.076234,Schleswig-Holstein,Schicht/Nacht/Wochenende,2789
+314,2025-03-06 02:03:43.076234,Schleswig-Holstein,Teilzeit,8220
+315,2025-03-06 02:03:43.076234,Schleswig-Holstein,Vollzeit,19026
+316,2025-03-06 02:03:43.076234,Hamburg,Home Office,352
+317,2025-03-06 02:03:43.076234,Hamburg,Mini Job,383
+318,2025-03-06 02:03:43.076234,Hamburg,Schicht/Nacht/Wochenende,1630
+319,2025-03-06 02:03:43.076234,Hamburg,Teilzeit,3938
+320,2025-03-06 02:03:43.076234,Hamburg,Vollzeit,15834
+321,2025-03-06 02:03:43.076234,Niedersachsen,Home Office,799
+322,2025-03-06 02:03:43.076234,Niedersachsen,Mini Job,2477
+323,2025-03-06 02:03:43.076234,Niedersachsen,Schicht/Nacht/Wochenende,8620
+324,2025-03-06 02:03:43.076234,Niedersachsen,Teilzeit,21479
+325,2025-03-06 02:03:43.076234,Niedersachsen,Vollzeit,58418
+326,2025-03-06 02:03:43.076234,Bremen,Home Office,87
+327,2025-03-06 02:03:43.076234,Bremen,Mini Job,232
+328,2025-03-06 02:03:43.076234,Bremen,Schicht/Nacht/Wochenende,854
+329,2025-03-06 02:03:43.076234,Bremen,Teilzeit,2097
+330,2025-03-06 02:03:43.076234,Bremen,Vollzeit,8194
+331,2025-03-06 02:03:43.076234,Nordrhein-Westfalen,Home Office,1315
+332,2025-03-06 02:03:43.076234,Nordrhein-Westfalen,Mini Job,5022
+333,2025-03-06 02:03:43.076234,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15947
+334,2025-03-06 02:03:43.076234,Nordrhein-Westfalen,Teilzeit,39622
+335,2025-03-06 02:03:43.076234,Nordrhein-Westfalen,Vollzeit,114161
+336,2025-03-06 02:03:43.076234,Hessen,Home Office,611
+337,2025-03-06 02:03:43.076234,Hessen,Mini Job,2027
+338,2025-03-06 02:03:43.076234,Hessen,Schicht/Nacht/Wochenende,5468
+339,2025-03-06 02:03:43.076234,Hessen,Teilzeit,15242
+340,2025-03-06 02:03:43.076234,Hessen,Vollzeit,40981
+341,2025-03-06 02:03:43.076234,Rheinland-Pfalz,Home Office,308
+342,2025-03-06 02:03:43.076234,Rheinland-Pfalz,Mini Job,1497
+343,2025-03-06 02:03:43.076234,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4800
+344,2025-03-06 02:03:43.076234,Rheinland-Pfalz,Teilzeit,11040
+345,2025-03-06 02:03:43.076234,Rheinland-Pfalz,Vollzeit,27816
+346,2025-03-06 02:03:43.076234,Baden-Württemberg,Home Office,829
+347,2025-03-06 02:03:43.076234,Baden-Württemberg,Mini Job,5016
+348,2025-03-06 02:03:43.076234,Baden-Württemberg,Schicht/Nacht/Wochenende,10218
+349,2025-03-06 02:03:43.076234,Baden-Württemberg,Teilzeit,25961
+350,2025-03-06 02:03:43.076234,Baden-Württemberg,Vollzeit,81896
+351,2025-03-06 02:03:43.076234,Bayern,Home Office,1227
+352,2025-03-06 02:03:43.076234,Bayern,Mini Job,5128
+353,2025-03-06 02:03:43.076234,Bayern,Schicht/Nacht/Wochenende,16360
+354,2025-03-06 02:03:43.076234,Bayern,Teilzeit,38419
+355,2025-03-06 02:03:43.076234,Bayern,Vollzeit,108261
+356,2025-03-06 02:03:43.076234,Saarland,Home Office,82
+357,2025-03-06 02:03:43.076234,Saarland,Mini Job,368
+358,2025-03-06 02:03:43.076234,Saarland,Schicht/Nacht/Wochenende,902
+359,2025-03-06 02:03:43.076234,Saarland,Teilzeit,2570
+360,2025-03-06 02:03:43.076234,Saarland,Vollzeit,5356
+361,2025-03-06 02:03:43.076234,Berlin,Home Office,525
+362,2025-03-06 02:03:43.076234,Berlin,Mini Job,610
+363,2025-03-06 02:03:43.076234,Berlin,Schicht/Nacht/Wochenende,2551
+364,2025-03-06 02:03:43.076234,Berlin,Teilzeit,7174
+365,2025-03-06 02:03:43.076234,Berlin,Vollzeit,19665
+366,2025-03-06 02:03:43.076234,Brandenburg,Home Office,274
+367,2025-03-06 02:03:43.076234,Brandenburg,Mini Job,801
+368,2025-03-06 02:03:43.076234,Brandenburg,Schicht/Nacht/Wochenende,3174
+369,2025-03-06 02:03:43.076234,Brandenburg,Teilzeit,6940
+370,2025-03-06 02:03:43.076234,Brandenburg,Vollzeit,16819
+371,2025-03-06 02:03:43.076234,Mecklenburg-Vorpommern,Home Office,147
+372,2025-03-06 02:03:43.076234,Mecklenburg-Vorpommern,Mini Job,584
+373,2025-03-06 02:03:43.076234,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2376
+374,2025-03-06 02:03:43.076234,Mecklenburg-Vorpommern,Teilzeit,4765
+375,2025-03-06 02:03:43.076234,Mecklenburg-Vorpommern,Vollzeit,11621
+376,2025-03-06 02:03:43.076234,Sachsen,Home Office,487
+377,2025-03-06 02:03:43.076234,Sachsen,Mini Job,1173
+378,2025-03-06 02:03:43.076234,Sachsen,Schicht/Nacht/Wochenende,5984
+379,2025-03-06 02:03:43.076234,Sachsen,Teilzeit,10916
+380,2025-03-06 02:03:43.076234,Sachsen,Vollzeit,33125
+381,2025-03-06 02:03:43.076234,Sachsen-Anhalt,Home Office,202
+382,2025-03-06 02:03:43.076234,Sachsen-Anhalt,Mini Job,786
+383,2025-03-06 02:03:43.076234,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3214
+384,2025-03-06 02:03:43.076234,Sachsen-Anhalt,Teilzeit,5129
+385,2025-03-06 02:03:43.076234,Sachsen-Anhalt,Vollzeit,15983
+386,2025-03-06 02:03:43.076234,Thüringen,Home Office,242
+387,2025-03-06 02:03:43.076234,Thüringen,Mini Job,673
+388,2025-03-06 02:03:43.076234,Thüringen,Schicht/Nacht/Wochenende,4124
+389,2025-03-06 02:03:43.076234,Thüringen,Teilzeit,6294
+390,2025-03-06 02:03:43.076234,Thüringen,Vollzeit,18995
+391,2025-03-07 02:03:41.180139,Schleswig-Holstein,Home Office,228
+392,2025-03-07 02:03:41.180139,Schleswig-Holstein,Mini Job,860
+393,2025-03-07 02:03:41.180139,Schleswig-Holstein,Schicht/Nacht/Wochenende,2808
+394,2025-03-07 02:03:41.180139,Schleswig-Holstein,Teilzeit,8251
+395,2025-03-07 02:03:41.180139,Schleswig-Holstein,Vollzeit,19084
+396,2025-03-07 02:03:41.180139,Hamburg,Home Office,350
+397,2025-03-07 02:03:41.180139,Hamburg,Mini Job,383
+398,2025-03-07 02:03:41.180139,Hamburg,Schicht/Nacht/Wochenende,1653
+399,2025-03-07 02:03:41.180139,Hamburg,Teilzeit,3954
+400,2025-03-07 02:03:41.180139,Hamburg,Vollzeit,15905
+401,2025-03-07 02:03:41.180139,Niedersachsen,Home Office,794
+402,2025-03-07 02:03:41.180139,Niedersachsen,Mini Job,2489
+403,2025-03-07 02:03:41.180139,Niedersachsen,Schicht/Nacht/Wochenende,8635
+404,2025-03-07 02:03:41.180139,Niedersachsen,Teilzeit,21380
+405,2025-03-07 02:03:41.180139,Niedersachsen,Vollzeit,58629
+406,2025-03-07 02:03:41.180139,Bremen,Home Office,85
+407,2025-03-07 02:03:41.180139,Bremen,Mini Job,234
+408,2025-03-07 02:03:41.180139,Bremen,Schicht/Nacht/Wochenende,863
+409,2025-03-07 02:03:41.180139,Bremen,Teilzeit,2110
+410,2025-03-07 02:03:41.180139,Bremen,Vollzeit,8181
+411,2025-03-07 02:03:41.180139,Nordrhein-Westfalen,Home Office,1318
+412,2025-03-07 02:03:41.180139,Nordrhein-Westfalen,Mini Job,5026
+413,2025-03-07 02:03:41.180139,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,16055
+414,2025-03-07 02:03:41.180139,Nordrhein-Westfalen,Teilzeit,39574
+415,2025-03-07 02:03:41.180139,Nordrhein-Westfalen,Vollzeit,114476
+416,2025-03-07 02:03:41.180139,Hessen,Home Office,611
+417,2025-03-07 02:03:41.180139,Hessen,Mini Job,2029
+418,2025-03-07 02:03:41.180139,Hessen,Schicht/Nacht/Wochenende,5496
+419,2025-03-07 02:03:41.180139,Hessen,Teilzeit,15272
+420,2025-03-07 02:03:41.180139,Hessen,Vollzeit,41117
+421,2025-03-07 02:03:41.180139,Rheinland-Pfalz,Home Office,309
+422,2025-03-07 02:03:41.180139,Rheinland-Pfalz,Mini Job,1489
+423,2025-03-07 02:03:41.180139,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4828
+424,2025-03-07 02:03:41.180139,Rheinland-Pfalz,Teilzeit,11064
+425,2025-03-07 02:03:41.180139,Rheinland-Pfalz,Vollzeit,27911
+426,2025-03-07 02:03:41.180139,Baden-Württemberg,Home Office,829
+427,2025-03-07 02:03:41.180139,Baden-Württemberg,Mini Job,5017
+428,2025-03-07 02:03:41.180139,Baden-Württemberg,Schicht/Nacht/Wochenende,10260
+429,2025-03-07 02:03:41.180139,Baden-Württemberg,Teilzeit,26046
+430,2025-03-07 02:03:41.180139,Baden-Württemberg,Vollzeit,81913
+431,2025-03-07 02:03:41.180139,Bayern,Home Office,1228
+432,2025-03-07 02:03:41.180139,Bayern,Mini Job,5150
+433,2025-03-07 02:03:41.180139,Bayern,Schicht/Nacht/Wochenende,16435
+434,2025-03-07 02:03:41.180139,Bayern,Teilzeit,38437
+435,2025-03-07 02:03:41.180139,Bayern,Vollzeit,108788
+436,2025-03-07 02:03:41.180139,Saarland,Home Office,82
+437,2025-03-07 02:03:41.180139,Saarland,Mini Job,371
+438,2025-03-07 02:03:41.180139,Saarland,Schicht/Nacht/Wochenende,908
+439,2025-03-07 02:03:41.180139,Saarland,Teilzeit,2574
+440,2025-03-07 02:03:41.180139,Saarland,Vollzeit,5359
+441,2025-03-07 02:03:41.180139,Berlin,Home Office,521
+442,2025-03-07 02:03:41.180139,Berlin,Mini Job,614
+443,2025-03-07 02:03:41.180139,Berlin,Schicht/Nacht/Wochenende,2601
+444,2025-03-07 02:03:41.180139,Berlin,Teilzeit,7137
+445,2025-03-07 02:03:41.180139,Berlin,Vollzeit,19815
+446,2025-03-07 02:03:41.180139,Brandenburg,Home Office,279
+447,2025-03-07 02:03:41.180139,Brandenburg,Mini Job,820
+448,2025-03-07 02:03:41.180139,Brandenburg,Schicht/Nacht/Wochenende,3203
+449,2025-03-07 02:03:41.180139,Brandenburg,Teilzeit,6943
+450,2025-03-07 02:03:41.180139,Brandenburg,Vollzeit,16915
+451,2025-03-07 02:03:41.180139,Mecklenburg-Vorpommern,Home Office,150
+452,2025-03-07 02:03:41.180139,Mecklenburg-Vorpommern,Mini Job,583
+453,2025-03-07 02:03:41.180139,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2386
+454,2025-03-07 02:03:41.180139,Mecklenburg-Vorpommern,Teilzeit,4741
+455,2025-03-07 02:03:41.180139,Mecklenburg-Vorpommern,Vollzeit,11633
+456,2025-03-07 02:03:41.180139,Sachsen,Home Office,505
+457,2025-03-07 02:03:41.180139,Sachsen,Mini Job,1169
+458,2025-03-07 02:03:41.180139,Sachsen,Schicht/Nacht/Wochenende,6046
+459,2025-03-07 02:03:41.180139,Sachsen,Teilzeit,10900
+460,2025-03-07 02:03:41.180139,Sachsen,Vollzeit,33247
+461,2025-03-07 02:03:41.180139,Sachsen-Anhalt,Home Office,203
+462,2025-03-07 02:03:41.180139,Sachsen-Anhalt,Mini Job,783
+463,2025-03-07 02:03:41.180139,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3213
+464,2025-03-07 02:03:41.180139,Sachsen-Anhalt,Teilzeit,5147
+465,2025-03-07 02:03:41.180139,Sachsen-Anhalt,Vollzeit,16069
+466,2025-03-07 02:03:41.180139,Thüringen,Home Office,245
+467,2025-03-07 02:03:41.180139,Thüringen,Mini Job,677
+468,2025-03-07 02:03:41.180139,Thüringen,Schicht/Nacht/Wochenende,4130
+469,2025-03-07 02:03:41.180139,Thüringen,Teilzeit,6279
+470,2025-03-07 02:03:41.180139,Thüringen,Vollzeit,19139
+471,2025-03-08 02:03:13.498638,Schleswig-Holstein,Home Office,229
+472,2025-03-08 02:03:13.498638,Schleswig-Holstein,Mini Job,859
+473,2025-03-08 02:03:13.498638,Schleswig-Holstein,Schicht/Nacht/Wochenende,2811
+474,2025-03-08 02:03:13.498638,Schleswig-Holstein,Teilzeit,8311
+475,2025-03-08 02:03:13.498638,Schleswig-Holstein,Vollzeit,19060
+476,2025-03-08 02:03:13.498638,Hamburg,Home Office,337
+477,2025-03-08 02:03:13.498638,Hamburg,Mini Job,373
+478,2025-03-08 02:03:13.498638,Hamburg,Schicht/Nacht/Wochenende,1659
+479,2025-03-08 02:03:13.498638,Hamburg,Teilzeit,3929
+480,2025-03-08 02:03:13.498638,Hamburg,Vollzeit,15896
+481,2025-03-08 02:03:13.498638,Niedersachsen,Home Office,786
+482,2025-03-08 02:03:13.498638,Niedersachsen,Mini Job,2474
+483,2025-03-08 02:03:13.498638,Niedersachsen,Schicht/Nacht/Wochenende,8639
+484,2025-03-08 02:03:13.498638,Niedersachsen,Teilzeit,21371
+485,2025-03-08 02:03:13.498638,Niedersachsen,Vollzeit,58355
+486,2025-03-08 02:03:13.498638,Bremen,Home Office,75
+487,2025-03-08 02:03:13.498638,Bremen,Mini Job,221
+488,2025-03-08 02:03:13.498638,Bremen,Schicht/Nacht/Wochenende,869
+489,2025-03-08 02:03:13.498638,Bremen,Teilzeit,2101
+490,2025-03-08 02:03:13.498638,Bremen,Vollzeit,8093
+491,2025-03-08 02:03:13.498638,Nordrhein-Westfalen,Home Office,1286
+492,2025-03-08 02:03:13.498638,Nordrhein-Westfalen,Mini Job,4995
+493,2025-03-08 02:03:13.498638,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,16083
+494,2025-03-08 02:03:13.498638,Nordrhein-Westfalen,Teilzeit,39529
+495,2025-03-08 02:03:13.498638,Nordrhein-Westfalen,Vollzeit,114354
+496,2025-03-08 02:03:13.498638,Hessen,Home Office,580
+497,2025-03-08 02:03:13.498638,Hessen,Mini Job,1987
+498,2025-03-08 02:03:13.498638,Hessen,Schicht/Nacht/Wochenende,5514
+499,2025-03-08 02:03:13.498638,Hessen,Teilzeit,15263
+500,2025-03-08 02:03:13.498638,Hessen,Vollzeit,41164
+501,2025-03-08 02:03:13.498638,Rheinland-Pfalz,Home Office,298
+502,2025-03-08 02:03:13.498638,Rheinland-Pfalz,Mini Job,1439
+503,2025-03-08 02:03:13.498638,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4848
+504,2025-03-08 02:03:13.498638,Rheinland-Pfalz,Teilzeit,11050
+505,2025-03-08 02:03:13.498638,Rheinland-Pfalz,Vollzeit,27738
+506,2025-03-08 02:03:13.498638,Baden-Württemberg,Home Office,798
+507,2025-03-08 02:03:13.498638,Baden-Württemberg,Mini Job,4913
+508,2025-03-08 02:03:13.498638,Baden-Württemberg,Schicht/Nacht/Wochenende,10347
+509,2025-03-08 02:03:13.498638,Baden-Württemberg,Teilzeit,26049
+510,2025-03-08 02:03:13.498638,Baden-Württemberg,Vollzeit,81849
+511,2025-03-08 02:03:13.498638,Bayern,Home Office,1218
+512,2025-03-08 02:03:13.498638,Bayern,Mini Job,5018
+513,2025-03-08 02:03:13.498638,Bayern,Schicht/Nacht/Wochenende,16452
+514,2025-03-08 02:03:13.498638,Bayern,Teilzeit,38425
+515,2025-03-08 02:03:13.498638,Bayern,Vollzeit,108756
+516,2025-03-08 02:03:13.498638,Saarland,Home Office,74
+517,2025-03-08 02:03:13.498638,Saarland,Mini Job,356
+518,2025-03-08 02:03:13.498638,Saarland,Schicht/Nacht/Wochenende,896
+519,2025-03-08 02:03:13.498638,Saarland,Teilzeit,2528
+520,2025-03-08 02:03:13.498638,Saarland,Vollzeit,5312
+521,2025-03-08 02:03:13.498638,Berlin,Home Office,510
+522,2025-03-08 02:03:13.498638,Berlin,Mini Job,616
+523,2025-03-08 02:03:13.498638,Berlin,Schicht/Nacht/Wochenende,2622
+524,2025-03-08 02:03:13.498638,Berlin,Teilzeit,7145
+525,2025-03-08 02:03:13.498638,Berlin,Vollzeit,19817
+526,2025-03-08 02:03:13.498638,Brandenburg,Home Office,277
+527,2025-03-08 02:03:13.498638,Brandenburg,Mini Job,810
+528,2025-03-08 02:03:13.498638,Brandenburg,Schicht/Nacht/Wochenende,3242
+529,2025-03-08 02:03:13.498638,Brandenburg,Teilzeit,6945
+530,2025-03-08 02:03:13.498638,Brandenburg,Vollzeit,16965
+531,2025-03-08 02:03:13.498638,Mecklenburg-Vorpommern,Home Office,142
+532,2025-03-08 02:03:13.498638,Mecklenburg-Vorpommern,Mini Job,574
+533,2025-03-08 02:03:13.498638,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2391
+534,2025-03-08 02:03:13.498638,Mecklenburg-Vorpommern,Teilzeit,4729
+535,2025-03-08 02:03:13.498638,Mecklenburg-Vorpommern,Vollzeit,11621
+536,2025-03-08 02:03:13.498638,Sachsen,Home Office,472
+537,2025-03-08 02:03:13.498638,Sachsen,Mini Job,1162
+538,2025-03-08 02:03:13.498638,Sachsen,Schicht/Nacht/Wochenende,6027
+539,2025-03-08 02:03:13.498638,Sachsen,Teilzeit,10842
+540,2025-03-08 02:03:13.498638,Sachsen,Vollzeit,33026
+541,2025-03-08 02:03:13.498638,Sachsen-Anhalt,Home Office,201
+542,2025-03-08 02:03:13.498638,Sachsen-Anhalt,Mini Job,772
+543,2025-03-08 02:03:13.498638,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3186
+544,2025-03-08 02:03:13.498638,Sachsen-Anhalt,Teilzeit,5143
+545,2025-03-08 02:03:13.498638,Sachsen-Anhalt,Vollzeit,15995
+546,2025-03-08 02:03:13.498638,Thüringen,Home Office,242
+547,2025-03-08 02:03:13.498638,Thüringen,Mini Job,669
+548,2025-03-08 02:03:13.498638,Thüringen,Schicht/Nacht/Wochenende,4121
+549,2025-03-08 02:03:13.498638,Thüringen,Teilzeit,6264
+550,2025-03-08 02:03:13.498638,Thüringen,Vollzeit,19125
+551,2025-03-09 02:03:34.673695,Schleswig-Holstein,Home Office,228
+552,2025-03-09 02:03:34.673695,Schleswig-Holstein,Mini Job,859
+553,2025-03-09 02:03:34.673695,Schleswig-Holstein,Schicht/Nacht/Wochenende,2803
+554,2025-03-09 02:03:34.673695,Schleswig-Holstein,Teilzeit,8269
+555,2025-03-09 02:03:34.673695,Schleswig-Holstein,Vollzeit,18971
+556,2025-03-09 02:03:34.673695,Hamburg,Home Office,338
+557,2025-03-09 02:03:34.673695,Hamburg,Mini Job,372
+558,2025-03-09 02:03:34.673695,Hamburg,Schicht/Nacht/Wochenende,1641
+559,2025-03-09 02:03:34.673695,Hamburg,Teilzeit,3895
+560,2025-03-09 02:03:34.673695,Hamburg,Vollzeit,15749
+561,2025-03-09 02:03:34.673695,Niedersachsen,Home Office,775
+562,2025-03-09 02:03:34.673695,Niedersachsen,Mini Job,2457
+563,2025-03-09 02:03:34.673695,Niedersachsen,Schicht/Nacht/Wochenende,8567
+564,2025-03-09 02:03:34.673695,Niedersachsen,Teilzeit,21258
+565,2025-03-09 02:03:34.673695,Niedersachsen,Vollzeit,57864
+566,2025-03-09 02:03:34.673695,Bremen,Home Office,75
+567,2025-03-09 02:03:34.673695,Bremen,Mini Job,222
+568,2025-03-09 02:03:34.673695,Bremen,Schicht/Nacht/Wochenende,863
+569,2025-03-09 02:03:34.673695,Bremen,Teilzeit,2096
+570,2025-03-09 02:03:34.673695,Bremen,Vollzeit,8055
+571,2025-03-09 02:03:34.673695,Nordrhein-Westfalen,Home Office,1276
+572,2025-03-09 02:03:34.673695,Nordrhein-Westfalen,Mini Job,4974
+573,2025-03-09 02:03:34.673695,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15954
+574,2025-03-09 02:03:34.673695,Nordrhein-Westfalen,Teilzeit,39336
+575,2025-03-09 02:03:34.673695,Nordrhein-Westfalen,Vollzeit,112798
+576,2025-03-09 02:03:34.673695,Hessen,Home Office,577
+577,2025-03-09 02:03:34.673695,Hessen,Mini Job,1977
+578,2025-03-09 02:03:34.673695,Hessen,Schicht/Nacht/Wochenende,5508
+579,2025-03-09 02:03:34.673695,Hessen,Teilzeit,15217
+580,2025-03-09 02:03:34.673695,Hessen,Vollzeit,41014
+581,2025-03-09 02:03:34.673695,Rheinland-Pfalz,Home Office,296
+582,2025-03-09 02:03:34.673695,Rheinland-Pfalz,Mini Job,1433
+583,2025-03-09 02:03:34.673695,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4812
+584,2025-03-09 02:03:34.673695,Rheinland-Pfalz,Teilzeit,10998
+585,2025-03-09 02:03:34.673695,Rheinland-Pfalz,Vollzeit,27572
+586,2025-03-09 02:03:34.673695,Baden-Württemberg,Home Office,796
+587,2025-03-09 02:03:34.673695,Baden-Württemberg,Mini Job,4898
+588,2025-03-09 02:03:34.673695,Baden-Württemberg,Schicht/Nacht/Wochenende,10306
+589,2025-03-09 02:03:34.673695,Baden-Württemberg,Teilzeit,25947
+590,2025-03-09 02:03:34.673695,Baden-Württemberg,Vollzeit,81451
+591,2025-03-09 02:03:34.673695,Bayern,Home Office,1209
+592,2025-03-09 02:03:34.673695,Bayern,Mini Job,5008
+593,2025-03-09 02:03:34.673695,Bayern,Schicht/Nacht/Wochenende,16412
+594,2025-03-09 02:03:34.673695,Bayern,Teilzeit,38328
+595,2025-03-09 02:03:34.673695,Bayern,Vollzeit,108252
+596,2025-03-09 02:03:34.673695,Saarland,Home Office,73
+597,2025-03-09 02:03:34.673695,Saarland,Mini Job,356
+598,2025-03-09 02:03:34.673695,Saarland,Schicht/Nacht/Wochenende,896
+599,2025-03-09 02:03:34.673695,Saarland,Teilzeit,2524
+600,2025-03-09 02:03:34.673695,Saarland,Vollzeit,5284
+601,2025-03-09 02:03:34.673695,Berlin,Home Office,506
+602,2025-03-09 02:03:34.673695,Berlin,Mini Job,613
+603,2025-03-09 02:03:34.673695,Berlin,Schicht/Nacht/Wochenende,2604
+604,2025-03-09 02:03:34.673695,Berlin,Teilzeit,7119
+605,2025-03-09 02:03:34.673695,Berlin,Vollzeit,19707
+606,2025-03-09 02:03:34.673695,Brandenburg,Home Office,278
+607,2025-03-09 02:03:34.673695,Brandenburg,Mini Job,808
+608,2025-03-09 02:03:34.673695,Brandenburg,Schicht/Nacht/Wochenende,3237
+609,2025-03-09 02:03:34.673695,Brandenburg,Teilzeit,6906
+610,2025-03-09 02:03:34.673695,Brandenburg,Vollzeit,16896
+611,2025-03-09 02:03:34.673695,Mecklenburg-Vorpommern,Home Office,139
+612,2025-03-09 02:03:34.673695,Mecklenburg-Vorpommern,Mini Job,560
+613,2025-03-09 02:03:34.673695,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2389
+614,2025-03-09 02:03:34.673695,Mecklenburg-Vorpommern,Teilzeit,4703
+615,2025-03-09 02:03:34.673695,Mecklenburg-Vorpommern,Vollzeit,11592
+616,2025-03-09 02:03:34.673695,Sachsen,Home Office,472
+617,2025-03-09 02:03:34.673695,Sachsen,Mini Job,1160
+618,2025-03-09 02:03:34.673695,Sachsen,Schicht/Nacht/Wochenende,6012
+619,2025-03-09 02:03:34.673695,Sachsen,Teilzeit,10794
+620,2025-03-09 02:03:34.673695,Sachsen,Vollzeit,32767
+621,2025-03-09 02:03:34.673695,Sachsen-Anhalt,Home Office,199
+622,2025-03-09 02:03:34.673695,Sachsen-Anhalt,Mini Job,772
+623,2025-03-09 02:03:34.673695,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3180
+624,2025-03-09 02:03:34.673695,Sachsen-Anhalt,Teilzeit,5131
+625,2025-03-09 02:03:34.673695,Sachsen-Anhalt,Vollzeit,15941
+626,2025-03-09 02:03:34.673695,Thüringen,Home Office,242
+627,2025-03-09 02:03:34.673695,Thüringen,Mini Job,668
+628,2025-03-09 02:03:34.673695,Thüringen,Schicht/Nacht/Wochenende,4115
+629,2025-03-09 02:03:34.673695,Thüringen,Teilzeit,6250
+630,2025-03-09 02:03:34.673695,Thüringen,Vollzeit,19016
+631,2025-03-10 02:03:37.998938,Schleswig-Holstein,Home Office,226
+632,2025-03-10 02:03:37.998938,Schleswig-Holstein,Mini Job,847
+633,2025-03-10 02:03:37.998938,Schleswig-Holstein,Schicht/Nacht/Wochenende,2805
+634,2025-03-10 02:03:37.998938,Schleswig-Holstein,Teilzeit,8217
+635,2025-03-10 02:03:37.998938,Schleswig-Holstein,Vollzeit,18899
+636,2025-03-10 02:03:37.998938,Hamburg,Home Office,350
+637,2025-03-10 02:03:37.998938,Hamburg,Mini Job,365
+638,2025-03-10 02:03:37.998938,Hamburg,Schicht/Nacht/Wochenende,1635
+639,2025-03-10 02:03:37.998938,Hamburg,Teilzeit,3885
+640,2025-03-10 02:03:37.998938,Hamburg,Vollzeit,15687
+641,2025-03-10 02:03:37.998938,Niedersachsen,Home Office,778
+642,2025-03-10 02:03:37.998938,Niedersachsen,Mini Job,2448
+643,2025-03-10 02:03:37.998938,Niedersachsen,Schicht/Nacht/Wochenende,8578
+644,2025-03-10 02:03:37.998938,Niedersachsen,Teilzeit,21161
+645,2025-03-10 02:03:37.998938,Niedersachsen,Vollzeit,57802
+646,2025-03-10 02:03:37.998938,Bremen,Home Office,75
+647,2025-03-10 02:03:37.998938,Bremen,Mini Job,221
+648,2025-03-10 02:03:37.998938,Bremen,Schicht/Nacht/Wochenende,856
+649,2025-03-10 02:03:37.998938,Bremen,Teilzeit,2085
+650,2025-03-10 02:03:37.998938,Bremen,Vollzeit,7966
+651,2025-03-10 02:03:37.998938,Nordrhein-Westfalen,Home Office,1280
+652,2025-03-10 02:03:37.998938,Nordrhein-Westfalen,Mini Job,4965
+653,2025-03-10 02:03:37.998938,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15928
+654,2025-03-10 02:03:37.998938,Nordrhein-Westfalen,Teilzeit,39119
+655,2025-03-10 02:03:37.998938,Nordrhein-Westfalen,Vollzeit,113182
+656,2025-03-10 02:03:37.998938,Hessen,Home Office,578
+657,2025-03-10 02:03:37.998938,Hessen,Mini Job,1974
+658,2025-03-10 02:03:37.998938,Hessen,Schicht/Nacht/Wochenende,5504
+659,2025-03-10 02:03:37.998938,Hessen,Teilzeit,15166
+660,2025-03-10 02:03:37.998938,Hessen,Vollzeit,40860
+661,2025-03-10 02:03:37.998938,Rheinland-Pfalz,Home Office,295
+662,2025-03-10 02:03:37.998938,Rheinland-Pfalz,Mini Job,1455
+663,2025-03-10 02:03:37.998938,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4849
+664,2025-03-10 02:03:37.998938,Rheinland-Pfalz,Teilzeit,11004
+665,2025-03-10 02:03:37.998938,Rheinland-Pfalz,Vollzeit,27579
+666,2025-03-10 02:03:37.998938,Baden-Württemberg,Home Office,799
+667,2025-03-10 02:03:37.998938,Baden-Württemberg,Mini Job,4885
+668,2025-03-10 02:03:37.998938,Baden-Württemberg,Schicht/Nacht/Wochenende,10242
+669,2025-03-10 02:03:37.998938,Baden-Württemberg,Teilzeit,25760
+670,2025-03-10 02:03:37.998938,Baden-Württemberg,Vollzeit,81011
+671,2025-03-10 02:03:37.998938,Bayern,Home Office,1219
+672,2025-03-10 02:03:37.998938,Bayern,Mini Job,5005
+673,2025-03-10 02:03:37.998938,Bayern,Schicht/Nacht/Wochenende,16303
+674,2025-03-10 02:03:37.998938,Bayern,Teilzeit,38056
+675,2025-03-10 02:03:37.998938,Bayern,Vollzeit,107719
+676,2025-03-10 02:03:37.998938,Saarland,Home Office,73
+677,2025-03-10 02:03:37.998938,Saarland,Mini Job,354
+678,2025-03-10 02:03:37.998938,Saarland,Schicht/Nacht/Wochenende,897
+679,2025-03-10 02:03:37.998938,Saarland,Teilzeit,2514
+680,2025-03-10 02:03:37.998938,Saarland,Vollzeit,5269
+681,2025-03-10 02:03:37.998938,Berlin,Home Office,520
+682,2025-03-10 02:03:37.998938,Berlin,Mini Job,614
+683,2025-03-10 02:03:37.998938,Berlin,Schicht/Nacht/Wochenende,2583
+684,2025-03-10 02:03:37.998938,Berlin,Teilzeit,7065
+685,2025-03-10 02:03:37.998938,Berlin,Vollzeit,19596
+686,2025-03-10 02:03:37.998938,Brandenburg,Home Office,276
+687,2025-03-10 02:03:37.998938,Brandenburg,Mini Job,811
+688,2025-03-10 02:03:37.998938,Brandenburg,Schicht/Nacht/Wochenende,3227
+689,2025-03-10 02:03:37.998938,Brandenburg,Teilzeit,6854
+690,2025-03-10 02:03:37.998938,Brandenburg,Vollzeit,16804
+691,2025-03-10 02:03:37.998938,Mecklenburg-Vorpommern,Home Office,138
+692,2025-03-10 02:03:37.998938,Mecklenburg-Vorpommern,Mini Job,560
+693,2025-03-10 02:03:37.998938,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2384
+694,2025-03-10 02:03:37.998938,Mecklenburg-Vorpommern,Teilzeit,4690
+695,2025-03-10 02:03:37.998938,Mecklenburg-Vorpommern,Vollzeit,11524
+696,2025-03-10 02:03:37.998938,Sachsen,Home Office,477
+697,2025-03-10 02:03:37.998938,Sachsen,Mini Job,1154
+698,2025-03-10 02:03:37.998938,Sachsen,Schicht/Nacht/Wochenende,5995
+699,2025-03-10 02:03:37.998938,Sachsen,Teilzeit,10717
+700,2025-03-10 02:03:37.998938,Sachsen,Vollzeit,32741
+701,2025-03-10 02:03:37.998938,Sachsen-Anhalt,Home Office,200
+702,2025-03-10 02:03:37.998938,Sachsen-Anhalt,Mini Job,772
+703,2025-03-10 02:03:37.998938,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3174
+704,2025-03-10 02:03:37.998938,Sachsen-Anhalt,Teilzeit,5121
+705,2025-03-10 02:03:37.998938,Sachsen-Anhalt,Vollzeit,15921
+706,2025-03-10 02:03:37.998938,Thüringen,Home Office,251
+707,2025-03-10 02:03:37.998938,Thüringen,Mini Job,670
+708,2025-03-10 02:03:37.998938,Thüringen,Schicht/Nacht/Wochenende,4112
+709,2025-03-10 02:03:37.998938,Thüringen,Teilzeit,6243
+710,2025-03-10 02:03:37.998938,Thüringen,Vollzeit,19059
+711,2025-03-11 02:03:45.599132,Schleswig-Holstein,Home Office,240
+712,2025-03-11 02:03:45.599132,Schleswig-Holstein,Mini Job,846
+713,2025-03-11 02:03:45.599132,Schleswig-Holstein,Schicht/Nacht/Wochenende,2825
+714,2025-03-11 02:03:45.599132,Schleswig-Holstein,Teilzeit,8268
+715,2025-03-11 02:03:45.599132,Schleswig-Holstein,Vollzeit,19004
+716,2025-03-11 02:03:45.599132,Hamburg,Home Office,351
+717,2025-03-11 02:03:45.599132,Hamburg,Mini Job,394
+718,2025-03-11 02:03:45.599132,Hamburg,Schicht/Nacht/Wochenende,1648
+719,2025-03-11 02:03:45.599132,Hamburg,Teilzeit,3909
+720,2025-03-11 02:03:45.599132,Hamburg,Vollzeit,15827
+721,2025-03-11 02:03:45.599132,Niedersachsen,Home Office,784
+722,2025-03-11 02:03:45.599132,Niedersachsen,Mini Job,2475
+723,2025-03-11 02:03:45.599132,Niedersachsen,Schicht/Nacht/Wochenende,8557
+724,2025-03-11 02:03:45.599132,Niedersachsen,Teilzeit,21189
+725,2025-03-11 02:03:45.599132,Niedersachsen,Vollzeit,57644
+726,2025-03-11 02:03:45.599132,Bremen,Home Office,85
+727,2025-03-11 02:03:45.599132,Bremen,Mini Job,223
+728,2025-03-11 02:03:45.599132,Bremen,Schicht/Nacht/Wochenende,844
+729,2025-03-11 02:03:45.599132,Bremen,Teilzeit,2091
+730,2025-03-11 02:03:45.599132,Bremen,Vollzeit,7962
+731,2025-03-11 02:03:45.599132,Nordrhein-Westfalen,Home Office,1308
+732,2025-03-11 02:03:45.599132,Nordrhein-Westfalen,Mini Job,4974
+733,2025-03-11 02:03:45.599132,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15991
+734,2025-03-11 02:03:45.599132,Nordrhein-Westfalen,Teilzeit,39062
+735,2025-03-11 02:03:45.599132,Nordrhein-Westfalen,Vollzeit,113611
+736,2025-03-11 02:03:45.599132,Hessen,Home Office,595
+737,2025-03-11 02:03:45.599132,Hessen,Mini Job,2009
+738,2025-03-11 02:03:45.599132,Hessen,Schicht/Nacht/Wochenende,5526
+739,2025-03-11 02:03:45.599132,Hessen,Teilzeit,15248
+740,2025-03-11 02:03:45.599132,Hessen,Vollzeit,40920
+741,2025-03-11 02:03:45.599132,Rheinland-Pfalz,Home Office,302
+742,2025-03-11 02:03:45.599132,Rheinland-Pfalz,Mini Job,1473
+743,2025-03-11 02:03:45.599132,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4887
+744,2025-03-11 02:03:45.599132,Rheinland-Pfalz,Teilzeit,11043
+745,2025-03-11 02:03:45.599132,Rheinland-Pfalz,Vollzeit,27764
+746,2025-03-11 02:03:45.599132,Baden-Württemberg,Home Office,818
+747,2025-03-11 02:03:45.599132,Baden-Württemberg,Mini Job,4906
+748,2025-03-11 02:03:45.599132,Baden-Württemberg,Schicht/Nacht/Wochenende,10324
+749,2025-03-11 02:03:45.599132,Baden-Württemberg,Teilzeit,25845
+750,2025-03-11 02:03:45.599132,Baden-Württemberg,Vollzeit,81319
+751,2025-03-11 02:03:45.599132,Bayern,Home Office,1227
+752,2025-03-11 02:03:45.599132,Bayern,Mini Job,5014
+753,2025-03-11 02:03:45.599132,Bayern,Schicht/Nacht/Wochenende,16330
+754,2025-03-11 02:03:45.599132,Bayern,Teilzeit,38111
+755,2025-03-11 02:03:45.599132,Bayern,Vollzeit,107729
+756,2025-03-11 02:03:45.599132,Saarland,Home Office,79
+757,2025-03-11 02:03:45.599132,Saarland,Mini Job,366
+758,2025-03-11 02:03:45.599132,Saarland,Schicht/Nacht/Wochenende,909
+759,2025-03-11 02:03:45.599132,Saarland,Teilzeit,2530
+760,2025-03-11 02:03:45.599132,Saarland,Vollzeit,5308
+761,2025-03-11 02:03:45.599132,Berlin,Home Office,518
+762,2025-03-11 02:03:45.599132,Berlin,Mini Job,623
+763,2025-03-11 02:03:45.599132,Berlin,Schicht/Nacht/Wochenende,2588
+764,2025-03-11 02:03:45.599132,Berlin,Teilzeit,7094
+765,2025-03-11 02:03:45.599132,Berlin,Vollzeit,19633
+766,2025-03-11 02:03:45.599132,Brandenburg,Home Office,282
+767,2025-03-11 02:03:45.599132,Brandenburg,Mini Job,816
+768,2025-03-11 02:03:45.599132,Brandenburg,Schicht/Nacht/Wochenende,3232
+769,2025-03-11 02:03:45.599132,Brandenburg,Teilzeit,6907
+770,2025-03-11 02:03:45.599132,Brandenburg,Vollzeit,16860
+771,2025-03-11 02:03:45.599132,Mecklenburg-Vorpommern,Home Office,145
+772,2025-03-11 02:03:45.599132,Mecklenburg-Vorpommern,Mini Job,569
+773,2025-03-11 02:03:45.599132,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2410
+774,2025-03-11 02:03:45.599132,Mecklenburg-Vorpommern,Teilzeit,4742
+775,2025-03-11 02:03:45.599132,Mecklenburg-Vorpommern,Vollzeit,11612
+776,2025-03-11 02:03:45.599132,Sachsen,Home Office,492
+777,2025-03-11 02:03:45.599132,Sachsen,Mini Job,1170
+778,2025-03-11 02:03:45.599132,Sachsen,Schicht/Nacht/Wochenende,6038
+779,2025-03-11 02:03:45.599132,Sachsen,Teilzeit,10723
+780,2025-03-11 02:03:45.599132,Sachsen,Vollzeit,32647
+781,2025-03-11 02:03:45.599132,Sachsen-Anhalt,Home Office,200
+782,2025-03-11 02:03:45.599132,Sachsen-Anhalt,Mini Job,782
+783,2025-03-11 02:03:45.599132,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3167
+784,2025-03-11 02:03:45.599132,Sachsen-Anhalt,Teilzeit,5116
+785,2025-03-11 02:03:45.599132,Sachsen-Anhalt,Vollzeit,15942
+786,2025-03-11 02:03:45.599132,Thüringen,Home Office,239
+787,2025-03-11 02:03:45.599132,Thüringen,Mini Job,676
+788,2025-03-11 02:03:45.599132,Thüringen,Schicht/Nacht/Wochenende,4120
+789,2025-03-11 02:03:45.599132,Thüringen,Teilzeit,6220
+790,2025-03-11 02:03:45.599132,Thüringen,Vollzeit,19075
+791,2025-03-12 02:03:47.399368,Schleswig-Holstein,Home Office,241
+792,2025-03-12 02:03:47.399368,Schleswig-Holstein,Mini Job,857
+793,2025-03-12 02:03:47.399368,Schleswig-Holstein,Schicht/Nacht/Wochenende,2837
+794,2025-03-12 02:03:47.399368,Schleswig-Holstein,Teilzeit,8315
+795,2025-03-12 02:03:47.399368,Schleswig-Holstein,Vollzeit,19121
+796,2025-03-12 02:03:47.399368,Hamburg,Home Office,350
+797,2025-03-12 02:03:47.399368,Hamburg,Mini Job,398
+798,2025-03-12 02:03:47.399368,Hamburg,Schicht/Nacht/Wochenende,1651
+799,2025-03-12 02:03:47.399368,Hamburg,Teilzeit,3926
+800,2025-03-12 02:03:47.399368,Hamburg,Vollzeit,15818
+801,2025-03-12 02:03:47.399368,Niedersachsen,Home Office,799
+802,2025-03-12 02:03:47.399368,Niedersachsen,Mini Job,2504
+803,2025-03-12 02:03:47.399368,Niedersachsen,Schicht/Nacht/Wochenende,8615
+804,2025-03-12 02:03:47.399368,Niedersachsen,Teilzeit,21281
+805,2025-03-12 02:03:47.399368,Niedersachsen,Vollzeit,57938
+806,2025-03-12 02:03:47.399368,Bremen,Home Office,86
+807,2025-03-12 02:03:47.399368,Bremen,Mini Job,228
+808,2025-03-12 02:03:47.399368,Bremen,Schicht/Nacht/Wochenende,863
+809,2025-03-12 02:03:47.399368,Bremen,Teilzeit,2126
+810,2025-03-12 02:03:47.399368,Bremen,Vollzeit,8059
+811,2025-03-12 02:03:47.399368,Nordrhein-Westfalen,Home Office,1316
+812,2025-03-12 02:03:47.399368,Nordrhein-Westfalen,Mini Job,5069
+813,2025-03-12 02:03:47.399368,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15981
+814,2025-03-12 02:03:47.399368,Nordrhein-Westfalen,Teilzeit,39249
+815,2025-03-12 02:03:47.399368,Nordrhein-Westfalen,Vollzeit,114015
+816,2025-03-12 02:03:47.399368,Hessen,Home Office,599
+817,2025-03-12 02:03:47.399368,Hessen,Mini Job,2009
+818,2025-03-12 02:03:47.399368,Hessen,Schicht/Nacht/Wochenende,5538
+819,2025-03-12 02:03:47.399368,Hessen,Teilzeit,15215
+820,2025-03-12 02:03:47.399368,Hessen,Vollzeit,41008
+821,2025-03-12 02:03:47.399368,Rheinland-Pfalz,Home Office,311
+822,2025-03-12 02:03:47.399368,Rheinland-Pfalz,Mini Job,1481
+823,2025-03-12 02:03:47.399368,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4883
+824,2025-03-12 02:03:47.399368,Rheinland-Pfalz,Teilzeit,11087
+825,2025-03-12 02:03:47.399368,Rheinland-Pfalz,Vollzeit,27923
+826,2025-03-12 02:03:47.399368,Baden-Württemberg,Home Office,830
+827,2025-03-12 02:03:47.399368,Baden-Württemberg,Mini Job,4929
+828,2025-03-12 02:03:47.399368,Baden-Württemberg,Schicht/Nacht/Wochenende,10369
+829,2025-03-12 02:03:47.399368,Baden-Württemberg,Teilzeit,25948
+830,2025-03-12 02:03:47.399368,Baden-Württemberg,Vollzeit,81488
+831,2025-03-12 02:03:47.399368,Bayern,Home Office,1230
+832,2025-03-12 02:03:47.399368,Bayern,Mini Job,5020
+833,2025-03-12 02:03:47.399368,Bayern,Schicht/Nacht/Wochenende,16350
+834,2025-03-12 02:03:47.399368,Bayern,Teilzeit,38045
+835,2025-03-12 02:03:47.399368,Bayern,Vollzeit,108096
+836,2025-03-12 02:03:47.399368,Saarland,Home Office,79
+837,2025-03-12 02:03:47.399368,Saarland,Mini Job,369
+838,2025-03-12 02:03:47.399368,Saarland,Schicht/Nacht/Wochenende,919
+839,2025-03-12 02:03:47.399368,Saarland,Teilzeit,2540
+840,2025-03-12 02:03:47.399368,Saarland,Vollzeit,5334
+841,2025-03-12 02:03:47.399368,Berlin,Home Office,521
+842,2025-03-12 02:03:47.399368,Berlin,Mini Job,623
+843,2025-03-12 02:03:47.399368,Berlin,Schicht/Nacht/Wochenende,2580
+844,2025-03-12 02:03:47.399368,Berlin,Teilzeit,7120
+845,2025-03-12 02:03:47.399368,Berlin,Vollzeit,19832
+846,2025-03-12 02:03:47.399368,Brandenburg,Home Office,280
+847,2025-03-12 02:03:47.399368,Brandenburg,Mini Job,813
+848,2025-03-12 02:03:47.399368,Brandenburg,Schicht/Nacht/Wochenende,3232
+849,2025-03-12 02:03:47.399368,Brandenburg,Teilzeit,6914
+850,2025-03-12 02:03:47.399368,Brandenburg,Vollzeit,16897
+851,2025-03-12 02:03:47.399368,Mecklenburg-Vorpommern,Home Office,147
+852,2025-03-12 02:03:47.399368,Mecklenburg-Vorpommern,Mini Job,563
+853,2025-03-12 02:03:47.399368,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2402
+854,2025-03-12 02:03:47.399368,Mecklenburg-Vorpommern,Teilzeit,4749
+855,2025-03-12 02:03:47.399368,Mecklenburg-Vorpommern,Vollzeit,11643
+856,2025-03-12 02:03:47.399368,Sachsen,Home Office,493
+857,2025-03-12 02:03:47.399368,Sachsen,Mini Job,1189
+858,2025-03-12 02:03:47.399368,Sachsen,Schicht/Nacht/Wochenende,6052
+859,2025-03-12 02:03:47.399368,Sachsen,Teilzeit,10822
+860,2025-03-12 02:03:47.399368,Sachsen,Vollzeit,32972
+861,2025-03-12 02:03:47.399368,Sachsen-Anhalt,Home Office,203
+862,2025-03-12 02:03:47.399368,Sachsen-Anhalt,Mini Job,797
+863,2025-03-12 02:03:47.399368,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3202
+864,2025-03-12 02:03:47.399368,Sachsen-Anhalt,Teilzeit,5173
+865,2025-03-12 02:03:47.399368,Sachsen-Anhalt,Vollzeit,16045
+866,2025-03-12 02:03:47.399368,Thüringen,Home Office,242
+867,2025-03-12 02:03:47.399368,Thüringen,Mini Job,679
+868,2025-03-12 02:03:47.399368,Thüringen,Schicht/Nacht/Wochenende,4144
+869,2025-03-12 02:03:47.399368,Thüringen,Teilzeit,6227
+870,2025-03-12 02:03:47.399368,Thüringen,Vollzeit,19003
+871,2025-03-13 02:03:39.698994,Schleswig-Holstein,Home Office,243
+872,2025-03-13 02:03:39.698994,Schleswig-Holstein,Mini Job,843
+873,2025-03-13 02:03:39.698994,Schleswig-Holstein,Schicht/Nacht/Wochenende,2848
+874,2025-03-13 02:03:39.698994,Schleswig-Holstein,Teilzeit,8301
+875,2025-03-13 02:03:39.698994,Schleswig-Holstein,Vollzeit,19104
+876,2025-03-13 02:03:39.698994,Hamburg,Home Office,340
+877,2025-03-13 02:03:39.698994,Hamburg,Mini Job,392
+878,2025-03-13 02:03:39.698994,Hamburg,Schicht/Nacht/Wochenende,1654
+879,2025-03-13 02:03:39.698994,Hamburg,Teilzeit,3900
+880,2025-03-13 02:03:39.698994,Hamburg,Vollzeit,15773
+881,2025-03-13 02:03:39.698994,Niedersachsen,Home Office,789
+882,2025-03-13 02:03:39.698994,Niedersachsen,Mini Job,2497
+883,2025-03-13 02:03:39.698994,Niedersachsen,Schicht/Nacht/Wochenende,8627
+884,2025-03-13 02:03:39.698994,Niedersachsen,Teilzeit,21212
+885,2025-03-13 02:03:39.698994,Niedersachsen,Vollzeit,58018
+886,2025-03-13 02:03:39.698994,Bremen,Home Office,86
+887,2025-03-13 02:03:39.698994,Bremen,Mini Job,225
+888,2025-03-13 02:03:39.698994,Bremen,Schicht/Nacht/Wochenende,860
+889,2025-03-13 02:03:39.698994,Bremen,Teilzeit,2115
+890,2025-03-13 02:03:39.698994,Bremen,Vollzeit,8106
+891,2025-03-13 02:03:39.698994,Nordrhein-Westfalen,Home Office,1306
+892,2025-03-13 02:03:39.698994,Nordrhein-Westfalen,Mini Job,5034
+893,2025-03-13 02:03:39.698994,Nordrhein-Westfalen,Schicht/Nacht/Wochenende,15973
+894,2025-03-13 02:03:39.698994,Nordrhein-Westfalen,Teilzeit,38999
+895,2025-03-13 02:03:39.698994,Nordrhein-Westfalen,Vollzeit,113913
+896,2025-03-13 02:03:39.698994,Hessen,Home Office,579
+897,2025-03-13 02:03:39.698994,Hessen,Mini Job,2024
+898,2025-03-13 02:03:39.698994,Hessen,Schicht/Nacht/Wochenende,5530
+899,2025-03-13 02:03:39.698994,Hessen,Teilzeit,15141
+900,2025-03-13 02:03:39.698994,Hessen,Vollzeit,40967
+901,2025-03-13 02:03:39.698994,Rheinland-Pfalz,Home Office,314
+902,2025-03-13 02:03:39.698994,Rheinland-Pfalz,Mini Job,1490
+903,2025-03-13 02:03:39.698994,Rheinland-Pfalz,Schicht/Nacht/Wochenende,4869
+904,2025-03-13 02:03:39.698994,Rheinland-Pfalz,Teilzeit,11067
+905,2025-03-13 02:03:39.698994,Rheinland-Pfalz,Vollzeit,27973
+906,2025-03-13 02:03:39.698994,Baden-Württemberg,Home Office,807
+907,2025-03-13 02:03:39.698994,Baden-Württemberg,Mini Job,4899
+908,2025-03-13 02:03:39.698994,Baden-Württemberg,Schicht/Nacht/Wochenende,10342
+909,2025-03-13 02:03:39.698994,Baden-Württemberg,Teilzeit,25847
+910,2025-03-13 02:03:39.698994,Baden-Württemberg,Vollzeit,81625
+911,2025-03-13 02:03:39.698994,Bayern,Home Office,1223
+912,2025-03-13 02:03:39.698994,Bayern,Mini Job,5010
+913,2025-03-13 02:03:39.698994,Bayern,Schicht/Nacht/Wochenende,16326
+914,2025-03-13 02:03:39.698994,Bayern,Teilzeit,37878
+915,2025-03-13 02:03:39.698994,Bayern,Vollzeit,107602
+916,2025-03-13 02:03:39.698994,Saarland,Home Office,77
+917,2025-03-13 02:03:39.698994,Saarland,Mini Job,374
+918,2025-03-13 02:03:39.698994,Saarland,Schicht/Nacht/Wochenende,918
+919,2025-03-13 02:03:39.698994,Saarland,Teilzeit,2523
+920,2025-03-13 02:03:39.698994,Saarland,Vollzeit,5284
+921,2025-03-13 02:03:39.698994,Berlin,Home Office,500
+922,2025-03-13 02:03:39.698994,Berlin,Mini Job,628
+923,2025-03-13 02:03:39.698994,Berlin,Schicht/Nacht/Wochenende,2575
+924,2025-03-13 02:03:39.698994,Berlin,Teilzeit,7095
+925,2025-03-13 02:03:39.698994,Berlin,Vollzeit,19809
+926,2025-03-13 02:03:39.698994,Brandenburg,Home Office,283
+927,2025-03-13 02:03:39.698994,Brandenburg,Mini Job,817
+928,2025-03-13 02:03:39.698994,Brandenburg,Schicht/Nacht/Wochenende,3225
+929,2025-03-13 02:03:39.698994,Brandenburg,Teilzeit,6953
+930,2025-03-13 02:03:39.698994,Brandenburg,Vollzeit,16894
+931,2025-03-13 02:03:39.698994,Mecklenburg-Vorpommern,Home Office,148
+932,2025-03-13 02:03:39.698994,Mecklenburg-Vorpommern,Mini Job,560
+933,2025-03-13 02:03:39.698994,Mecklenburg-Vorpommern,Schicht/Nacht/Wochenende,2414
+934,2025-03-13 02:03:39.698994,Mecklenburg-Vorpommern,Teilzeit,4757
+935,2025-03-13 02:03:39.698994,Mecklenburg-Vorpommern,Vollzeit,11678
+936,2025-03-13 02:03:39.698994,Sachsen,Home Office,491
+937,2025-03-13 02:03:39.698994,Sachsen,Mini Job,1189
+938,2025-03-13 02:03:39.698994,Sachsen,Schicht/Nacht/Wochenende,6045
+939,2025-03-13 02:03:39.698994,Sachsen,Teilzeit,10749
+940,2025-03-13 02:03:39.698994,Sachsen,Vollzeit,32950
+941,2025-03-13 02:03:39.698994,Sachsen-Anhalt,Home Office,200
+942,2025-03-13 02:03:39.698994,Sachsen-Anhalt,Mini Job,793
+943,2025-03-13 02:03:39.698994,Sachsen-Anhalt,Schicht/Nacht/Wochenende,3182
+944,2025-03-13 02:03:39.698994,Sachsen-Anhalt,Teilzeit,5163
+945,2025-03-13 02:03:39.698994,Sachsen-Anhalt,Vollzeit,15992
+946,2025-03-13 02:03:39.698994,Thüringen,Home Office,223
+947,2025-03-13 02:03:39.698994,Thüringen,Mini Job,664
+948,2025-03-13 02:03:39.698994,Thüringen,Schicht/Nacht/Wochenende,4135
+949,2025-03-13 02:03:39.698994,Thüringen,Teilzeit,6243
+950,2025-03-13 02:03:39.698994,Thüringen,Vollzeit,19046

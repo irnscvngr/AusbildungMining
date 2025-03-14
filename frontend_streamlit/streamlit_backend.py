@@ -33,13 +33,16 @@ with open("frontend_streamlit/data/maps/landkreise_simplify200.geojson",'r',enco
 with urlopen('https://github.com/isellsoap/deutschlandGeoJSON/raw/refs/heads/main/2_bundeslaender/3_mittel.geo.json') as response:
     states = json.load(response)
 
+# id to state
 with open("frontend_streamlit/data/maps/bundesland_id-to-state.json",'r',encoding='utf-8') as response:
     id_to_state = json.load(response)
 
+# State to id
 state_to_id = {}
 for key,value in id_to_state.items():
     state_to_id[value] = key
 
+# ARS to state
 with open("frontend_streamlit/data/maps/ars-to-state.json",'r',encoding='utf-8') as response:
     ars_to_state = json.load(response)
 
@@ -70,7 +73,7 @@ def plot_map(vacancies,prof_select):
                         range_color=(0, vacancies['Plätze'].max()),
                         map_style="carto-positron",
                         # map_style='white-bg',
-                        zoom=4.8,
+                        zoom=4.6,
                         center = {"lat": 51.2, "lon": 9.9167},
                         opacity=0.5,
                         hover_name='Bundesland',
@@ -82,7 +85,48 @@ def plot_map(vacancies,prof_select):
                   margin={"r":0,"t":60,"l":0,"b":0},
                   width=800,
                   height=600,
+                  coloraxis_colorbar=dict(
+                      title='',
+                      orientation='h',
+                      y=0,
+                      yanchor='top',
+                      xanchor='center'
                   )
+                  )
+
+    return fig
+
+def plot_map_ba(ba_df):
+    ba_df['id'] = ba_df['bundesland'].apply(lambda x: state_to_id[x])
+
+    fig = px.choropleth_map(data_frame=ba_df,
+                        geojson=states,
+                        locations='id',
+                        color='stellen',
+                        color_continuous_scale="Viridis",
+                        range_color=(0, ba_df['stellen'].max()),
+                        map_style="carto-positron",
+                        # map_style='white-bg',
+                        zoom=4.6,
+                        center = {"lat": 51.2, "lon": 9.9167},
+                        opacity=0.5,
+                        hover_name='bundesland',
+                        hover_data={'id':False,
+                                    'stellen':True},
+                        )
+
+    fig.update_layout(
+        margin={"r":0,"t":15,"l":0,"b":0},
+        width=800,
+        height=600,
+        coloraxis_colorbar=dict(
+            title='',
+            orientation='h',
+            y=0,
+            yanchor='top',
+            xanchor='center'
+            )
+        )
 
     return fig
 
@@ -97,20 +141,23 @@ def get_state_names():
 @st.cache_data
 def get_ba_values(param='branche'):
     if param=='branche':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Branche_2025-03-04 (22_33_49).csv"
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Branche_2025-03-13.csv"
     if param=='beruf':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Beruf_2025-03-04 (22_25_31).csv"
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Beruf_2025-03-13.csv"
     if param=='arbeitgeber':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitgeber_2025-03-04 (22_35_28).csv"
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitgeber_2025-03-13.csv"
     if param=='arbeitszeit':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitszeit_2025-03-04 (22_36_51).csv"
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitszeit_2025-03-13.csv"
     if param=='befristung':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Befristung_2025-03-04 (22_38_45).csv"
+        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Befristung_2025-03-13.csv"
         
     ba_df = pd.read_csv(filename,                                                                                                                                            
                         header=None,
                         names= ['id','timestamp','bundesland',param,'stellen']
                         )
+    
+    ba_df['timestamp'] = pd.to_datetime(ba_df['timestamp'])
+
     return ba_df
 
 def ba_get_top10_values(ba_df,state_select):
@@ -130,15 +177,26 @@ def ba_plot_state_top10(ba_df,xmax):
     
     col = ba_df.columns[0]
 
-    fig = px.bar(ba_df.sort_values('stellen'),
-                 x='stellen',
-                 y=col,
+    fig = px.bar(ba_df,#.sort_values('stellen'),
+                 y='stellen',
+                 x=col + '_short',
+                 hover_data = {col:True,
+                               col+'_short':False}
                 #  range_x=[0,xmax]
                  )
 
     fig.update_layout(xaxis_title='',
                       yaxis_title='',
                       margin={"r":0,"t":15,"l":0,"b":0},
-                      height=300)
+                      height=400)
     
     return fig
+
+def shorten_strings(sr,lmax=40):
+    """
+    Takes a pandas serieso of strings and shortens
+    them a length of lmax
+    """
+    sel = sr.str.len()>lmax
+    sr[sel] = sr[sel].str[:lmax] + '...'
+    return sr
