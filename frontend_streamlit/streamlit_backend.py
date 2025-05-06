@@ -2,6 +2,7 @@
 Backend operations for the streamlit app
 """
 import json
+import glob
 from urllib.request import urlopen
 import streamlit as st
 import pandas as pd
@@ -140,23 +141,19 @@ def get_state_names():
 
 @st.cache_data
 def get_ba_values(param='branche'):
-    if param=='branche':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Branche_2025-03-13.csv"
-    if param=='beruf':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Beruf_2025-03-13.csv"
-    if param=='arbeitgeber':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitgeber_2025-03-13.csv"
-    if param=='arbeitszeit':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Arbeitszeit_2025-03-13.csv"
-    if param=='befristung':
-        filename = "frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_Arbeit_Befristung_2025-03-13.csv"
-        
-    ba_df = pd.read_csv(filename,                                                                                                                                            
-                        header=None,
-                        names= ['id','timestamp','bundesland',param,'stellen']
-                        )
-    
-    ba_df['timestamp'] = pd.to_datetime(ba_df['timestamp'])
+    # Get all relevant parquet-files
+    filepath = 'frontend_streamlit/data/AusbildungMining/ArbeitsagenturMining_*.parquet'
+    ba_data_paths = glob.glob(filepath)
+
+    # Get boolean list to find the file with the requested param
+    selector = [param in fp for fp in ba_data_paths]
+
+    # Select matching filepath
+    requested_filepath = [path_to_file for path_to_file, boolean in zip(ba_data_paths, selector)
+                          if boolean][0]
+
+    # Read requested parquet-file
+    ba_df = pd.read_parquet(requested_filepath)
 
     return ba_df
 

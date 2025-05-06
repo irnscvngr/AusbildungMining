@@ -1119,3 +1119,14 @@ GRANT USAGE ON SEQUENCE "SchemaName"."TableName" TO "service@account-mail.iam";
 - Ausbildung.de scraping now doesn't work anymore
   - Need to adjust API endpoint (provide separate function)
 
+## 05.05.2025
+
+- Increased Cloud Run and Cloud Scheduler timeout for webscraping to prevent errors (webscraping takes some time, set timeout to 900s)
+
+- Did setup ``cloud-sql-proxy`` to access Cloud SQL data locally with ``pgadmin`` and python/sqlalchemy
+
+- Made sure the new timeout really let's the service run without errors again
+
+- I should implement a monitoring system
+
+- Changed streamlit app to import parquet instead of csv-files for "Arbeit"-type data.
