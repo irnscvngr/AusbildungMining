@@ -155,6 +155,8 @@ def get_ba_values(param='branche'):
     # Read requested parquet-file
     ba_df = pd.read_parquet(requested_filepath)
 
+    ba_df['timestamp'] = pd.to_datetime(ba_df['timestamp'])
+
     return ba_df
 
 def ba_get_top10_values(ba_df,state_select):
